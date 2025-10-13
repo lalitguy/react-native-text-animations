@@ -1,12 +1,11 @@
-import type { useState } from 'react';
-import type { useAnimatedStyle } from 'react-native-reanimated';
+import type { TextStyle } from 'react-native';
 
 export {};
 
 declare global {
   interface AnimatedTextProps {
     text: string;
-    useAnimation: (props: any) => any;
+    useAnimation: (props: { index: number }) => TextStyle;
     duration?: number;
     delay?: number;
     textStyle?: StyleProp<TextStyle>;

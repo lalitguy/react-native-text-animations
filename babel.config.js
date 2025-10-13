@@ -1,12 +1,18 @@
 module.exports = {
-  overrides: [
-    {
-      exclude: /\/node_modules\//,
-      presets: ['module:react-native-builder-bob/babel-preset'],
-    },
-    {
-      include: /\/node_modules\//,
-      presets: ['module:@react-native/babel-preset'],
-    },
+  presets: [
+    [
+      '@babel/preset-typescript',
+      {
+        allowNamespaces: true,
+        isTSX: true,
+        allExtensions: true,
+      },
+    ],
+    '@react-native/babel-preset',
+  ],
+  plugins: [
+    '@babel/plugin-syntax-typescript',
+    '@babel/plugin-syntax-dynamic-import',
+    'react-native-worklets/plugin',
   ],
 };

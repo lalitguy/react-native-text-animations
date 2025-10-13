@@ -1,1 +1,1 @@
-export { default as FadeText } from './components/animations/FadeText';
+export { default as FadeText, default } from './components/animations/FadeText';

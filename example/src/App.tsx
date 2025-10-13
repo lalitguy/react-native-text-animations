@@ -1,12 +1,15 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-animated-text';
+// import 'react-native-reanimated';
+import { StyleSheet, Text, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
-const result = multiply(3, 7);
-
+import { FadeText } from 'react-native-animated-text';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Open up App.tsx to start working on your app!</Text>
+      <FadeText text="React Native Animated Text i" />
+      <Animated.Text>I am normal animated</Animated.Text>
+      {/* <Animated.Text>njo</Animated.Text> */}
     </View>
   );
 }

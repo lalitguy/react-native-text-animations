@@ -2,7 +2,8 @@
   "name": "react-native-animated-text",
   "version": "0.1.0",
   "description": "A lightweight React Native library for smooth, customizable text animations built with Reanimated. Plug-and-play animated text with flexible props to bring your typography to life.",
-  "main": "./lib/module/index.js",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
@@ -12,6 +13,8 @@
     },
     "./package.json": "./package.json"
   },
+  "react-native": "src/index.tsx",
+  "source": "src/index",
   "files": [
     "src",
     "lib",
@@ -79,14 +82,16 @@
     "react": "19.1.0",
     "react-native": "0.81.4",
     "react-native-builder-bob": "^0.40.13",
-    "react-native-reanimated": "^4.1.2",
+    "react-native-reanimated": "^4.1.0",
+    "react-native-worklets": "0.5.1",
     "release-it": "^19.0.4",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*",
-    "react-native-reanimated": ">=4.0.0"
+    "react": ">=18.0.0",
+    "react-native": ">=0.80.0",
+    "react-native-reanimated": ">=4.0.0",
+    "react-native-worklets": ">=0.5.0"
   },
   "workspaces": [
     "example"
@@ -135,18 +140,22 @@
     "output": "lib",
     "targets": [
       [
-        "module",
+        "commonjs",
         {
-          "esm": true
+          "babelrc": false,
+          "configFile": "./babel.config.js"
         }
       ],
       [
-        "typescript",
+        "module",
         {
-          "project": "tsconfig.build.json"
+          "babelrc": false,
+          "configFile": "./babel.config.js"
         }
-      ]
-    ]
+      ],
+      "typescript"
+    ],
+    "exclude": "**/*.test.{ts,tsx}"
   },
   "create-react-native-library": {
     "languages": "js",

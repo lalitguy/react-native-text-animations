@@ -1,5 +1,3 @@
-import type { StyleProp, TextStyle } from 'react-native';
-
 export {};
 
 declare global {

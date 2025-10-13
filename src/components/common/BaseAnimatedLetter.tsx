@@ -5,7 +5,9 @@ const BaseAnimatedLetter = ({
   index,
   useAnimation,
 }: AnimatedLetterProps) => {
-  const animatedStyle = useAnimation({ index });
+  const animatedStyle = useAnimation({
+    index,
+  });
 
   return <Animated.Text style={[animatedStyle]}>{char}</Animated.Text>;
 };
