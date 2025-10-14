@@ -8,8 +8,6 @@ const BaseAnimatedLetter = ({
   const animatedStyle = useAnimation({
     index,
   });
-
   return <Animated.Text style={[animatedStyle]}>{char}</Animated.Text>;
 };
-
 export default BaseAnimatedLetter;
