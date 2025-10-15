@@ -1,30 +1,17 @@
-const fs = require('fs');
 const path = require('path');
+const { getConfig } = require('react-native-builder-bob/babel-config');
+const pkg = require('../package.json');
 
 const root = path.resolve(__dirname, '..');
-const rootPak = JSON.parse(
-  fs.readFileSync(path.join(root, 'package.json'), 'utf8')
-);
 
-console.log('alias - rooot =========', {
-  // For development, we want to alias the library to the source
-  [rootPak.name]: path.join(root, rootPak['react-native']),
-});
-module.exports = (api) => {
+module.exports = function (api) {
   api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-    plugins: [
-      [
-        'module-resolver',
-        {
-          extensions: ['.tsx', '.ts', '.js', '.json'],
-          alias: {
-            // For development, we want to alias the library to the source
-            [rootPak.name]: path.join(root, rootPak['react-native']),
-          },
-        },
-      ],
-    ],
-  };
+
+  return getConfig(
+    {
+      presets: ['babel-preset-expo'],
+      plugins: ['react-native-worklets/plugin'],
+    },
+    { root, pkg }
+  );
 };

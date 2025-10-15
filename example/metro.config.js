@@ -1,65 +1,28 @@
-const fs = require('fs');
 const path = require('path');
-const escape = require('escape-string-regexp');
 const { getDefaultConfig } = require('@expo/metro-config');
 const { withMetroConfig } = require('react-native-monorepo-config');
 
-// Root paths
-const exampleRoot = __dirname;
+const root = path.resolve(__dirname, '..'); // workspace root
+const library = path.resolve(root, 'src'); // your library source (adjust if needed)
 
-const libRoot = path.resolve(exampleRoot, '..'); // library root
-
-// Read library package.json
-const libPkg = JSON.parse(
-  fs.readFileSync(path.join(libRoot, 'package.json'), 'utf8')
-);
-
-// Ensure peer dependencies are resolved from example
-const modules = [
-  'react',
-  'react-native',
-  'react-native-reanimated',
-  '@babel/runtime',
-  'metro-runtime',
-  ...Object.keys({
-    ...libPkg.dependencies,
-    ...libPkg.peerDependencies,
-  }),
-].filter(Boolean);
-
-// Base Expo Metro config
-const baseConfig = getDefaultConfig(exampleRoot);
-
-// Wrap it with monorepo helper
-const config = withMetroConfig(baseConfig, {
-  root: libRoot,
+const config = withMetroConfig(getDefaultConfig(__dirname), {
+  root,
   dirname: __dirname,
 });
 
-const blockList = [
-  new RegExp(`^${escape(path.join(libRoot, 'node_modules'))}\\/.*$`),
+// Important: explicitly include the workspace root and the library
+config.watchFolders = [root, library];
+
+// Make sure Metro resolves modules from both example and workspace root
+config.resolver.nodeModulesPaths = [
+  path.resolve(__dirname, 'node_modules'),
+  path.resolve(root, 'node_modules'),
 ];
-console.log(blockList);
 
-const extraNodeModules = modules.reduce((acc, name) => {
-  acc[name] = path.join(exampleRoot, 'node_modules', name);
-  return acc;
-}, {});
+// Prevent Metro from following weird symlink behavior
+config.resolver.unstable_enableSymlinks = false;
 
-console.log(extraNodeModules);
-// Merge library-style fixes
-config.watchFolders = [...(config.watchFolders || []), libRoot];
-
-config.resolver = {
-  ...config.resolver,
-  blockList: [
-    new RegExp(`^${escape(path.join(libRoot, 'node_modules'))}\\/.*$`),
-  ],
-  extraNodeModules: modules.reduce((acc, name) => {
-    acc[name] = path.join(exampleRoot, 'node_modules', name);
-    return acc;
-  }, {}),
-  unstable_enablePackageExports: false,
-};
+// Recommended for modern packages using "exports"
+config.resolver.unstable_enablePackageExports = true;
 
 module.exports = config;

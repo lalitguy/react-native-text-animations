@@ -2,7 +2,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { FadeText } from 'react-native-animated-text';
+import FadeText from 'react-native-animated-text';
 export default function App() {
   return (
     <View style={styles.container}>
