@@ -1,11 +1,16 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import Animated from 'react-native-reanimated';
 import BaseAnimatedLetter from './BaseAnimatedLetter';
+import type { BaseAnimationHookProps, AnimatedTextProps } from '../../types';
 
-const BaseAnimatedText = ({ text, ...props }: AnimatedTextProps) => {
+const BaseAnimatedText = <P extends BaseAnimationHookProps>({
+  text,
+  ...props
+}: AnimatedTextProps<P>) => {
   if (!text) return null;
 
   return (
-    <View style={[styles.textWrap]}>
+    <Animated.View style={[styles.textWrap]}>
       {text.length &&
         text.split('').map((char, index) => {
           return (
@@ -17,7 +22,7 @@ const BaseAnimatedText = ({ text, ...props }: AnimatedTextProps) => {
             />
           );
         })}
-    </View>
+    </Animated.View>
   );
 };
 

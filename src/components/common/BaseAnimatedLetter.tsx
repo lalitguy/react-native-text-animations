@@ -1,13 +1,15 @@
 import Animated from 'react-native-reanimated';
+import type { BaseAnimationHookProps, AnimatedLetterProps } from '../../types';
 
-const BaseAnimatedLetter = ({
+const BaseAnimatedLetter = <P extends BaseAnimationHookProps>({
   text: char,
-  index,
   useAnimation,
-}: AnimatedLetterProps) => {
-  const animatedStyle = useAnimation({
-    index,
-  });
-  return <Animated.Text style={[animatedStyle]}>{char}</Animated.Text>;
+  textStyle,
+  ...props
+}: AnimatedLetterProps<P>) => {
+  const animatedStyle = useAnimation({ ...(props as P) });
+  return (
+    <Animated.Text style={[textStyle, animatedStyle]}>{char}</Animated.Text>
+  );
 };
 export default BaseAnimatedLetter;
