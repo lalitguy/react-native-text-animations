@@ -3,6 +3,7 @@ import type { StyleProp, TextStyle } from 'react-native';
 interface AnimationTiming {
   duration?: number;
   delay?: number;
+  staggerDelay?: number;
 }
 
 // Generic hook props: shared between all animations
@@ -21,6 +22,7 @@ interface AnimatedTextProps<
   text: string;
   textStyle?: StyleProp<TextStyle>;
   useAnimation: AnimationHook<P>;
+  staggerSeparator?: string;
 }
 
 // The letter inherits both animation hook props and text styles

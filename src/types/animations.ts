@@ -5,7 +5,6 @@ interface FadeAnimations {
   offsetX?: number;
   offsetY?: number;
   opacity?: number;
-  staggerDelay?: number;
 }
 interface FadeHookProps extends BaseAnimationHookProps, FadeAnimations {}
 
