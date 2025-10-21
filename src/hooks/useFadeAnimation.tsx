@@ -6,31 +6,45 @@ import {
   withTiming,
 } from 'react-native-reanimated';
 import type { AnimationHook } from '../types';
-import type { FadeHookProps } from '../types/animation';
+import type { FadeHookProps } from '../types/animations';
 
 const useFadeAnimation: AnimationHook<FadeHookProps> = ({
   index,
   delay = 0,
   duration = 300,
-  offset = 10,
+  offsetX = 0,
+  offsetY = 10,
+  opacity = 0,
+  staggerDelay = 50,
 }) => {
-  const opacity = useSharedValue(0);
-  const translateY = useSharedValue(offset);
-
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-      transform: [{ translateY: translateY.value }],
-    };
-  });
+  const opacityValue = useSharedValue(opacity);
+  const translateY = useSharedValue(offsetY);
+  const translateX = useSharedValue(offsetX);
 
   useEffect(() => {
-    opacity.value = withDelay(index * 50 + delay, withTiming(1, { duration }));
+    opacityValue.value = withDelay(
+      index * staggerDelay + delay,
+      withTiming(1, { duration })
+    );
     translateY.value = withDelay(
-      index * 50 + delay,
+      index * staggerDelay + delay,
+      withTiming(0, { duration })
+    );
+    translateX.value = withDelay(
+      index * staggerDelay + delay,
       withTiming(0, { duration })
     );
   }, [delay, duration, index]);
+
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      opacity: opacityValue.value,
+      transform: [
+        { translateY: translateY.value },
+        { translateX: translateX.value },
+      ],
+    };
+  });
 
   return animatedStyles;
 };
