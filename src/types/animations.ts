@@ -4,8 +4,10 @@ import type { AnimatedTextProps, BaseAnimationHookProps } from '.';
 interface FadeAnimations {
   offsetX?: number;
   offsetY?: number;
-  opacity?: number;
+  fromOpacity?: number;
+  toOpacity?: number;
 }
+
 interface FadeHookProps extends BaseAnimationHookProps, FadeAnimations {}
 
 interface FadeTextProps

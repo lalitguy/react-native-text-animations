@@ -23,6 +23,7 @@ interface AnimatedTextProps<
   textStyle?: StyleProp<TextStyle>;
   useAnimation: AnimationHook<P>;
   staggerSeparator?: string;
+  reanimateOnTextChange?: boolean;
 }
 
 // The letter inherits both animation hook props and text styles

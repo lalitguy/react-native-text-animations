@@ -14,17 +14,18 @@ const useFadeAnimation: AnimationHook<FadeHookProps> = ({
   duration = 300,
   offsetX = 0,
   offsetY = 10,
-  opacity = 0,
+  fromOpacity = 0,
+  toOpacity = 1,
   staggerDelay = 50,
 }) => {
-  const opacityValue = useSharedValue(opacity);
+  const opacity = useSharedValue(fromOpacity);
   const translateY = useSharedValue(offsetY);
   const translateX = useSharedValue(offsetX);
 
   useEffect(() => {
-    opacityValue.value = withDelay(
+    opacity.value = withDelay(
       index * staggerDelay + delay,
-      withTiming(1, { duration })
+      withTiming(toOpacity, { duration })
     );
     translateY.value = withDelay(
       index * staggerDelay + delay,
@@ -34,11 +35,20 @@ const useFadeAnimation: AnimationHook<FadeHookProps> = ({
       index * staggerDelay + delay,
       withTiming(0, { duration })
     );
-  }, [delay, duration, index]);
+  }, [
+    delay,
+    duration,
+    index,
+    staggerDelay,
+    toOpacity,
+    opacity,
+    translateX,
+    translateY,
+  ]);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      opacity: opacityValue.value,
+      opacity: opacity.value,
       transform: [
         { translateY: translateY.value },
         { translateX: translateX.value },

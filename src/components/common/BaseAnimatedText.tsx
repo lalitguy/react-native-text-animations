@@ -6,6 +6,7 @@ import type { BaseAnimationHookProps, AnimatedTextProps } from '../../types';
 const BaseAnimatedText = <P extends BaseAnimationHookProps>({
   text,
   staggerSeparator,
+  reanimateOnTextChange,
   ...props
 }: AnimatedTextProps<P>) => {
   if (!text) return null;
@@ -14,9 +15,10 @@ const BaseAnimatedText = <P extends BaseAnimationHookProps>({
     <Animated.View style={[styles.textWrap]}>
       {text.length &&
         text.split(staggerSeparator ?? '').map((char, index) => {
+          const key = `${char}-${index}${reanimateOnTextChange ? '-' + text : ''}`;
           return (
             <BaseAnimatedLetter
-              key={`${char}-${index}`}
+              key={key}
               text={char}
               index={index}
               {...props}

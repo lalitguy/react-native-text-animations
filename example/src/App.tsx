@@ -8,10 +8,8 @@ export default function App() {
       <Text>Open up App.tsx to start working on your app!</Text>
 
       <FadeText
-        text="React Native Animated Text is awesome!"
-        offsetX={10}
-        offsetY={10}
-        delay={10}
+        text="React Native Animated Text is awesome!✨"
+        staggerDelay={50}
       />
 
       {/* <Animated.Text>njo</Animated.Text> */}
