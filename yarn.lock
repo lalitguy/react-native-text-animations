@@ -11176,7 +11176,7 @@ __metadata:
     react: 19.1.0
     react-dom: 19.1.0
     react-native: 0.81.4
-    react-native-animated-text: "file:../react-native-animated-text-0.1.00011.tgz"
+    react-native-animated-text: "file:../react-native-animated-text-0.1.00012.tgz"
     react-native-builder-bob: ^0.40.13
     react-native-monorepo-config: ^0.1.9
     react-native-reanimated: ^4.1.3
@@ -11185,15 +11185,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"react-native-animated-text@file:../react-native-animated-text-0.1.00011.tgz::locator=react-native-animated-text-example%40workspace%3Aexample":
+"react-native-animated-text@file:../react-native-animated-text-0.1.00012.tgz::locator=react-native-animated-text-example%40workspace%3Aexample":
   version: 0.1.0
-  resolution: "react-native-animated-text@file:../react-native-animated-text-0.1.00011.tgz::locator=react-native-animated-text-example%40workspace%3Aexample"
+  resolution: "react-native-animated-text@file:../react-native-animated-text-0.1.00012.tgz::locator=react-native-animated-text-example%40workspace%3Aexample"
   peerDependencies:
     react: ">=18.0.0"
     react-native: ">=0.80.0"
     react-native-reanimated: ^4.1.1
     react-native-worklets: ^0.5.1
-  checksum: f63206bdefa13e1778813e162013260dfb8d4ff338c5719ac7f76af3aa13a86b7c7259bab6620bb5054ba22b0dc00ba4f9112937f3fa52703ac686bc085071c7
+  checksum: a7065c1fded07e55b0efaa6559de3b5b086c0f66992c3a515473fe26708845381bea12aad7da232b259b73a12e55523592c4a373fd915118560b31ec43963029
   languageName: node
   linkType: hard
 

@@ -33,4 +33,28 @@ interface RotateTextProps
   extends Omit<AnimatedTextProps<RotateHookProps>, 'useAnimation'>,
     RotateAnimations {}
 
-export type { FadeHookProps, FadeTextProps, RotateHookProps, RotateTextProps };
+//Bounce Animation Types
+
+interface SpringAnimations {
+  offsetX?: number;
+  offsetY?: number;
+  scaleFrom?: number;
+  scaleTo?: number;
+  initialOpacity?: number;
+  bounce?: number | { x?: number; y?: number };
+}
+
+interface SpringHookProps extends BaseAnimationHookProps, SpringAnimations {}
+
+interface SpringTextProps
+  extends Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
+    SpringAnimations {}
+
+export type {
+  FadeHookProps,
+  FadeTextProps,
+  RotateHookProps,
+  RotateTextProps,
+  SpringHookProps,
+  SpringTextProps,
+};
