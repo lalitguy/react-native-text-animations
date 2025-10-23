@@ -14,4 +14,23 @@ interface FadeTextProps
   extends Omit<AnimatedTextProps<FadeHookProps>, 'useAnimation'>,
     FadeAnimations {}
 
-export type { FadeHookProps, FadeTextProps };
+// Rotate Animation Types
+interface RotateAnimations {
+  offsetX?: number;
+  offsetY?: number;
+  initialOpacity?: number;
+  rotateXStart?: number;
+  rotateXEnd?: number;
+  rotateYStart?: number;
+  rotateYEnd?: number;
+  rotateZStart?: number;
+  rotateZEnd?: number;
+}
+
+interface RotateHookProps extends BaseAnimationHookProps, RotateAnimations {}
+
+interface RotateTextProps
+  extends Omit<AnimatedTextProps<RotateHookProps>, 'useAnimation'>,
+    RotateAnimations {}
+
+export type { FadeHookProps, FadeTextProps, RotateHookProps, RotateTextProps };

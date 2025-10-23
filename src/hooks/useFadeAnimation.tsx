@@ -41,9 +41,10 @@ const useFadeAnimation: AnimationHook<FadeHookProps> = ({
     index,
     staggerDelay,
     toOpacity,
-    opacity,
-    translateX,
-    translateY,
+    offsetX,
+    offsetY,
+    fromOpacity,
+    toOpacity,
   ]);
 
   const animatedStyles = useAnimatedStyle(() => {
