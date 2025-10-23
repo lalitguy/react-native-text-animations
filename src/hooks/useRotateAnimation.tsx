@@ -33,30 +33,14 @@ const useRotateAnimation: AnimationHook<RotateHookProps> = (props) => {
   const rotateZ = useSharedValue(rotateZStart);
 
   useEffect(() => {
-    opacity.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(1, { duration })
-    );
-    translateY.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(0, { duration })
-    );
-    translateX.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(0, { duration })
-    );
-    rotateX.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(rotateXEnd, { duration })
-    );
-    rotateY.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(rotateYEnd, { duration })
-    );
-    rotateZ.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(rotateZEnd, { duration })
-    );
+    const delayTime = index * staggerDelay + delay;
+    opacity.value = withDelay(delayTime, withTiming(1, { duration }));
+    translateY.value = withDelay(delayTime, withTiming(0, { duration }));
+    translateX.value = withDelay(delayTime, withTiming(0, { duration }));
+    rotateX.value = withDelay(delayTime, withTiming(rotateXEnd, { duration }));
+    rotateY.value = withDelay(delayTime, withTiming(rotateYEnd, { duration }));
+    rotateZ.value = withDelay(delayTime, withTiming(rotateZEnd, { duration }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     delay,
     duration,

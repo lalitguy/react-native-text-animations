@@ -23,18 +23,11 @@ const useFadeAnimation: AnimationHook<FadeHookProps> = ({
   const translateX = useSharedValue(offsetX);
 
   useEffect(() => {
-    opacity.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(toOpacity, { duration })
-    );
-    translateY.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(0, { duration })
-    );
-    translateX.value = withDelay(
-      index * staggerDelay + delay,
-      withTiming(0, { duration })
-    );
+    const delayTime = index * staggerDelay + delay;
+    opacity.value = withDelay(delayTime, withTiming(toOpacity, { duration }));
+    translateY.value = withDelay(delayTime, withTiming(0, { duration }));
+    translateX.value = withDelay(delayTime, withTiming(0, { duration }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     delay,
     duration,

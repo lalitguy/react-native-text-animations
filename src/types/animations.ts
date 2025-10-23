@@ -35,13 +35,14 @@ interface RotateTextProps
 
 //Bounce Animation Types
 
+type BounceType = number | { x?: number; y?: number };
 interface SpringAnimations {
   offsetX?: number;
   offsetY?: number;
   scaleFrom?: number;
   scaleTo?: number;
   initialOpacity?: number;
-  bounce?: number | { x?: number; y?: number };
+  bounce?: BounceType;
 }
 
 interface SpringHookProps extends BaseAnimationHookProps, SpringAnimations {}
@@ -57,4 +58,5 @@ export type {
   RotateTextProps,
   SpringHookProps,
   SpringTextProps,
+  BounceType,
 };

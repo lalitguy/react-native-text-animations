@@ -8,35 +8,7 @@ import {
 } from 'react-native-reanimated';
 import type { AnimationHook } from '../types';
 import type { SpringHookProps } from '../types/animations';
-
-function getSpringConfig(bounceFactor: number) {
-  // Clamp bounceFactor to avoid unrealistic behavior
-  const b = Math.max(0, Math.min(bounceFactor, 1.5));
-
-  // Use easing-like scaling for smoother feel
-  const stiffness = 120 + Math.pow(b, 1.4) * 280; // 120–400
-  const damping = 22 - Math.pow(b, 0.9) * 10; // 22–12
-  const mass = 1;
-  const velocity = 0;
-
-  return { stiffness, damping, mass, velocity };
-}
-
-const resolveBounce = (bounce?: number | { x?: number; y?: number }) => {
-  // Default neutral bounce
-  const defaultBounce = 1;
-
-  // Case 1: user passed a single number → use for both axes
-  if (typeof bounce === 'number') {
-    return { x: bounce, y: bounce };
-  }
-
-  // Case 2: user passed an object → merge defaults
-  return {
-    x: bounce?.x ?? defaultBounce,
-    y: bounce?.y ?? defaultBounce,
-  };
-};
+import { getSpringConfig, resolveBounce } from '../utils';
 
 const useSpringAnimation: AnimationHook<SpringHookProps> = ({
   index,
@@ -58,7 +30,6 @@ const useSpringAnimation: AnimationHook<SpringHookProps> = ({
   useEffect(() => {
     const { x: bounceX, y: bounceY } = resolveBounce(bounce);
 
-    // Then compute spring configs
     const springConfigX = getSpringConfig(bounceX);
     const springConfigY = getSpringConfig(bounceY);
 
@@ -70,6 +41,7 @@ const useSpringAnimation: AnimationHook<SpringHookProps> = ({
 
     const springConfigScale = getSpringConfig((bounceX + bounceY) / 2);
     scale.value = withDelay(delayTime, withSpring(scaleTo, springConfigScale));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     delay,
     duration,
