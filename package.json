@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lalitguy/react-native-animated-text.git"
+    "url": "git+https://github.com/lalitguy/react-native-animated-text.git"
   },
-  "author": "Lalitguy <121784152+Lalitguy@users.noreply.github.com> (https://github.com/Lalitguy)",
+  "author": "lalitguy <121784152+lalitguy@users.noreply.github.com> (https://github.com/lalitguy)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Lalitguy/react-native-animated-text/issues"
+    "url": "https://github.com/lalitguy/react-native-animated-text/issues"
   },
-  "homepage": "https://github.com/Lalitguy/react-native-animated-text#readme",
+  "homepage": "https://github.com/lalitguy/react-native-animated-text#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
