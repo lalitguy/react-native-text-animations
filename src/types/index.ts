@@ -3,6 +3,8 @@ import type { StyleProp, TextStyle } from 'react-native';
 interface AnimationTiming {
   duration?: number;
   delay?: number;
+  offsetX?: number;
+  offsetY?: number;
   staggerDelay?: number;
 }
 

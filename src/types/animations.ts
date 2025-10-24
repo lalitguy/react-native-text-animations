@@ -1,9 +1,11 @@
-import type { AnimatedTextProps, BaseAnimationHookProps } from '.';
+import type {
+  AnimatedTextProps,
+  AnimationTiming,
+  BaseAnimationHookProps,
+} from '.';
 
 // Fade Animation Types
 interface FadeAnimations {
-  offsetX?: number;
-  offsetY?: number;
   fromOpacity?: number;
   toOpacity?: number;
 }
@@ -16,8 +18,6 @@ interface FadeTextProps
 
 // Rotate Animation Types
 interface RotateAnimations {
-  offsetX?: number;
-  offsetY?: number;
   initialOpacity?: number;
   rotateXStart?: number;
   rotateXEnd?: number;
@@ -36,9 +36,8 @@ interface RotateTextProps
 //Bounce Animation Types
 
 type BounceType = number | { x?: number; y?: number };
+
 interface SpringAnimations {
-  offsetX?: number;
-  offsetY?: number;
   scaleFrom?: number;
   scaleTo?: number;
   initialOpacity?: number;
@@ -51,12 +50,33 @@ interface SpringTextProps
   extends Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
     SpringAnimations {}
 
+// Common AnimatedText Config Types
+
+interface AnimatedTextConfig extends AnimationTiming {
+  fromOpacity?: number;
+  toOpacity?: number;
+}
+
+interface TextAnimations {
+  index: number;
+  config: AnimatedTextConfig;
+}
+
+interface AnimatedTextHookProps extends TextAnimations {}
+
+interface AnimatedTextConfigProps
+  extends Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
+    TextAnimations {}
+
 export type {
+  AnimatedTextConfig,
+  AnimatedTextConfigProps,
+  AnimatedTextHookProps,
+  BounceType,
   FadeHookProps,
   FadeTextProps,
   RotateHookProps,
   RotateTextProps,
   SpringHookProps,
   SpringTextProps,
-  BounceType,
 };
