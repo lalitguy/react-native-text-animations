@@ -55,6 +55,19 @@ interface SpringTextProps
 interface AnimatedTextConfig extends AnimationTiming {
   fromOpacity?: number;
   toOpacity?: number;
+  rotateFrom?: {
+    x?: number;
+    y?: number;
+    z?: number;
+  };
+  rotateTo?: {
+    x?: number;
+    y?: number;
+    z?: number;
+  };
+  scaleFrom?: number;
+  scaleTo?: number;
+  bounce?: BounceType;
 }
 
 interface TextAnimations {

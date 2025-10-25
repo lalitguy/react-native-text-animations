@@ -32,6 +32,7 @@ const BaseAnimatedText = <P extends BaseAnimationHookProps>({
 const styles = StyleSheet.create({
   textWrap: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
 });
 
