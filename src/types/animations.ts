@@ -89,7 +89,7 @@ interface TextAnimations {
   config?: AnimatedTextConfig;
 }
 
-interface AnimatedTextHookProps extends TextAnimations, AnimationTiming {
+interface AnimatedTextHookProps extends TextAnimations {
   index: number;
 }
 
