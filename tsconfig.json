@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-animated-text": ["./src/index"]
+      "react-native-text-animations": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

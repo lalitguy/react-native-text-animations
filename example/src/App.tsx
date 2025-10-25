@@ -1,7 +1,7 @@
 // import 'react-native-reanimated';
 import { StyleSheet, View } from 'react-native';
 
-import AnimatedText, { WaveText } from 'react-native-animated-text';
+import AnimatedText, { WaveText } from 'react-native-text-animations';
 export default function App() {
   return (
     <View style={styles.container}>
