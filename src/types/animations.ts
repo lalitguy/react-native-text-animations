@@ -1,5 +1,6 @@
 import type {
   AnimatedTextProps,
+  AnimationOffsets,
   AnimationTiming,
   BaseAnimationHookProps,
 } from '.';
@@ -50,9 +51,23 @@ interface SpringTextProps
   extends Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
     SpringAnimations {}
 
+// Wave Animation Types
+interface WaveAnimations {
+  amplitude?: number;
+  initialOpacity?: number;
+  infinte?: boolean;
+}
+
+interface WaveHookProps extends WaveAnimations, AnimationTiming {
+  index: number;
+}
+
+interface WaveTextProps
+  extends Omit<AnimatedTextProps<WaveHookProps>, 'useAnimation'>,
+    WaveAnimations {}
 // Common AnimatedText Config Types
 
-interface AnimatedTextConfig extends AnimationTiming {
+interface AnimatedTextConfig extends AnimationTiming, AnimationOffsets {
   fromOpacity?: number;
   toOpacity?: number;
   rotateFrom?: {
@@ -74,7 +89,7 @@ interface TextAnimations {
   config?: AnimatedTextConfig;
 }
 
-interface AnimatedTextHookProps extends TextAnimations {
+interface AnimatedTextHookProps extends TextAnimations, AnimationTiming {
   index: number;
 }
 
@@ -93,4 +108,6 @@ export type {
   RotateTextProps,
   SpringHookProps,
   SpringTextProps,
+  WaveHookProps,
+  WaveTextProps,
 };

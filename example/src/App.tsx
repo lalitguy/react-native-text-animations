@@ -1,7 +1,7 @@
 // import 'react-native-reanimated';
 import { StyleSheet, View } from 'react-native';
 
-import AnimatedText from 'react-native-animated-text';
+import AnimatedText, { WaveText } from 'react-native-animated-text';
 export default function App() {
   return (
     <View style={styles.container}>
@@ -13,8 +13,6 @@ export default function App() {
 
       <AnimatedText
         text="Animated Text is Awesome!✨"
-        reanimateOnTextChange
-        textStyle={{ fontSize: 24 }}
         config={{
           fromOpacity: 0.5,
           delay: 200,
@@ -29,6 +27,13 @@ export default function App() {
             y: 360,
           },
         }}
+      />
+
+      <WaveText
+        text="Wave Animation is Awesome!✨"
+        amplitude={4}
+        infinte={false}
+        duration={400}
       />
 
       {/* <Animated.Text>njo</Animated.Text> */}

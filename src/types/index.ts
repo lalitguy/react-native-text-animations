@@ -1,15 +1,17 @@
 import type { StyleProp, TextStyle } from 'react-native';
 
+interface AnimationOffsets {
+  offsetX?: number;
+  offsetY?: number;
+}
 interface AnimationTiming {
   duration?: number;
   delay?: number;
-  offsetX?: number;
-  offsetY?: number;
   staggerDelay?: number;
 }
 
 // Generic hook props: shared between all animations
-interface BaseAnimationHookProps extends AnimationTiming {
+interface BaseAnimationHookProps extends AnimationTiming, AnimationOffsets {
   index: number;
 }
 
@@ -20,7 +22,8 @@ type AnimationHook<P extends BaseAnimationHookProps = BaseAnimationHookProps> =
 // A generic AnimatedText component type that accepts any animation hook
 interface AnimatedTextProps<
   P extends BaseAnimationHookProps = BaseAnimationHookProps,
-> extends AnimationTiming {
+> extends AnimationTiming,
+    AnimationOffsets {
   text: string;
   textStyle?: StyleProp<TextStyle>;
   useAnimation: AnimationHook<P>;
@@ -43,4 +46,5 @@ export type {
   AnimatedTextProps,
   BaseAnimationHookProps,
   AnimationTiming,
+  AnimationOffsets,
 };
