@@ -58,11 +58,12 @@ interface AnimatedTextConfig extends AnimationTiming {
 }
 
 interface TextAnimations {
-  index: number;
-  config: AnimatedTextConfig;
+  config?: AnimatedTextConfig;
 }
 
-interface AnimatedTextHookProps extends TextAnimations {}
+interface AnimatedTextHookProps extends TextAnimations {
+  index: number;
+}
 
 interface AnimatedTextConfigProps
   extends Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,

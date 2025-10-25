@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 
 const useAnimatedText: AnimationHook<AnimatedTextHookProps> = ({
   index,
-  config,
+  config = {},
 }) => {
   const {
     fromOpacity = 0,
