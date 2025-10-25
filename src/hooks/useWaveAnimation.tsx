@@ -16,7 +16,7 @@ const useWaveAnimation: AnimationHook<WaveHookProps> = ({
   amplitude = 10,
   initialOpacity = 1,
   staggerDelay = 50,
-  infinte = false,
+  infinite = false,
 }) => {
   const opacity = useSharedValue(initialOpacity);
   const translateY = useSharedValue(amplitude);
@@ -28,7 +28,7 @@ const useWaveAnimation: AnimationHook<WaveHookProps> = ({
       delayTime,
       withRepeat(
         withTiming(-amplitude, { duration }),
-        infinte ? -1 : 2, // infinite loop
+        infinite ? -1 : 2, // infinite loop
         true // reverse (up & down)
       )
     );
@@ -40,7 +40,7 @@ const useWaveAnimation: AnimationHook<WaveHookProps> = ({
     staggerDelay,
     amplitude,
     initialOpacity,
-    infinte,
+    infinite,
   ]);
 
   const animatedStyles = useAnimatedStyle(() => {

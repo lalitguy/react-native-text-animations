@@ -55,7 +55,7 @@ interface SpringTextProps
 interface WaveAnimations {
   amplitude?: number;
   initialOpacity?: number;
-  infinte?: boolean;
+  infinite?: boolean;
 }
 
 interface WaveHookProps extends WaveAnimations, AnimationTiming {
