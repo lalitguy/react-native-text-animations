@@ -2,6 +2,24 @@
 
 A lightweight React Native library for smooth, customizable text animations built with Reanimated. Plug-and-play animated text with flexible props to bring your typography to life.
 
+## 🎬 Animations Preview
+
+<div align="center">
+
+| FadeText                                                                                         | RotateText                                                                                           |
+| ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| <img src="./example/assets/example-gifs/fade.gif" width="380" alt="FadeText animation preview"/> | <img src="./example/assets/example-gifs/rotate.gif" width="380" alt="RotateText animation preview"/> |
+
+| SpringText                                                                                           | WaveText                                                                                         |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| <img src="./example/assets/example-gifs/spring.gif" width="380" alt="SpringText animation preview"/> | <img src="./example/assets/example-gifs/wave.gif" width="380" alt="WaveText animation preview"/> |
+
+</div>
+
+<p align="center"><i>All animations above are powered by react-native-text-animations 🚀</i></p>
+
+---
+
 ## Installation
 
 ```sh
