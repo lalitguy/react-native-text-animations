@@ -1,6 +1,6 @@
 {
   "name": "react-native-text-animations",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight React Native library for smooth, customizable text animations built with Reanimated. Plug-and-play animated text with flexible props to bring your typography to life.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

@@ -11165,68 +11165,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-text-animations-example@workspace:example":
-  version: 0.0.0-use.local
-  resolution: "react-native-text-animations-example@workspace:example"
-  dependencies:
-    "@expo/metro-runtime": ~6.1.2
-    expo: ~54.0.13
-    expo-constants: ~18.0.9
-    expo-status-bar: ~3.0.8
-    react: 19.1.0
-    react-dom: 19.1.0
-    react-native: 0.81.4
-    react-native-text-animations: "link:.."
-    react-native-builder-bob: ^0.40.13
-    react-native-monorepo-config: ^0.1.9
-    react-native-reanimated: ^4.1.3
-    react-native-web: ~0.21.0
-    react-native-worklets: 0.5.1
-  languageName: unknown
-  linkType: soft
-
-"react-native-text-animations@link:..::locator=react-native-text-animations-example%40workspace%3Aexample":
-  version: 0.0.0-use.local
-  resolution: "react-native-text-animations@link:..::locator=react-native-text-animations-example%40workspace%3Aexample"
-  languageName: node
-  linkType: soft
-
-"react-native-text-animations@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "react-native-text-animations@workspace:."
-  dependencies:
-    "@commitlint/config-conventional": ^19.8.1
-    "@eslint/compat": ^1.3.2
-    "@eslint/eslintrc": ^3.3.1
-    "@eslint/js": ^9.35.0
-    "@evilmartians/lefthook": ^1.12.3
-    "@react-native/babel-preset": 0.81.1
-    "@react-native/eslint-config": ^0.81.1
-    "@release-it/conventional-changelog": ^10.0.1
-    "@types/jest": ^29.5.14
-    "@types/react": ^19.1.12
-    commitlint: ^19.8.1
-    del-cli: ^6.0.0
-    eslint: ^9.35.0
-    eslint-config-prettier: ^10.1.8
-    eslint-plugin-prettier: ^5.5.4
-    jest: ^29.7.0
-    prettier: ^3.6.2
-    react: 19.1.0
-    react-native: 0.81.4
-    react-native-builder-bob: ^0.40.13
-    react-native-reanimated: ~4.1.1
-    react-native-worklets: ~0.5.1
-    release-it: ^19.0.4
-    typescript: ^5.9.2
-  peerDependencies:
-    react: ">=18.0.0"
-    react-native: ">=0.80.0"
-    react-native-reanimated: ^4.1.1
-    react-native-worklets: ^0.5.1
-  languageName: unknown
-  linkType: soft
-
 "react-native-builder-bob@npm:^0.40.13":
   version: 0.40.13
   resolution: "react-native-builder-bob@npm:0.40.13"
@@ -11293,6 +11231,68 @@ __metadata:
   checksum: 5f3b7298dd721b5da7f8bab64c557624d08b8715502f4ba2ff9118f31d852e3d9734ffbfaacd1302468ba68d4790689eead39605645a80f737802c8de0008064
   languageName: node
   linkType: hard
+
+"react-native-text-animations-example@workspace:example":
+  version: 0.0.0-use.local
+  resolution: "react-native-text-animations-example@workspace:example"
+  dependencies:
+    "@expo/metro-runtime": ~6.1.2
+    expo: ~54.0.13
+    expo-constants: ~18.0.9
+    expo-status-bar: ~3.0.8
+    react: 19.1.0
+    react-dom: 19.1.0
+    react-native: 0.81.4
+    react-native-builder-bob: ^0.40.13
+    react-native-monorepo-config: ^0.1.9
+    react-native-reanimated: ^4.1.3
+    react-native-text-animations: "link:.."
+    react-native-web: ~0.21.0
+    react-native-worklets: 0.5.1
+  languageName: unknown
+  linkType: soft
+
+"react-native-text-animations@link:..::locator=react-native-text-animations-example%40workspace%3Aexample":
+  version: 0.0.0-use.local
+  resolution: "react-native-text-animations@link:..::locator=react-native-text-animations-example%40workspace%3Aexample"
+  languageName: node
+  linkType: soft
+
+"react-native-text-animations@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "react-native-text-animations@workspace:."
+  dependencies:
+    "@commitlint/config-conventional": ^19.8.1
+    "@eslint/compat": ^1.3.2
+    "@eslint/eslintrc": ^3.3.1
+    "@eslint/js": ^9.35.0
+    "@evilmartians/lefthook": ^1.12.3
+    "@react-native/babel-preset": 0.81.1
+    "@react-native/eslint-config": ^0.81.1
+    "@release-it/conventional-changelog": ^10.0.1
+    "@types/jest": ^29.5.14
+    "@types/react": ^19.1.12
+    commitlint: ^19.8.1
+    del-cli: ^6.0.0
+    eslint: ^9.35.0
+    eslint-config-prettier: ^10.1.8
+    eslint-plugin-prettier: ^5.5.4
+    jest: ^29.7.0
+    prettier: ^3.6.2
+    react: 19.1.0
+    react-native: 0.81.4
+    react-native-builder-bob: ^0.40.13
+    react-native-reanimated: ~4.1.1
+    react-native-worklets: ~0.5.1
+    release-it: ^19.0.4
+    typescript: ^5.9.2
+  peerDependencies:
+    react: ">=18.0.0"
+    react-native: ">=0.80.0"
+    react-native-reanimated: ^4.1.1
+    react-native-worklets: ^0.5.1
+  languageName: unknown
+  linkType: soft
 
 "react-native-web@npm:~0.21.0":
   version: 0.21.2
