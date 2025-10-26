@@ -19,7 +19,7 @@ const useWaveAnimation: AnimationHook<WaveHookProps> = ({
   infinite = false,
 }) => {
   const opacity = useSharedValue(initialOpacity);
-  const translateY = useSharedValue(amplitude);
+  const translateY = useSharedValue(0);
 
   useEffect(() => {
     const delayTime = index * staggerDelay + delay;

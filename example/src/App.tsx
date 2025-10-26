@@ -91,13 +91,12 @@ export default function App() {
         />
       </Section>
 
-      <Section title="Wave Animation">
+      <Section title="Wave Animation" onPress={() => handleReanimate('wave')}>
         <WaveText
           text="Wave Animation is Awesome!✨"
-          amplitude={4}
-          duration={800}
+          amplitude={10}
+          duration={500}
           textStyle={styles.whiteText}
-          infinite
           delay={0}
           reanimateOnTextChange={reanimate.wave}
         />
