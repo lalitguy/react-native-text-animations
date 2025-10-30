@@ -1,4 +1,4 @@
-import type { StyleProp, TextStyle } from 'react-native';
+import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 interface AnimationOffsets {
   offsetX?: number;
@@ -25,10 +25,13 @@ interface AnimatedTextProps<
 > extends AnimationTiming,
     AnimationOffsets {
   text: string;
-  textStyle?: StyleProp<TextStyle>;
   useAnimation: AnimationHook<P>;
   staggerSeparator?: string;
   reanimateOnTextChange?: boolean;
+  textStyle?: StyleProp<TextStyle>;
+  className?: string;
+  wrapperClassName?: string;
+  wrapperStyle?: StyleProp<ViewStyle>;
 }
 
 // The letter inherits both animation hook props and text styles

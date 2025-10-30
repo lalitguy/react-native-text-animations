@@ -5,11 +5,15 @@ const BaseAnimatedLetter = <P extends BaseAnimationHookProps>({
   text: char,
   useAnimation,
   textStyle,
+  className,
   ...props
 }: AnimatedLetterProps<P>) => {
   const animatedStyle = useAnimation({ ...(props as P) });
   return (
-    <Animated.Text style={[textStyle, animatedStyle]}>{char}</Animated.Text>
+    // @ts-expect-error - className is supported by NativeWind when installed
+    <Animated.Text className={className} style={[textStyle, animatedStyle]}>
+      {char}
+    </Animated.Text>
   );
 };
 export default BaseAnimatedLetter;

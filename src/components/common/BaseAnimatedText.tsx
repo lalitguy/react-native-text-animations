@@ -7,12 +7,18 @@ const BaseAnimatedText = <P extends BaseAnimationHookProps>({
   text,
   staggerSeparator = '',
   reanimateOnTextChange,
+  wrapperClassName,
+  wrapperStyle,
   ...props
 }: AnimatedTextProps<P>) => {
   if (!text) return null;
 
   return (
-    <Animated.View style={[styles.textWrap]}>
+    <Animated.View
+      // @ts-expect-error - className is supported by NativeWind when installed
+      className={wrapperClassName}
+      style={[styles.textWrap, wrapperStyle]}
+    >
       {text.length &&
         text.split(staggerSeparator).map((char, index) => {
           const key = `${char}-${index}${reanimateOnTextChange ? '-' + text : ''}`;
