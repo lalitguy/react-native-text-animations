@@ -2,6 +2,13 @@ import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 import BaseAnimatedLetter from './BaseAnimatedLetter';
 import type { BaseAnimationHookProps, AnimatedTextProps } from '../../types';
+import type { ComponentProps } from 'react';
+
+type AnimatedViewProps = ComponentProps<typeof Animated.View> & {
+  className?: string;
+};
+
+const AnimatedView = Animated.Text as React.ComponentType<AnimatedViewProps>;
 
 const BaseAnimatedText = <P extends BaseAnimationHookProps>({
   text,
@@ -14,8 +21,7 @@ const BaseAnimatedText = <P extends BaseAnimationHookProps>({
   if (!text) return null;
 
   return (
-    <Animated.View
-      // @ts-expect-error - className is supported by NativeWind when installed
+    <AnimatedView
       className={wrapperClassName}
       style={[styles.textWrap, wrapperStyle]}
     >
@@ -31,7 +37,7 @@ const BaseAnimatedText = <P extends BaseAnimationHookProps>({
             />
           );
         })}
-    </Animated.View>
+    </AnimatedView>
   );
 };
 

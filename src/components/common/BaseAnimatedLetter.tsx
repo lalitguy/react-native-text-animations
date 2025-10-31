@@ -1,5 +1,13 @@
 import Animated from 'react-native-reanimated';
 import type { BaseAnimationHookProps, AnimatedLetterProps } from '../../types';
+import type { ComponentProps } from 'react';
+
+type AnimatedTextProps = ComponentProps<typeof Animated.Text> & {
+  className?: string;
+};
+
+const AnimatedTextComponent =
+  Animated.Text as React.ComponentType<AnimatedTextProps>;
 
 const BaseAnimatedLetter = <P extends BaseAnimationHookProps>({
   text: char,
@@ -10,10 +18,12 @@ const BaseAnimatedLetter = <P extends BaseAnimationHookProps>({
 }: AnimatedLetterProps<P>) => {
   const animatedStyle = useAnimation({ ...(props as P) });
   return (
-    // @ts-expect-error - className is supported by NativeWind when installed
-    <Animated.Text className={className} style={[textStyle, animatedStyle]}>
+    <AnimatedTextComponent
+      className={className}
+      style={[textStyle, animatedStyle]}
+    >
       {char}
-    </Animated.Text>
+    </AnimatedTextComponent>
   );
 };
 export default BaseAnimatedLetter;
