@@ -7,8 +7,9 @@ import AnimatedText, {
   WaveText,
   SpringText,
 } from 'react-native-text-animations';
-import Section from '../components/Section';
+import Section from './components/Section';
 import React from 'react';
+import '../global.css';
 
 export default function App() {
   const [reanimate, setReanimate] = React.useState({
@@ -38,8 +39,8 @@ export default function App() {
       <Section title="Fade Animation" onPress={() => handleReanimate('fade')}>
         <FadeText
           text="Fade Animation is awesome!✨"
-          textStyle={styles.whiteText}
           delay={0}
+          className="text-white"
           reanimateOnTextChange={reanimate.fade}
         />
       </Section>
@@ -50,8 +51,8 @@ export default function App() {
       >
         <RotateText
           text="Rotate Animation is Awesome!✨"
-          textStyle={styles.whiteText}
           delay={0}
+          className="text-white"
           reanimateOnTextChange={reanimate.rotate}
         />
       </Section>
@@ -62,8 +63,8 @@ export default function App() {
       >
         <SpringText
           text="Spring Animation is Awesome!✨"
-          textStyle={styles.whiteText}
           delay={0}
+          className="text-white"
           reanimateOnTextChange={reanimate.spring}
         />
       </Section>
@@ -74,6 +75,7 @@ export default function App() {
       >
         <AnimatedText
           text="Animated Text is Awesome!✨"
+          className="text-white"
           config={{
             fromOpacity: 0.5,
             delay: 0,
@@ -86,7 +88,6 @@ export default function App() {
             scaleTo: 1,
             rotateTo: { y: 360 },
           }}
-          textStyle={styles.whiteText}
           reanimateOnTextChange={reanimate.animated}
         />
       </Section>
@@ -96,8 +97,8 @@ export default function App() {
           text="Wave Animation is Awesome!✨"
           amplitude={10}
           duration={500}
-          textStyle={styles.whiteText}
           delay={0}
+          className="text-white"
           reanimateOnTextChange={reanimate.wave}
         />
       </Section>
@@ -121,5 +122,4 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     textAlign: 'center',
   },
-  whiteText: { color: '#fff' },
 });
