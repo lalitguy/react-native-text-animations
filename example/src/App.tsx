@@ -7,7 +7,7 @@ import AnimatedText, {
   WaveText,
   SpringText,
 } from 'react-native-text-animations';
-import Section from '../components/Section';
+import Section from './components/Section';
 import React from 'react';
 import '../global.css';
 
