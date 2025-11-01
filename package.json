@@ -2,35 +2,21 @@
   "name": "react-native-text-animations",
   "version": "0.1.1",
   "description": "A lightweight React Native library for smooth, customizable text animations built with Reanimated. Plug-and-play animated text with flexible props to bring your typography to life.",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
+  "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "source": "./src/index.tsx",
       "types": "./lib/typescript/src/index.d.ts",
       "default": "./lib/module/index.js"
     },
     "./package.json": "./package.json"
   },
   "files": [
-    "src",
     "lib",
-    "android",
-    "ios",
-    "cpp",
-    "*.podspec",
-    "react-native.config.js",
-    "!ios/build",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
-    "!**/__tests__",
-    "!**/__fixtures__",
-    "!**/__mocks__",
-    "!**/.*"
+    "package.json",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "example": "yarn workspace react-native-text-animations-example",
@@ -84,7 +70,7 @@
     "react-native-reanimated": "~4.1.1",
     "react-native-worklets": "~0.5.1",
     "release-it": "^19.0.4",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
@@ -140,20 +126,18 @@
     "output": "lib",
     "targets": [
       [
-        "commonjs",
+        "module",
         {
-          "babelrc": false,
-          "configFile": "./babel.config.js"
+          "esm": true
         }
       ],
       [
-        "module",
+        "typescript",
         {
-          "babelrc": false,
-          "configFile": "./babel.config.js"
+          "project": "tsconfig.build.json",
+          "tsc": "node_modules/.bin/tsc"
         }
-      ],
-      "typescript"
+      ]
     ],
     "exclude": "**/*.test.{ts,tsx}"
   },
