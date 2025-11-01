@@ -3,12 +3,16 @@ import Animated from 'react-native-reanimated';
 import BaseAnimatedLetter from './BaseAnimatedLetter';
 import type { BaseAnimationHookProps, AnimatedTextProps } from '../../types';
 import type { ComponentProps } from 'react';
+import React from 'react';
 
 type AnimatedViewProps = ComponentProps<typeof Animated.View> & {
   className?: string;
 };
 
-const AnimatedView = Animated.Text as React.ComponentType<AnimatedViewProps>;
+const AnimatedView = React.forwardRef<
+  React.ComponentRef<typeof Animated.View>,
+  AnimatedViewProps
+>((props, ref) => <Animated.View ref={ref} {...props} />);
 
 const BaseAnimatedText = <P extends BaseAnimationHookProps>({
   text,
