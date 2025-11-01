@@ -64,13 +64,13 @@ Animate text with smooth fade transitions and positional offsets.
 
 | Prop           | Type     | Default | Description                                           |
 | -------------- | -------- | ------- | ----------------------------------------------------- |
-| `duration`     | `number` | `300`   | Animation duration for each segment (in milliseconds) |
+| `duration`     | `number` | 300     | Animation duration for each segment (in milliseconds) |
 | `delay`        | `number` | -       | Delay before the animation starts (in milliseconds)   |
-| `staggerDelay` | `number` | `50`    | Delay between each animated segment (in milliseconds) |
+| `staggerDelay` | `number` | 50      | Delay between each animated segment (in milliseconds) |
 | `offsetX`      | `number` | -       | Initial horizontal offset on the X-axis               |
-| `offsetY`      | `number` | `10`    | Initial vertical offset on the Y-axis                 |
-| `fromOpacity`  | `number` | `0`     | Starting opacity value (0 to 1)                       |
-| `toOpacity`    | `number` | `1`     | Ending opacity value (0 to 1)                         |
+| `offsetY`      | `number` | 10      | Initial vertical offset on the Y-axis                 |
+| `fromOpacity`  | `number` | 0       | Starting opacity value (0 to 1)                       |
+| `toOpacity`    | `number` | 1       | Ending opacity value (0 to 1)                         |
 
 #### Example
 
@@ -334,8 +334,13 @@ All animation components share these common properties for controlling text cont
 | ----------------------- | ---------------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------- |
 | `text`                  | `string`               | **Yes**  | -       | The text content to be animated                                                                           |
 | `textStyle`             | `StyleProp<TextStyle>` | No       | -       | Style object to customize the appearance of the animated text                                             |
+| `className`             | `string`               | No       | -       | Tailwind classes for styling individual letters (requires NativeWind)                                     |
+| `wrapperStyle`          | `StyleProp<ViewStyle>` | No       | -       | Style object for the letter wrapper container                                                             |
+| `wrapperClassName`      | `string`               | No       | -       | Tailwind classes for the letter wrapper container (requires NativeWind)                                   |
 | `staggerSeparator`      | `string`               | No       | `""`    | Character(s) used to split text into animated segments. Empty string animates each character individually |
 | `reanimateOnTextChange` | `boolean`              | No       | `false` | Whether to restart the animation when the `text` prop changes                                             |
+
+> **Note:** The `className` and `wrapperClassName` props require NativeWind to be properly configured in your project. The wrapper styles help control the layout direction (horizontal/vertical) and positioning of animated letters using flexbox and other layout properties.
 
 #### Examples
 
