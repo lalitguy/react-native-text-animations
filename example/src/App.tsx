@@ -6,11 +6,24 @@ import AnimatedText, {
   RotateText,
   WaveText,
   SpringText,
+  type AnimatedTextConfig,
 } from 'react-native-text-animations';
 import Section from './components/Section';
 import React from 'react';
 import '../global.css';
 
+const config: AnimatedTextConfig = {
+  fromOpacity: 0.5,
+  delay: 0,
+  toOpacity: 1.2,
+  duration: 300,
+  offsetX: 0,
+  offsetY: 0,
+  staggerDelay: 50,
+  scaleFrom: 0.8,
+  scaleTo: 1,
+  rotateTo: { y: 360 },
+};
 export default function App() {
   const [reanimate, setReanimate] = React.useState({
     fade: false,
@@ -76,18 +89,7 @@ export default function App() {
         <AnimatedText
           text="Animated Text is Awesome!✨"
           className="text-white"
-          config={{
-            fromOpacity: 0.5,
-            delay: 0,
-            toOpacity: 1.2,
-            duration: 300,
-            offsetX: 0,
-            offsetY: 0,
-            staggerDelay: 50,
-            scaleFrom: 0.8,
-            scaleTo: 1,
-            rotateTo: { y: 360 },
-          }}
+          config={config}
           reanimateOnTextChange={reanimate.animated}
         />
       </Section>

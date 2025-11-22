@@ -1,6 +1,6 @@
 # react-native-text-animations
 
-A lightweight React Native library for smooth, customizable text animations built with Reanimated. Plug-and-play animated text with flexible props to bring your typography to life.
+Smooth, customizable staggered text animations for React Native, built with Reanimated. Includes multiple ready-to-use animated text components with flexible props.
 
 ## 🎬 Animations Preview
 
