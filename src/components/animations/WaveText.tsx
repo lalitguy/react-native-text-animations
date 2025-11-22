@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import useWaveAnimation from '../../hooks/useWaveAnimation';
 import type { WaveTextProps } from '../../types/animations';
@@ -8,4 +8,4 @@ const WaveText: React.FC<WaveTextProps> = (props) => (
   <BaseAnimatedText {...props} useAnimation={useWaveAnimation} />
 );
 
-export default WaveText;
+export default memo(WaveText);
