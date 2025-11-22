@@ -1,6 +1,6 @@
 {
   "name": "react-native-text-animations",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Smooth, customizable staggered text animations for React Native, built with Reanimated. Includes multiple ready-to-use animated text components with flexible props.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
