@@ -6,7 +6,7 @@
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "customConditions": ["react-native-strict-api"],
+    "customConditions": ["source"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",

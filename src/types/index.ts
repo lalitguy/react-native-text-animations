@@ -22,8 +22,8 @@ type AnimationHook<P extends BaseAnimationHookProps = BaseAnimationHookProps> =
 // A generic AnimatedText component type that accepts any animation hook
 interface AnimatedTextProps<
   P extends BaseAnimationHookProps = BaseAnimationHookProps,
-> extends AnimationTiming,
-    AnimationOffsets {
+>
+  extends AnimationTiming, AnimationOffsets {
   text: string;
   useAnimation: AnimationHook<P>;
   staggerSeparator?: string;
