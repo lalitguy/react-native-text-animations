@@ -14,7 +14,8 @@ interface FadeAnimations {
 interface FadeHookProps extends BaseAnimationHookProps, FadeAnimations {}
 
 interface FadeTextProps
-  extends Omit<AnimatedTextProps<FadeHookProps>, 'useAnimation'>,
+  extends
+    Omit<AnimatedTextProps<FadeHookProps>, 'useAnimation'>,
     FadeAnimations {}
 
 // Rotate Animation Types
@@ -31,7 +32,8 @@ interface RotateAnimations {
 interface RotateHookProps extends BaseAnimationHookProps, RotateAnimations {}
 
 interface RotateTextProps
-  extends Omit<AnimatedTextProps<RotateHookProps>, 'useAnimation'>,
+  extends
+    Omit<AnimatedTextProps<RotateHookProps>, 'useAnimation'>,
     RotateAnimations {}
 
 //Bounce Animation Types
@@ -48,7 +50,8 @@ interface SpringAnimations {
 interface SpringHookProps extends BaseAnimationHookProps, SpringAnimations {}
 
 interface SpringTextProps
-  extends Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
+  extends
+    Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
     SpringAnimations {}
 
 // Wave Animation Types
@@ -63,7 +66,8 @@ interface WaveHookProps extends WaveAnimations, AnimationTiming {
 }
 
 interface WaveTextProps
-  extends Omit<AnimatedTextProps<WaveHookProps>, 'useAnimation'>,
+  extends
+    Omit<AnimatedTextProps<WaveHookProps>, 'useAnimation'>,
     WaveAnimations {}
 // Common AnimatedText Config Types
 
@@ -94,7 +98,8 @@ interface AnimatedTextHookProps extends TextAnimations {
 }
 
 interface AnimatedTextConfigProps
-  extends Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
+  extends
+    Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
     TextAnimations {}
 
 export type {
