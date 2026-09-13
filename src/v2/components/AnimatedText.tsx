@@ -7,6 +7,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
   const {
     text,
     wrapperStyle,
+    duration: overallDuration,
     stagger = { by: 'character', delay: 0, from: 'start' },
     ...rest
   } = props;
@@ -18,6 +19,8 @@ const AnimatedText = (props: AnimatedTextProps) => {
 
   if (!text) return null;
 
+  const duration = overallDuration ?? animateArray.length * 40;
+
   return (
     <Animated.View style={wrapperStyle}>
       {animateArray.map((char, idx) => {
@@ -27,6 +30,8 @@ const AnimatedText = (props: AnimatedTextProps) => {
             key={key}
             text={char}
             index={idx}
+            duration={duration}
+            textLength={animateArray.length}
             stagger={stagger}
             {...rest}
           />

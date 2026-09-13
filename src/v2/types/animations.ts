@@ -1,3 +1,5 @@
+import type { Transition } from './transition';
+
 /**
  * Ready-to-use entrance and exit animation presets.
  */
@@ -69,6 +71,14 @@ type TrackConfig = {
    * @example [0, 0.3], [0.7, 1]
    */
   range: [number, number];
+
+  /**
+   * Defines how the animation progresses per track
+   *
+   * - `spring` — physics-based animation.
+   * - `timing` — duration/easing-based animation.
+   */
+  transition: Transition;
 };
 
 /** Custom animation with granular control over tracks and repetition. */
@@ -87,4 +97,4 @@ type AnimationConfig = {
   //overlay: unknown;
 };
 
-export type { AnimationConfig, Presets };
+export type { AnimationConfig, Presets, TrackConfig, AnimationProperty };
