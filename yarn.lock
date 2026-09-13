@@ -11444,6 +11444,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-safe-area-context@npm:~5.6.0":
+  version: 5.6.2
+  resolution: "react-native-safe-area-context@npm:5.6.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 7b15cdd07df4f3650cf443fb322ee2d51b3ab45c652789cbea4cb48a8e6fd2b66e2be01e9f63e614ceaf28d9d228af681ca8857b2ed8dabe48f23964076d40c3
+  languageName: node
+  linkType: hard
+
 "react-native-text-animations-example@workspace:example":
   version: 0.0.0-use.local
   resolution: "react-native-text-animations-example@workspace:example"
@@ -11460,6 +11470,7 @@ __metadata:
     react-native-builder-bob: ^0.40.13
     react-native-monorepo-config: ^0.1.9
     react-native-reanimated: ~4.1.1
+    react-native-safe-area-context: ~5.6.0
     react-native-text-animations: "workspace:*"
     react-native-web: ~0.21.0
     react-native-worklets: 0.5.1

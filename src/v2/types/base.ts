@@ -21,7 +21,7 @@ type CommonAnimatedTextProps = {
   /**
    * Duration of the animation in milliseconds
    */
-  duration: number;
+  duration?: number;
   /**
    * text to be animated.
    */
@@ -52,7 +52,7 @@ interface PresetMode extends CommonAnimatedTextProps {
   preset: Presets;
 
   /** Not available when using a preset. */
-  animation: never;
+  animation?: never;
 }
 
 /**
@@ -60,7 +60,7 @@ interface PresetMode extends CommonAnimatedTextProps {
  */
 interface CustomMode extends CommonAnimatedTextProps {
   /** Not available when using a custom animation. */
-  preset: never;
+  preset?: never;
 
   /** Custom animation with granular control over tracks and repetition. */
   animation: AnimationConfig;

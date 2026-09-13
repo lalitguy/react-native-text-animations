@@ -2,6 +2,7 @@ import { Easing } from 'react-native-reanimated';
 import type { EasingConfig, Transition } from '../types';
 
 const resolveEasing = (easing: EasingConfig) => {
+  'worklet';
   switch (easing) {
     case 'linear':
       return Easing.linear;
@@ -20,7 +21,8 @@ const resolveTransition = (t: Transition, globalProgress: number) => {
   'worklet';
   if (t.type === 'timing') {
     const easing = t.easing;
-    return resolveEasing(easing)(globalProgress);
+    const resolved = resolveEasing(easing);
+    return resolved(globalProgress);
   }
 
   return Easing.linear(globalProgress);

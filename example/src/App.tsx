@@ -1,127 +1,51 @@
-// import 'react-native-reanimated';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { AnimateText } from 'react-native-text-animations';
+import Container from './components/Container';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native';
 
-import AnimatedText, {
-  FadeText,
-  RotateText,
-  WaveText,
-  SpringText,
-  type AnimatedTextConfig,
-} from 'react-native-text-animations';
-import Section from './components/Section';
-import React from 'react';
-import '../global.css';
-
-const config: AnimatedTextConfig = {
-  fromOpacity: 0.5,
-  delay: 0,
-  toOpacity: 1.2,
-  duration: 300,
-  offsetX: 0,
-  offsetY: 0,
-  staggerDelay: 50,
-  scaleFrom: 0.8,
-  scaleTo: 1,
-  rotateTo: { y: 360 },
-};
-export default function App() {
-  const [reanimate, setReanimate] = React.useState({
-    fade: false,
-    rotate: false,
-    wave: false,
-    animated: false,
-    spring: false,
-  });
-
-  const handleReanimate = (type: keyof typeof reanimate) => {
-    setReanimate((prev) => ({
-      ...prev,
-      [type]: !prev[type],
-    }));
-  };
+const App = () => {
   return (
-    <ScrollView
-      style={styles.containerWrapper}
-      contentContainerStyle={styles.container}
-    >
-      <Text style={styles.heading}>React Native Animated Text ✨</Text>
-      <Text style={styles.subheading}>
-        Smooth, flexible, and interactive text animations for React Native.
-      </Text>
-
-      <Section title="Fade Animation" onPress={() => handleReanimate('fade')}>
-        <FadeText
-          text="Fade Animation is awesome!✨"
-          delay={0}
-          className="text-white"
-          reanimateOnTextChange={reanimate.fade}
+    <SafeAreaProvider>
+      <Container>
+        <AnimateText
+          duration={2000}
+          text="Made in Heaven"
+          textStyle={style.text}
+          animation={{
+            tracks: [
+              {
+                property: 'opacity',
+                inputRange: [0, 0.5, 1],
+                outputRange: [0.2, 0.6, 1],
+              },
+              {
+                property: 'translateX',
+                inputRange: [0, 1],
+                outputRange: [-50, 0],
+              },
+              {
+                property: 'translateY',
+                inputRange: [0, 1],
+                outputRange: [-50, 0],
+              },
+              {
+                property: 'rotateZ',
+                inputRange: [0, 1],
+                outputRange: [360, 0],
+              },
+            ],
+          }}
         />
-      </Section>
-
-      <Section
-        title="Rotate Animation"
-        onPress={() => handleReanimate('rotate')}
-      >
-        <RotateText
-          text="Rotate Animation is Awesome!✨"
-          delay={0}
-          className="text-white"
-          reanimateOnTextChange={reanimate.rotate}
-        />
-      </Section>
-
-      <Section
-        title="Spring Animation"
-        onPress={() => handleReanimate('spring')}
-      >
-        <SpringText
-          text="Spring Animation is Awesome!✨"
-          delay={0}
-          className="text-white"
-          reanimateOnTextChange={reanimate.spring}
-        />
-      </Section>
-
-      <Section
-        title="Custom AnimatedText"
-        onPress={() => handleReanimate('animated')}
-      >
-        <AnimatedText
-          text="Animated Text is Awesome!✨"
-          className="text-white"
-          config={config}
-          reanimateOnTextChange={reanimate.animated}
-        />
-      </Section>
-
-      <Section title="Wave Animation" onPress={() => handleReanimate('wave')}>
-        <WaveText
-          text="Wave Animation is Awesome!✨"
-          amplitude={10}
-          duration={500}
-          delay={0}
-          className="text-white"
-          reanimateOnTextChange={reanimate.wave}
-        />
-      </Section>
-    </ScrollView>
+      </Container>
+    </SafeAreaProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  containerWrapper: { flex: 1, backgroundColor: '#0d0d0d' },
-  container: { paddingVertical: 40, paddingHorizontal: 20 },
-  heading: {
-    color: 'white',
-    fontSize: 28,
+const style = StyleSheet.create({
+  text: {
+    fontSize: 40,
     fontWeight: '700',
-    marginBottom: 12,
-    textAlign: 'center',
-  },
-  subheading: {
-    color: '#aaa',
-    fontSize: 14,
-    marginBottom: 30,
-    textAlign: 'center',
   },
 });
+
+export default App;

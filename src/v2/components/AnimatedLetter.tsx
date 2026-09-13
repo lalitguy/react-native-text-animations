@@ -12,7 +12,7 @@ interface AnimatedLetterProps extends Omit<AnimatedTextProps, 'wrapperStyle'> {
 const AnimatedLetter = (props: AnimatedLetterProps) => {
   const {
     text: character,
-    duration,
+    duration = 800,
     textLength,
     index,
     animation,
@@ -23,7 +23,7 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
 
   const unitAnimationDuration = duration / textLength;
 
-  const tracks = rest.preset ? [] : animation.tracks;
+  const tracks = rest.preset ? [] : (animation?.tracks ?? []);
 
   const progress = useUnitProgress({
     unitDuration: unitAnimationDuration,

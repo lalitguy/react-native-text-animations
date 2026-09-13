@@ -4,7 +4,6 @@ import {
   type SharedValue,
   type TransformArrayItem,
 } from 'react-native-reanimated';
-import type { TextStyle } from 'react-native';
 import type { DefaultStyle } from 'react-native-reanimated/lib/typescript/hook/commonTypes';
 
 import type { TrackConfig, Transition } from '../types';
@@ -23,7 +22,7 @@ const useTracksAnimation = ({
 }: useTracksAnimationProps) => {
   return useAnimatedStyle(() => {
     const style: DefaultStyle = {};
-    const transform: NonNullable<TextStyle['transform']>[number][] = [];
+    const transform: NonNullable<DefaultStyle['transform']>[number][] = [];
 
     tracks.forEach((track) => {
       const {
@@ -69,7 +68,10 @@ const useTracksAnimation = ({
       }
     });
 
-    return style;
+    return {
+      ...style,
+      ...(transform?.length ? { transform } : {}),
+    } as DefaultStyle;
   });
 };
 

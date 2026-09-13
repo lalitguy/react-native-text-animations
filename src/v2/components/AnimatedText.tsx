@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 import Animated from 'react-native-reanimated';
 import type { AnimatedTextProps } from '../types';
 import AnimatedLetter from './AnimatedLetter';
+import { StyleSheet } from 'react-native';
 
 const AnimatedText = (props: AnimatedTextProps) => {
   const {
@@ -19,10 +20,10 @@ const AnimatedText = (props: AnimatedTextProps) => {
 
   if (!text) return null;
 
-  const duration = overallDuration ?? animateArray.length * 40;
+  const duration = overallDuration ?? 600;
 
   return (
-    <Animated.View style={wrapperStyle}>
+    <Animated.View style={[styles.textWrap, wrapperStyle]}>
       {animateArray.map((char, idx) => {
         const key = `animate-${stagger.by}-${text}-${idx}`;
         return (
@@ -40,5 +41,12 @@ const AnimatedText = (props: AnimatedTextProps) => {
     </Animated.View>
   );
 };
+
+const styles = StyleSheet.create({
+  textWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+});
 
 export default memo(AnimatedText);
