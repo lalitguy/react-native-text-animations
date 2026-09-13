@@ -1,34 +1,29 @@
 import { Easing } from 'react-native-reanimated';
-import type { Transition } from '../types';
+import type { EasingConfig, Transition } from '../types';
 
-const resolveEasing = (t: Transition) => {
+const resolveEasing = (easing: EasingConfig) => {
+  switch (easing) {
+    case 'linear':
+      return Easing.linear;
+    case 'easeInOut':
+      return Easing.inOut(Easing.quad);
+    case 'easeIn':
+      return Easing.in(Easing.quad);
+    case 'easeOut':
+      return Easing.out(Easing.quad);
+    default:
+      return Easing.linear;
+  }
+};
+
+const resolveTransition = (t: Transition, globalProgress: number) => {
   'worklet';
   if (t.type === 'timing') {
     const easing = t.easing;
-    if (typeof easing === 'string') {
-      switch (easing) {
-        case 'linear':
-          return Easing.linear;
-        case 'easeInOut':
-          return Easing.inOut(Easing.quad);
-        case 'easeIn':
-          return Easing.in(Easing.quad);
-        case 'easeOut':
-          return Easing.out(Easing.quad);
-        default:
-          return Easing.linear;
-      }
-    }
-    if (easing.type === 'bezier')
-      return Easing.bezier(
-        easing.curve[0],
-        easing.curve[1],
-        easing.curve[2],
-        easing.curve[3]
-      );
+    return resolveEasing(easing)(globalProgress);
   }
 
-  return Easing.linear;
+  return Easing.linear(globalProgress);
 };
 
-export { resolveEasing };
+export { resolveEasing, resolveTransition };

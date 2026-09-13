@@ -37,6 +37,14 @@ type AnimationProperty =
    */
   | 'scale'
   /**
+   * X Scale animation.
+   */
+  | 'scaleX'
+  /**
+   * Y Scale animation.
+   */
+  | 'scaleY'
+  /**
    * X-axis rotation animation.
    */
   | 'rotateX'
@@ -54,23 +62,22 @@ type TrackConfig = {
    * The property of the element to animate.
    */
   property: AnimationProperty;
+
   /**
-   * Starting value of the animation.
+   * Progress points within the animation timeline.
+   * Each value should be between 0 and 1.
+   * These points will be used to interpolate the output values.
    * @example
-   * 0,90,-45
+   * [0, 0.5, 1]
    */
-  from: number;
+  inputRange: number[];
+
   /**
-   * Ending value of the animation.
+   * Values produced at each corresponding progress point.
    * @example
-   * 1,-90,45
+   * [0.2, 1, 0]
    */
-  to: number;
-  /**
-   * Progressive keypoints along the track timeline. Should be ascending in order.
-   * @example [0, 0.3], [0.7, 1]
-   */
-  range: [number, number];
+  outputRange: number[];
 
   /**
    * Defines how the animation progresses per track
@@ -78,7 +85,7 @@ type TrackConfig = {
    * - `spring` — physics-based animation.
    * - `timing` — duration/easing-based animation.
    */
-  transition: Transition;
+  transition?: Transition;
 };
 
 /** Custom animation with granular control over tracks and repetition. */

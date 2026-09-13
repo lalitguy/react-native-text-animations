@@ -2,6 +2,7 @@ import { memo } from 'react';
 import Animated from 'react-native-reanimated';
 import type { AnimatedTextProps } from '../types';
 import { useUnitProgress } from '../hooks/useUnitProgress';
+import { useTracksAnimation } from '../hooks';
 
 interface AnimatedLetterProps extends Omit<AnimatedTextProps, 'wrapperStyle'> {
   index: number;
@@ -15,10 +16,14 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     textLength,
     index,
     animation,
+    textStyle,
+    transition: globalTransition,
     ...rest
   } = props;
 
   const unitAnimationDuration = duration / textLength;
+
+  const tracks = rest.preset ? [] : animation.tracks;
 
   const progress = useUnitProgress({
     unitDuration: unitAnimationDuration,
@@ -26,11 +31,19 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     delay: unitAnimationDuration * index,
   });
 
-  console.log(progress);
+  const animatedStyle = useTracksAnimation({
+    tracks,
+    progress,
+    globalTransition,
+  });
 
-  if (!character || rest) return null;
+  if (!character) return null;
 
-  return <Animated.Text>{character}</Animated.Text>;
+  return (
+    <Animated.Text style={[textStyle, animatedStyle]}>
+      {character}
+    </Animated.Text>
+  );
 };
 
 export default memo(AnimatedLetter);
