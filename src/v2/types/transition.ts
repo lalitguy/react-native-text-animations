@@ -8,23 +8,19 @@ type SpringTransition = {
   type: 'spring';
 
   /**
-   * Controls how quickly the spring settles. Higher values settle faster.
+   * Damping ratio of the spring.
+   * - `1`: Critically damped (returns to rest without oscillating).
+   * - `> 1`: Overdamped (returns to rest slowly without oscillating).
+   * - `< 1`: Underdamped (oscillates past equilibrium).
+   * @default 1
    */
-  damping: number;
-
-  /**
-   * Controls the perceived weight of the animation. Higher values feel heavier.
-   */
-  mass: number;
-
-  /**
-   * Controls the spring's responsiveness and bounce. Higher values feel snappier.
-   */
-  stiffness: number;
+  dampingRatio: number;
 };
 
-/** Easing function controls for acceleration, deceleration, or custom cubic bezier curves. */
-type EasingConfig =
+/**
+ * Easing function name options
+ */
+type EasingName =
   /** Constant speed with zero acceleration or deceleration. */
   | 'linear'
   /** Slow start, accelerating steadily until completion. */
@@ -33,13 +29,17 @@ type EasingConfig =
   | 'easeOut'
   /** Slow start, accelerates in the middle, and decelerates at the end. */
   | 'easeInOut';
-// /** Custom motion curve defined by four cubic-bezier control points `[x1, y1, x2, y2]`. */
-// | {
-//     /** Specifies custom cubic-bezier timing. */
-//     type: 'bezier';
-//     /** Four control points defining the curve trajectory `[x1, y1, x2, y2]`. */
-//     curve: [number, number, number, number];
-//   };
+
+/** Easing function controls for acceleration, deceleration, or custom cubic bezier curves. */
+type EasingConfig =
+  | EasingName
+  /** Custom motion curve defined by four cubic-bezier control points `[x1, y1, x2, y2]`. */
+  | {
+      /** Specifies custom cubic-bezier timing. */
+      type: 'bezier';
+      /** Four control points defining the curve trajectory `[x1, y1, x2, y2]`. */
+      curve: [number, number, number, number];
+    };
 
 type TimingTransition = {
   /**
@@ -57,7 +57,13 @@ type TimingTransition = {
  *
  * - `spring` — physics-based animation.
  * - `timing` — duration/easing-based animation.
+ * - `duration` - duration of the animation in milliseconds
  */
-type Transition = SpringTransition | TimingTransition;
+type Transition = (TimingTransition | SpringTransition) & {
+  /**
+   * Duration of the animation in milliseconds
+   */
+  duration?: number;
+};
 
-export type { Transition, EasingConfig };
+export type { EasingConfig, EasingName, Transition };

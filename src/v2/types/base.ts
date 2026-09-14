@@ -8,20 +8,12 @@ type StaggerType = {
    */
   by?: 'character' | 'word' | 'none';
   /**
-   * delay between each character or word
-   */
-  delay?: number;
-  /**
    * stagger from start , center or end
    */
   from?: 'start' | 'center' | 'end';
 };
 
 type CommonAnimatedTextProps = {
-  /**
-   * Duration of the animation in milliseconds
-   */
-  duration?: number;
   /**
    * text to be animated.
    */
@@ -69,4 +61,6 @@ interface CustomMode extends CommonAnimatedTextProps {
 /**
  * Animated text component props
  */
-export type AnimatedTextProps = PresetMode | CustomMode;
+type AnimatedTextProps = PresetMode | CustomMode;
+
+export type { AnimatedTextProps, StaggerType };

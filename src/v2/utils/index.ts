@@ -1,31 +1,39 @@
-import { Easing } from 'react-native-reanimated';
-import type { EasingConfig, Transition } from '../types';
+import { Easing, withSpring, withTiming } from 'react-native-reanimated';
+import { easingMap } from '../constant';
+import type { StaggerType, Transition } from '../types';
 
-const resolveEasing = (easing: EasingConfig) => {
-  'worklet';
-  switch (easing) {
-    case 'linear':
-      return Easing.linear;
-    case 'easeInOut':
-      return Easing.inOut(Easing.quad);
-    case 'easeIn':
-      return Easing.in(Easing.quad);
-    case 'easeOut':
-      return Easing.out(Easing.quad);
+const resolveDelay = (
+  unitDuration: number,
+  index: number,
+  stagger: StaggerType,
+  textLength: number
+) => {
+  switch (stagger.from) {
+    case 'center':
+      const centralIndex = (textLength - 1) / 2;
+      const diff = Math.abs(index - centralIndex);
+      return diff <= 0.5 ? 0 : diff * unitDuration;
+    case 'end':
+      return (textLength - 1 - index) * unitDuration;
+    case 'start':
     default:
-      return Easing.linear;
+      return unitDuration * index;
   }
 };
 
-const resolveTransition = (t: Transition, globalProgress: number) => {
-  'worklet';
-  if (t.type === 'timing') {
-    const easing = t.easing;
-    const resolved = resolveEasing(easing);
-    return resolved(globalProgress);
+const resolveTransition = (duration: number, transition: Transition) => {
+  if (transition.type === 'timing') {
+    if (typeof transition.easing === 'string') {
+      return withTiming(1, { duration, easing: easingMap[transition.easing] });
+    }
+    const [x1, y1, x2, y2] = transition.easing.curve;
+    return withTiming(1, { duration, easing: Easing.bezier(x1, y1, x2, y2) });
   }
 
-  return Easing.linear(globalProgress);
+  if (transition.type === 'spring') {
+    return withSpring(1, { duration, dampingRatio: transition.dampingRatio });
+  }
+  return withTiming(1, { duration, easing: easingMap.easeInOut });
 };
 
-export { resolveEasing, resolveTransition };
+export { resolveDelay, resolveTransition };

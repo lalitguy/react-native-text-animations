@@ -8,19 +8,16 @@ const AnimatedText = (props: AnimatedTextProps) => {
   const {
     text,
     wrapperStyle,
-    duration: overallDuration,
-    stagger = { by: 'character', delay: 0, from: 'start' },
+    stagger = { by: 'character', from: 'start' },
     ...rest
   } = props;
 
   const animateArray = useMemo(() => {
     if (stagger.by === 'none') return [text];
-    return stagger.by === 'character' ? text.split('') : text.split(' ');
+    return stagger.by === 'character' ? text.split('') : text.split(/(?<=\s)/);
   }, [stagger.by, text]);
 
   if (!text) return null;
-
-  const duration = overallDuration ?? 600;
 
   return (
     <Animated.View style={[styles.textWrap, wrapperStyle]}>
@@ -31,7 +28,6 @@ const AnimatedText = (props: AnimatedTextProps) => {
             key={key}
             text={char}
             index={idx}
-            duration={duration}
             textLength={animateArray.length}
             stagger={stagger}
             {...rest}

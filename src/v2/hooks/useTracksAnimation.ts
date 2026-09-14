@@ -6,31 +6,20 @@ import {
 } from 'react-native-reanimated';
 import type { DefaultStyle } from 'react-native-reanimated/lib/typescript/hook/commonTypes';
 
-import type { TrackConfig, Transition } from '../types';
-import { resolveTransition } from '../utils';
+import type { TrackConfig } from '../types';
 
 type useTracksAnimationProps = {
   progress: SharedValue<number>;
   tracks: TrackConfig[];
-  globalTransition?: Transition;
 };
 
-const useTracksAnimation = ({
-  tracks,
-  progress,
-  globalTransition = { type: 'timing', easing: 'linear' },
-}: useTracksAnimationProps) => {
+const useTracksAnimation = ({ tracks, progress }: useTracksAnimationProps) => {
   return useAnimatedStyle(() => {
     const style: DefaultStyle = {};
     const transform: NonNullable<DefaultStyle['transform']>[number][] = [];
 
     tracks.forEach((track) => {
-      const {
-        property,
-        inputRange,
-        outputRange,
-        transition = globalTransition,
-      } = track;
+      const { property, inputRange, outputRange } = track;
 
       const trackTransition = interpolate(
         progress.value, //global linear progress
@@ -38,11 +27,8 @@ const useTracksAnimation = ({
         outputRange
       );
 
-      //resolve local transition for the track
-      const animationValue = resolveTransition(transition, trackTransition);
-
       if (property === 'opacity') {
-        style.opacity = animationValue;
+        style.opacity = trackTransition;
         return;
       }
       if (
@@ -53,7 +39,7 @@ const useTracksAnimation = ({
         property === 'translateY'
       ) {
         transform.push({
-          [property]: animationValue,
+          [property]: trackTransition,
         } as TransformArrayItem);
         return;
       }
@@ -63,7 +49,7 @@ const useTracksAnimation = ({
         property === 'rotateZ'
       ) {
         transform.push({
-          [property]: `${animationValue}deg`,
+          [property]: `${trackTransition}deg`,
         } as TransformArrayItem);
       }
     });

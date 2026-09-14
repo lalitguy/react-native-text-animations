@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import Animated from 'react-native-reanimated';
-import type { AnimatedTextProps } from '../types';
-import { useUnitProgress } from '../hooks/useUnitProgress';
 import { useTracksAnimation } from '../hooks';
+import { useUnitProgress } from '../hooks/useUnitProgress';
+import type { AnimatedTextProps } from '../types';
+import { resolveDelay } from '../utils';
 
 interface AnimatedLetterProps extends Omit<AnimatedTextProps, 'wrapperStyle'> {
   index: number;
@@ -12,29 +13,29 @@ interface AnimatedLetterProps extends Omit<AnimatedTextProps, 'wrapperStyle'> {
 const AnimatedLetter = (props: AnimatedLetterProps) => {
   const {
     text: character,
-    duration = 800,
     textLength,
     index,
     animation,
     textStyle,
-    transition: globalTransition,
-    ...rest
+    transition = { type: 'timing', duration: 800, easing: 'easeInOut' },
+    stagger = { by: 'character', from: 'start' },
+    preset,
   } = props;
 
-  const unitAnimationDuration = duration / textLength;
+  const unitAnimationDuration = (transition.duration ?? 800) / textLength;
 
-  const tracks = rest.preset ? [] : (animation?.tracks ?? []);
+  const tracks = preset ? [] : (animation?.tracks ?? []);
 
   const progress = useUnitProgress({
     unitDuration: unitAnimationDuration,
     repeat: animation?.repeat ?? 1,
-    delay: unitAnimationDuration * index,
+    delay: resolveDelay(unitAnimationDuration, index, stagger, textLength),
+    transition: transition,
   });
 
   const animatedStyle = useTracksAnimation({
     tracks,
     progress,
-    globalTransition,
   });
 
   if (!character) return null;
