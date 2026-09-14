@@ -1,11 +1,5 @@
 import { useEffect } from 'react';
-import {
-  useSharedValue,
-  withDelay,
-  withRepeat,
-  withSequence,
-  withTiming,
-} from 'react-native-reanimated';
+import { useSharedValue, withDelay, withRepeat } from 'react-native-reanimated';
 import type { StaggerType, Transition } from '../types';
 import { resolveDelay, resolveTransition } from '../utils';
 
@@ -15,6 +9,8 @@ type useUnitProgressProps = {
   index: number;
   textLength: number;
   stagger: StaggerType;
+  duration: number;
+  delay: number;
 };
 
 const useUnitProgress = ({
@@ -23,35 +19,19 @@ const useUnitProgress = ({
   index,
   stagger,
   textLength,
+  duration,
+  delay,
 }: useUnitProgressProps) => {
   const progress = useSharedValue(0);
 
-  const overallDuration = transition.duration ?? 800;
-
-  const unitDuration = overallDuration / textLength;
-
-  const delay = resolveDelay(unitDuration, index, stagger, textLength);
+  const unitDelay = resolveDelay(index, stagger, textLength) + delay;
 
   useEffect(() => {
-    progress.value = withRepeat(
-      withSequence(
-        withDelay(delay, resolveTransition(unitDuration, transition)),
-        withDelay(
-          overallDuration - unitDuration * (index + 1),
-          withTiming(0, { duration: 0 })
-        )
-      ),
-      repeat
+    progress.value = withDelay(
+      unitDelay,
+      withRepeat(resolveTransition(duration, transition), repeat)
     );
-  }, [
-    progress,
-    delay,
-    repeat,
-    unitDuration,
-    transition,
-    index,
-    overallDuration,
-  ]);
+  }, [progress, unitDelay, repeat, duration, transition]);
 
   return progress;
 };

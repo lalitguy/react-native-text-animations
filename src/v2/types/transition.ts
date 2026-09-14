@@ -76,13 +76,7 @@ type TimingTransition = {
  *
  * - `spring` — physics-based animation.
  * - `timing` — duration/easing-based animation.
- * - `duration` - duration of the animation in milliseconds
  */
-type Transition = (TimingTransition | SpringTransition) & {
-  /**
-   * Duration of the animation in milliseconds
-   */
-  duration?: number;
-};
+type Transition = TimingTransition | SpringTransition;
 
 export type { EasingConfig, EasingName, Transition };

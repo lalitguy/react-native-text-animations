@@ -8,6 +8,11 @@ type StaggerType = {
    */
   by?: 'character' | 'word' | 'none';
   /**
+   * gap between each stagger
+   * @default 100
+   */
+  gap?: number;
+  /**
    * stagger from start , center or end
    */
   from?: 'start' | 'center' | 'end';
@@ -34,6 +39,16 @@ type CommonAnimatedTextProps = {
    * Transition animation configuration
    */
   transition?: Transition;
+  /**
+   * Duration of the animation for each unit
+   * @default 1000
+   */
+  duration?: number;
+  /**
+   * Delay before the animation starts
+   * @default 0
+   */
+  delay?: number;
 };
 
 /**

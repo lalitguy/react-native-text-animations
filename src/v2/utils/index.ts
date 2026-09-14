@@ -3,21 +3,21 @@ import { easingMap } from '../constant';
 import type { StaggerType, Transition } from '../types';
 
 const resolveDelay = (
-  unitDuration: number,
   index: number,
   stagger: StaggerType,
   textLength: number
 ) => {
+  const gap = stagger.gap ?? 100;
   switch (stagger.from) {
     case 'center':
       const centralIndex = (textLength - 1) / 2;
       const diff = Math.abs(index - centralIndex);
-      return diff <= 0.5 ? 0 : diff * unitDuration;
+      return diff <= 0.5 ? 0 : diff * gap;
     case 'end':
-      return (textLength - 1 - index) * unitDuration;
+      return (textLength - 1 - index) * gap;
     case 'start':
     default:
-      return unitDuration * index;
+      return gap * index;
   }
 };
 

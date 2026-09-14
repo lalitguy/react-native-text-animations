@@ -16,9 +16,11 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     index,
     animation,
     textStyle,
-    transition = { type: 'timing', duration: 800, easing: 'easeInOut' },
-    stagger = { by: 'character', from: 'start' },
+    transition = { type: 'timing', easing: 'easeInOut' },
+    stagger = { by: 'character', gap: 100, from: 'start' },
     preset,
+    duration = 1000,
+    delay = 0,
   } = props;
 
   const tracks = preset ? [] : (animation?.tracks ?? []);
@@ -29,6 +31,8 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     index,
     textLength,
     stagger,
+    duration,
+    delay,
   });
 
   const animatedStyle = useTracksAnimation({
