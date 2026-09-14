@@ -23,12 +23,31 @@ type SpringTransition = {
 type EasingName =
   /** Constant speed with zero acceleration or deceleration. */
   | 'linear'
+
   /** Slow start, accelerating steadily until completion. */
   | 'easeIn'
   /** Fast start, smoothly decelerating to a complete stop. */
   | 'easeOut'
   /** Slow start, accelerates in the middle, and decelerates at the end. */
-  | 'easeInOut';
+  | 'easeInOut'
+
+  /** Starts slowly, then bounces toward the end. */
+  | 'bounceIn'
+
+  /** Moves quickly toward the end, then bounces before settling. */
+  | 'bounceOut'
+
+  /** Bounces at both the beginning and the end of the animation. */
+  | 'bounceInOut'
+
+  /** Slow start following a sinusoidal curve. */
+  | 'sinIn'
+
+  /** Fast start, smoothly decelerating following a sinusoidal curve. */
+  | 'sinOut'
+
+  /** Smooth sinusoidal acceleration and deceleration. */
+  | 'sinInOut';
 
 /** Easing function controls for acceleration, deceleration, or custom cubic bezier curves. */
 type EasingConfig =

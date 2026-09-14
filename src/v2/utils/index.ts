@@ -24,7 +24,10 @@ const resolveDelay = (
 const resolveTransition = (duration: number, transition: Transition) => {
   if (transition.type === 'timing') {
     if (typeof transition.easing === 'string') {
-      return withTiming(1, { duration, easing: easingMap[transition.easing] });
+      return withTiming(1, {
+        duration,
+        easing: easingMap[transition.easing] ?? easingMap.easeInOut,
+      });
     }
     const [x1, y1, x2, y2] = transition.easing.curve;
     return withTiming(1, { duration, easing: Easing.bezier(x1, y1, x2, y2) });

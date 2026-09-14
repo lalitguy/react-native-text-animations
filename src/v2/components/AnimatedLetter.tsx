@@ -3,7 +3,6 @@ import Animated from 'react-native-reanimated';
 import { useTracksAnimation } from '../hooks';
 import { useUnitProgress } from '../hooks/useUnitProgress';
 import type { AnimatedTextProps } from '../types';
-import { resolveDelay } from '../utils';
 
 interface AnimatedLetterProps extends Omit<AnimatedTextProps, 'wrapperStyle'> {
   index: number;
@@ -22,15 +21,14 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     preset,
   } = props;
 
-  const unitAnimationDuration = (transition.duration ?? 800) / textLength;
-
   const tracks = preset ? [] : (animation?.tracks ?? []);
 
   const progress = useUnitProgress({
-    unitDuration: unitAnimationDuration,
     repeat: animation?.repeat ?? 1,
-    delay: resolveDelay(unitAnimationDuration, index, stagger, textLength),
     transition: transition,
+    index,
+    textLength,
+    stagger,
   });
 
   const animatedStyle = useTracksAnimation({

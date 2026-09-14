@@ -6,6 +6,12 @@ const easingMap: Record<EasingName, EasingFunction> = {
   easeIn: Easing.in(Easing.quad),
   easeOut: Easing.out(Easing.quad),
   easeInOut: Easing.inOut(Easing.quad),
+  bounceIn: Easing.in(Easing.bounce),
+  bounceOut: Easing.out(Easing.bounce),
+  bounceInOut: Easing.inOut(Easing.bounce),
+  sinIn: Easing.in(Easing.sin),
+  sinOut: Easing.out(Easing.sin),
+  sinInOut: Easing.inOut(Easing.sin),
 };
 
 export { easingMap };
