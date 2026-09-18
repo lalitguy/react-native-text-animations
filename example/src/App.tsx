@@ -8,7 +8,7 @@ const App = () => {
     <SafeAreaProvider>
       <Container>
         <AnimateText
-          text="MADE-IN-HEVEN"
+          text="12345678"
           textStyle={style.text}
           transition={{
             type: 'spring',
@@ -17,18 +17,20 @@ const App = () => {
           stagger={{
             by: 'character',
             gap: 120,
-            from: 'end',
           }}
-          duration={1200}
+          loop={{
+            count: -1,
+            reverse: true,
+          }}
+          duration={2000}
           animation={{
             tracks: [
               {
                 property: 'translateY',
-                inputRange: [0, 0.3, 0.66, 1],
-                outputRange: [0, -5, 5, 0],
+                inputRange: [0, 0.5, 1],
+                outputRange: [0, -5, -10],
               },
             ],
-            repeat: -1,
           }}
         />
       </Container>
