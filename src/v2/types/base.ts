@@ -18,21 +18,6 @@ type StaggerType = {
   from?: 'start' | 'center' | 'end';
 };
 
-type LoopConfig = {
-  /**
-   * Number of times the complete animation sequence plays.
-   * @default 1
-   * number for count
-   * -1 or 0 for infinite
-   */
-  count?: number;
-  /**
-   * Reverse the animation.
-   * @default false
-   */
-  reverse?: boolean;
-};
-
 type CommonAnimatedTextProps = {
   /**
    * text to be animated.
@@ -64,10 +49,6 @@ type CommonAnimatedTextProps = {
    * @default 0
    */
   delay?: number;
-  /**
-   * Loop animation configuration for the animation
-   */
-  loop?: LoopConfig;
 };
 
 /**
@@ -97,4 +78,4 @@ interface CustomMode extends CommonAnimatedTextProps {
  */
 type AnimatedTextProps = PresetMode | CustomMode;
 
-export type { AnimatedTextProps, StaggerType, LoopConfig };
+export type { AnimatedTextProps, StaggerType };

@@ -8,29 +8,32 @@ const App = () => {
     <SafeAreaProvider>
       <Container>
         <AnimateText
-          text="12345678"
+          text="1234567890"
           textStyle={style.text}
           transition={{
             type: 'spring',
-            dampingRatio: 0.9,
+            dampingRatio: 0.7,
           }}
           stagger={{
             by: 'character',
-            gap: 120,
+            gap: 45,
           }}
-          loop={{
-            count: -1,
-            reverse: true,
-          }}
-          duration={2000}
+          duration={500}
           animation={{
             tracks: [
               {
                 property: 'translateY',
                 inputRange: [0, 0.5, 1],
-                outputRange: [0, -5, -10],
+                outputRange: [0, -10, -20],
+              },
+              {
+                property: 'scale',
+                inputRange: [0, 0.5, 1],
+                outputRange: [1, 1.2, 1],
               },
             ],
+            repeat: 10,
+            reverse: true,
           }}
         />
       </Container>

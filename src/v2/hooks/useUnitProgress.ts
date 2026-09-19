@@ -1,17 +1,6 @@
 import { useEffect } from 'react';
-import {
-  useSharedValue,
-  withDelay,
-  withRepeat,
-  withSequence,
-  withTiming,
-} from 'react-native-reanimated';
-import type {
-  AnimationConfig,
-  LoopConfig,
-  StaggerType,
-  Transition,
-} from '../types';
+import { useSharedValue, withDelay, withRepeat } from 'react-native-reanimated';
+import type { AnimationConfig, StaggerType, Transition } from '../types';
 import { resolveDelay, resolveTransition } from '../utils';
 
 type useUnitProgressProps = {
@@ -22,7 +11,6 @@ type useUnitProgressProps = {
   stagger: StaggerType;
   duration: number;
   delay: number;
-  loop: LoopConfig;
 };
 
 const useUnitProgress = ({
@@ -33,7 +21,6 @@ const useUnitProgress = ({
   textLength,
   duration,
   delay,
-  loop,
 }: useUnitProgressProps) => {
   const progress = useSharedValue(0);
 
@@ -50,27 +37,16 @@ const useUnitProgress = ({
 
   const cycleWait = cycleDuration - (unitDelay + repeatDuration);
 
-  console.log({
-    index,
-    unitDelay,
-    repeatDuration,
-    cycleDuration,
-    cycleWait,
-  });
+  const isUnitReversed = animation.reverse;
 
   useEffect(() => {
-    progress.value = withRepeat(
-      withSequence(
-        withDelay(
-          unitDelay,
-          withRepeat(
-            resolveTransition(duration, transition),
-            animation.repeat ?? 1
-          )
-        ),
-        withDelay(cycleWait, withTiming(0, { duration: 0 }))
-      ),
-      loop.count ?? 1
+    progress.value = withDelay(
+      unitDelay,
+      withRepeat(
+        resolveTransition(duration, transition),
+        animation.repeat ?? 1,
+        isUnitReversed
+      )
     );
   }, [
     progress,
@@ -78,9 +54,9 @@ const useUnitProgress = ({
     duration,
     transition,
     animation.repeat,
-    loop.count,
     cycleDuration,
     cycleWait,
+    isUnitReversed,
   ]);
 
   return progress;

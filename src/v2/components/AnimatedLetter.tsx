@@ -21,7 +21,6 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     preset,
     duration = 1000,
     delay = 0,
-    loop,
   } = props;
 
   const tracks = preset ? [] : (animation?.tracks ?? []);
@@ -34,7 +33,6 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     stagger,
     duration,
     delay,
-    loop: loop ?? { count: 1, reverse: false },
   });
 
   const animatedStyle = useTracksAnimation({
