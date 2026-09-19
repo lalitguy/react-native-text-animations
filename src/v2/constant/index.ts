@@ -1,6 +1,11 @@
 import { Easing, type EasingFunction } from 'react-native-reanimated';
 import type { EasingName } from '../types';
 
+const defaultConfigs = {
+  unitDuration: 1000,
+  staggerGap: 100,
+};
+
 const easingMap: Record<EasingName, EasingFunction> = {
   linear: Easing.linear,
   easeIn: Easing.in(Easing.quad),
@@ -14,4 +19,4 @@ const easingMap: Record<EasingName, EasingFunction> = {
   sinInOut: Easing.inOut(Easing.sin),
 };
 
-export { easingMap };
+export { easingMap, defaultConfigs };

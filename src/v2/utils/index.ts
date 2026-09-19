@@ -1,5 +1,5 @@
 import { Easing, withSpring, withTiming } from 'react-native-reanimated';
-import { easingMap } from '../constant';
+import { defaultConfigs, easingMap } from '../constant';
 import type { StaggerType, Transition } from '../types';
 
 const resolveDelay = (
@@ -7,7 +7,7 @@ const resolveDelay = (
   stagger: StaggerType,
   textLength: number
 ) => {
-  const gap = stagger.gap ?? 100;
+  const gap = stagger.gap ?? defaultConfigs.staggerGap;
   switch (stagger.from) {
     case 'center':
       const centralIndex = (textLength - 1) / 2;
