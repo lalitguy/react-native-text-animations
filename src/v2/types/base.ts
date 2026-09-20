@@ -49,6 +49,19 @@ type CommonAnimatedTextProps = {
    * @default 0
    */
   delay?: number;
+  /**
+   * Number of times to repeat the animation of the unit.
+   * @default 1
+   * number for count
+   * -1 or 0 for infinite
+   */
+  repeat?: number;
+
+  /**
+   * Reverse the animation of the unit.
+   * @default false
+   */
+  reverse?: boolean;
 };
 
 /**

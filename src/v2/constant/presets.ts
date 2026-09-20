@@ -56,7 +56,6 @@ const PRESETS = {
         outputRange: [0, -10, 0],
       },
     ],
-    repeat: -1,
   },
   'cascade': {
     tracks: [
@@ -111,8 +110,6 @@ const PRESETS = {
         outputRange: [0, -8, 0],
       },
     ],
-    repeat: -1,
-    reverse: true,
   },
   'glitter': {
     tracks: [
@@ -122,7 +119,6 @@ const PRESETS = {
         outputRange: ['#999aaa', '#ccc', '#000', '#ccc', '#999aaa'],
       },
     ],
-    repeat: -1,
   },
   'glow': {
     tracks: [
@@ -132,7 +128,6 @@ const PRESETS = {
         outputRange: ['#ffffff', '#a5f3fc', '#ffffff'],
       },
     ],
-    repeat: -1,
   },
 } satisfies Record<Preset, AnimationConfig>;
 

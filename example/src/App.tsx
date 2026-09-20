@@ -14,11 +14,13 @@ const App = () => {
             type: 'spring',
             dampingRatio: 0.7,
           }}
-          preset={'glow'}
+          preset={'cascade'}
           stagger={{
             by: 'character',
             gap: 45,
           }}
+          repeat={-1}
+          reverse
         />
       </Container>
     </SafeAreaProvider>

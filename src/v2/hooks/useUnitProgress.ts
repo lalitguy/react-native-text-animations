@@ -1,26 +1,28 @@
 import { useEffect } from 'react';
 import { useSharedValue, withDelay, withRepeat } from 'react-native-reanimated';
-import type { AnimationConfig, StaggerType, Transition } from '../types';
+import type { StaggerType, Transition } from '../types';
 import { resolveDelay, resolveTransition } from '../utils';
 
 type useUnitProgressProps = {
-  animation: AnimationConfig;
   transition: Transition;
   index: number;
   textLength: number;
   stagger: StaggerType;
   duration: number;
   delay: number;
+  repeat: number;
+  reverse: boolean;
 };
 
 const useUnitProgress = ({
-  animation,
   transition,
   index,
   stagger,
   textLength,
   duration,
   delay,
+  repeat,
+  reverse,
 }: useUnitProgressProps) => {
   const progress = useSharedValue(0);
 
@@ -29,20 +31,9 @@ const useUnitProgress = ({
   useEffect(() => {
     progress.value = withDelay(
       unitDelay,
-      withRepeat(
-        resolveTransition(duration, transition),
-        animation.repeat ?? 1,
-        animation.reverse
-      )
+      withRepeat(resolveTransition(duration, transition), repeat, reverse)
     );
-  }, [
-    progress,
-    unitDelay,
-    duration,
-    transition,
-    animation.repeat,
-    animation.reverse,
-  ]);
+  }, [progress, unitDelay, duration, transition, repeat, reverse]);
 
   return progress;
 };

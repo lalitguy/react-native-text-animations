@@ -16,7 +16,6 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     text: character,
     textLength,
     index,
-    animation = { tracks: [] },
     textStyle,
     transition = { type: 'timing', easing: 'easeInOut' },
     stagger = {
@@ -27,16 +26,19 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     duration = defaultConfigs.unitDuration,
     delay = 0,
     groupedTracks,
+    repeat = 1,
+    reverse = false,
   } = props;
 
   const progress = useUnitProgress({
-    animation,
     transition: transition,
     index,
     textLength,
     stagger,
     duration,
     delay,
+    repeat,
+    reverse,
   });
 
   const animatedStyle = useTracksAnimation({
