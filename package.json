@@ -80,7 +80,8 @@
     "react-native-worklets": ">=0.5.0 <1"
   },
   "workspaces": [
-    "example"
+    "example",
+    "playground"
   ],
   "resolutions": {
     "react": "19.2.3",
