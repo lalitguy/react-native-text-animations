@@ -1,5 +1,5 @@
 import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
-import type { AnimationConfig, Presets } from './animations';
+import type { AnimationConfig, Preset } from './animations';
 import type { Transition } from './transition';
 
 type StaggerType = {
@@ -56,7 +56,7 @@ type CommonAnimatedTextProps = {
  */
 interface PresetMode extends CommonAnimatedTextProps {
   /** Built-in animation preset to apply. */
-  preset: Presets;
+  preset?: Preset;
 
   /** Not available when using a preset. */
   animation?: never;

@@ -31,7 +31,7 @@ const useTracksAnimation = ({
         track.inputRange,
         track.outputRange
       );
-      style.color = trackTransition as unknown as string;
+      style.color = (trackTransition as unknown as string)?.trim();
     }
 
     for (const track of opacityTracks) {

@@ -14,31 +14,10 @@ const App = () => {
             type: 'spring',
             dampingRatio: 0.7,
           }}
+          preset={'glow'}
           stagger={{
             by: 'character',
             gap: 45,
-          }}
-          duration={500}
-          animation={{
-            tracks: [
-              {
-                property: 'translateY',
-                inputRange: [0, 0.5, 1],
-                outputRange: [0, -10, -20],
-              },
-              {
-                property: 'scale',
-                inputRange: [0, 0.5, 1],
-                outputRange: [1, 1.2, 1],
-              },
-              {
-                property: 'color',
-                inputRange: [0, 0.5, 1],
-                outputRange: ['red', 'blue', 'green'],
-              },
-            ],
-            repeat: 10,
-            reverse: true,
           }}
         />
       </Container>

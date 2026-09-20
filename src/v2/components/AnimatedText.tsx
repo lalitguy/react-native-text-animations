@@ -4,6 +4,7 @@ import Animated from 'react-native-reanimated';
 import type { AnimatedTextProps } from '../types';
 import { groupTracks } from '../utils';
 import AnimatedLetter from './AnimatedLetter';
+import { PRESETS } from '../constant';
 
 const AnimatedText = (props: AnimatedTextProps) => {
   const {
@@ -20,18 +21,24 @@ const AnimatedText = (props: AnimatedTextProps) => {
     return stagger.by === 'character' ? text.split('') : text.split(/(?<=\s)/);
   }, [stagger.by, text]);
 
-  const groupedTracks = useMemo(() => {
-    const tracks = preset ? [] : (animation?.tracks ?? []);
+  const resolvedAnimation = useMemo(() => {
+    const animationConfig = !animation
+      ? PRESETS[preset as keyof typeof PRESETS] || PRESETS.float
+      : animation;
 
-    return groupTracks(tracks);
-  }, [animation?.tracks, preset]);
+    return animationConfig;
+  }, [preset, animation]);
+
+  const groupedTracks = useMemo(() => {
+    return groupTracks(resolvedAnimation.tracks);
+  }, [resolvedAnimation]);
 
   if (!text) return null;
 
   return (
     <Animated.View style={[styles.textWrap, wrapperStyle]}>
       {animateArray.map((char, idx) => {
-        const key = `animate-${stagger.by}-${text}-${idx}`;
+        const key = `animate-${stagger.by}-${text}-${preset ?? 'custom'}-${idx}`;
         return (
           <AnimatedLetter
             key={key}
@@ -40,6 +47,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
             textLength={animateArray.length}
             stagger={stagger}
             groupedTracks={groupedTracks}
+            animation={resolvedAnimation}
             {...rest}
           />
         );

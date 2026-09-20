@@ -1,18 +1,57 @@
 /**
  * Ready-to-use entrance and exit animation presets.
  */
-type Presets =
-  /** Smoothly fades the element in from 0% to 100% opacity. */
-  | 'fade-in'
+type Preset =
+  /** Smoothly fades the text from transparent to fully visible. */
+  | 'fade'
 
-  /** Smoothly fades the element out from 100% to 0% opacity. */
-  | 'fade-out'
+  /** Fades the text in while moving upward into its final position. */
+  | 'fade-up'
 
-  /** Grows the element into view from a smaller starting scale while fading in. */
-  | 'scale-in'
+  /** Fades the text in while moving downward into its final position. */
+  | 'fade-down'
 
-  /** Shrinks the element down until it disappears while fading out. */
-  | 'scale-out';
+  /** Fades the text in while moving from the left into its final position. */
+  | 'fade-left'
+
+  /** Fades the text in while moving from the right into its final position. */
+  | 'fade-right'
+
+  /** Pops the text into view with a quick scale-up and subtle overshoot. */
+  | 'pop'
+
+  /** Bounces the text into place with a playful vertical motion. */
+  | 'bounce'
+
+  /** Moves each character in a flowing wave-like motion. */
+  | 'wave'
+
+  /** Reveals characters sequentially in a cascading staggered motion. */
+  | 'cascade'
+
+  /** Reveals the text progressively with a smooth entrance motion. */
+  | 'reveal'
+
+  /** Rotates each character into view with a 3D flip effect. */
+  | 'flip'
+
+  /** Swings each character into place with a rotational motion. */
+  | 'swing'
+
+  /** Distorts the text with an elastic, jelly-like scale effect. */
+  | 'jelly'
+
+  /** Applies a quick back-and-forth motion to create a shaking effect. */
+  | 'shake'
+
+  /** Gives the text a gentle, floating vertical motion. */
+  | 'float'
+
+  /** Shifts through bright colors to create a sparkling glitter-like effect. */
+  | 'glitter'
+
+  /** Animates the text color with a soft luminous glow effect. */
+  | 'glow';
 
 /**
  * Defines the property of the element to be animated.
@@ -134,7 +173,7 @@ export type {
   AnimationConfig,
   AnimationProperty,
   GroupedTracksConfig,
-  Presets,
+  Preset,
   TrackConfig,
   ColorTrackConfig,
   NumericTrackConfig,
