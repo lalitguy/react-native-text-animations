@@ -1,13 +1,14 @@
 import { memo } from 'react';
 import Animated from 'react-native-reanimated';
-import { useTracksAnimation } from '../hooks';
-import { useUnitProgress } from '../hooks/useUnitProgress';
-import type { AnimatedTextProps } from '../types';
 import { defaultConfigs } from '../constant';
+import { useUnitProgress } from '../hooks/useUnitProgress';
+import type { AnimatedTextProps, GroupedTracksConfig } from '../types';
+import { useTracksAnimation } from '../hooks';
 
 interface AnimatedLetterProps extends Omit<AnimatedTextProps, 'wrapperStyle'> {
   index: number;
   textLength: number;
+  groupedTracks: GroupedTracksConfig;
 }
 
 const AnimatedLetter = (props: AnimatedLetterProps) => {
@@ -23,12 +24,10 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
       gap: defaultConfigs.staggerGap,
       from: 'start',
     },
-    preset,
     duration = defaultConfigs.unitDuration,
     delay = 0,
+    groupedTracks,
   } = props;
-
-  const tracks = preset ? [] : (animation?.tracks ?? []);
 
   const progress = useUnitProgress({
     animation,
@@ -41,8 +40,8 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
   });
 
   const animatedStyle = useTracksAnimation({
-    tracks,
     progress,
+    groupedTracks,
   });
 
   if (!character) return null;

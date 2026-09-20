@@ -7,63 +7,63 @@ import {
 } from 'react-native-reanimated';
 
 import type { TextStyle } from 'react-native';
-import type { TrackConfig } from '../types';
+import type { GroupedTracksConfig } from '../types';
 
 type useTracksAnimationProps = {
   progress: SharedValue<number>;
-  tracks: TrackConfig[];
+  groupedTracks: GroupedTracksConfig;
 };
 
-const useTracksAnimation = ({ tracks, progress }: useTracksAnimationProps) => {
+const useTracksAnimation = ({
+  groupedTracks,
+  progress,
+}: useTracksAnimationProps) => {
   return useAnimatedStyle(() => {
     const style: TextStyle = {};
     const transform: TransformArrayItem[] = [];
 
-    tracks.forEach((track) => {
-      const { property, inputRange, outputRange } = track;
+    const { colorTracks, opacityTracks, rotateTracks, transformTracks } =
+      groupedTracks;
 
-      if (property === 'color') {
-        const trackTransition = interpolateColor(
-          progress.value, //global linear progress
-          inputRange,
-          outputRange
-        );
-        style.color = trackTransition as unknown as string;
-        return;
-      }
-
-      const trackTransition = interpolate(
-        progress.value, //global linear progress
-        inputRange,
-        outputRange
+    for (const track of colorTracks) {
+      const trackTransition = interpolateColor(
+        progress.value,
+        track.inputRange,
+        track.outputRange
       );
+      style.color = trackTransition as unknown as string;
+    }
 
-      if (property === 'opacity') {
-        style.opacity = trackTransition;
-        return;
-      }
-      if (
-        property === 'scale' ||
-        property === 'scaleX' ||
-        property === 'scaleY' ||
-        property === 'translateX' ||
-        property === 'translateY'
-      ) {
-        transform.push({
-          [property]: trackTransition,
-        } as TransformArrayItem);
-        return;
-      }
-      if (
-        property === 'rotateX' ||
-        property === 'rotateY' ||
-        property === 'rotateZ'
-      ) {
-        transform.push({
-          [property]: `${trackTransition}deg`,
-        } as TransformArrayItem);
-      }
-    });
+    for (const track of opacityTracks) {
+      const trackTransition = interpolate(
+        progress.value,
+        track.inputRange,
+        track.outputRange
+      );
+      style.opacity = trackTransition;
+    }
+
+    for (const track of rotateTracks) {
+      const trackTransition = interpolate(
+        progress.value,
+        track.inputRange,
+        track.outputRange
+      );
+      transform.push({
+        [track.property]: `${trackTransition}deg`,
+      } as TransformArrayItem);
+    }
+
+    for (const track of transformTracks) {
+      const trackTransition = interpolate(
+        progress.value,
+        track.inputRange,
+        track.outputRange
+      );
+      transform.push({
+        [track.property]: trackTransition,
+      } as TransformArrayItem);
+    }
 
     return {
       ...style,

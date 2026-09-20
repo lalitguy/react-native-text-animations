@@ -1,6 +1,13 @@
 import { Easing, withSpring, withTiming } from 'react-native-reanimated';
 import { defaultConfigs, easingMap } from '../constant';
-import type { StaggerType, Transition } from '../types';
+import type {
+  ColorTrackConfig,
+  GroupedTracksConfig,
+  NumericTrackConfig,
+  StaggerType,
+  TrackConfig,
+  Transition,
+} from '../types';
 
 const resolveDelay = (
   index: number,
@@ -21,6 +28,45 @@ const resolveDelay = (
   }
 };
 
+const groupTracks = (tracks: TrackConfig[]): GroupedTracksConfig => {
+  const colorTracks: ColorTrackConfig[] = [];
+  const opacityTracks: NumericTrackConfig[] = [];
+  const transformTracks: NumericTrackConfig[] = [];
+  const rotateTracks: NumericTrackConfig[] = [];
+
+  tracks.forEach((track) => {
+    const { property } = track;
+
+    switch (property) {
+      case 'color':
+        colorTracks.push(track);
+        break;
+      case 'opacity':
+        opacityTracks.push(track);
+        break;
+      case 'scale':
+      case 'scaleX':
+      case 'scaleY':
+      case 'translateX':
+      case 'translateY':
+        transformTracks.push(track);
+        break;
+      case 'rotateX':
+      case 'rotateY':
+      case 'rotateZ':
+        rotateTracks.push(track);
+        break;
+    }
+  });
+
+  return {
+    colorTracks,
+    opacityTracks,
+    transformTracks,
+    rotateTracks,
+  };
+};
+
 const resolveTransition = (duration: number, transition: Transition) => {
   if (transition.type === 'timing') {
     if (typeof transition.easing === 'string') {
@@ -39,4 +85,4 @@ const resolveTransition = (duration: number, transition: Transition) => {
   return withTiming(1, { duration, easing: easingMap.easeInOut });
 };
 
-export { resolveDelay, resolveTransition };
+export { resolveDelay, resolveTransition, groupTracks };

@@ -1,14 +1,17 @@
 import { memo, useMemo } from 'react';
+import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 import type { AnimatedTextProps } from '../types';
+import { groupTracks } from '../utils';
 import AnimatedLetter from './AnimatedLetter';
-import { StyleSheet } from 'react-native';
 
 const AnimatedText = (props: AnimatedTextProps) => {
   const {
     text,
     wrapperStyle,
     stagger = { by: 'character', from: 'start' },
+    preset,
+    animation,
     ...rest
   } = props;
 
@@ -16,6 +19,12 @@ const AnimatedText = (props: AnimatedTextProps) => {
     if (stagger.by === 'none') return [text];
     return stagger.by === 'character' ? text.split('') : text.split(/(?<=\s)/);
   }, [stagger.by, text]);
+
+  const groupedTracks = useMemo(() => {
+    const tracks = preset ? [] : (animation?.tracks ?? []);
+
+    return groupTracks(tracks);
+  }, [animation?.tracks, preset]);
 
   if (!text) return null;
 
@@ -30,6 +39,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
             index={idx}
             textLength={animateArray.length}
             stagger={stagger}
+            groupedTracks={groupedTracks}
             {...rest}
           />
         );

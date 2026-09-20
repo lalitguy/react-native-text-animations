@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useSharedValue, withDelay, withRepeat } from 'react-native-reanimated';
 import type { AnimationConfig, StaggerType, Transition } from '../types';
 import { resolveDelay, resolveTransition } from '../utils';
-import { defaultConfigs } from '../constant';
 
 type useUnitProgressProps = {
   animation: AnimationConfig;
@@ -25,20 +24,7 @@ const useUnitProgress = ({
 }: useUnitProgressProps) => {
   const progress = useSharedValue(0);
 
-  //calculate overall duration of animation considering the stagger gap and per letter duration.
-  const staggerDelay = stagger.gap ?? defaultConfigs.staggerGap;
-
-  const unitRepeatCount = animation?.repeat ?? 1;
-
-  const repeatDuration = duration * (unitRepeatCount > 0 ? unitRepeatCount : 1);
   const unitDelay = resolveDelay(index, stagger, textLength) + delay;
-
-  const cycleDuration =
-    (textLength - 1) * staggerDelay + repeatDuration + delay;
-
-  const cycleWait = cycleDuration - (unitDelay + repeatDuration);
-
-  const isUnitReversed = animation.reverse;
 
   useEffect(() => {
     progress.value = withDelay(
@@ -46,7 +32,7 @@ const useUnitProgress = ({
       withRepeat(
         resolveTransition(duration, transition),
         animation.repeat ?? 1,
-        isUnitReversed
+        animation.reverse
       )
     );
   }, [
@@ -55,9 +41,7 @@ const useUnitProgress = ({
     duration,
     transition,
     animation.repeat,
-    cycleDuration,
-    cycleWait,
-    isUnitReversed,
+    animation.reverse,
   ]);
 
   return progress;

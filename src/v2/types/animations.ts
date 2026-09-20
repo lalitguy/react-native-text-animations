@@ -123,4 +123,19 @@ type AnimationConfig = {
   reverse?: boolean;
 };
 
-export type { AnimationConfig, AnimationProperty, Presets, TrackConfig };
+type GroupedTracksConfig = {
+  colorTracks: ColorTrackConfig[];
+  opacityTracks: NumericTrackConfig[];
+  transformTracks: NumericTrackConfig[];
+  rotateTracks: NumericTrackConfig[];
+};
+
+export type {
+  AnimationConfig,
+  AnimationProperty,
+  GroupedTracksConfig,
+  Presets,
+  TrackConfig,
+  ColorTrackConfig,
+  NumericTrackConfig,
+};
