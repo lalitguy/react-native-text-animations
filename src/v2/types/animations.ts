@@ -55,12 +55,12 @@ type AnimationProperty =
    */
   | 'rotateZ';
 
-type TrackConfig = {
-  /**
-   * The property of the element to animate.
-   */
-  property: AnimationProperty;
+/**
+ * Color of the text
+ */
+type ColorAnimationConfig = 'color';
 
+type CommonTrackConfig = {
   /**
    * Progress points within the animation timeline.
    * Each value should be between 0 and 1.
@@ -69,6 +69,13 @@ type TrackConfig = {
    * [0, 0.5, 1]
    */
   inputRange: number[];
+};
+
+interface NumericTrackConfig extends CommonTrackConfig {
+  /**
+   * The property of the element to animate.
+   */
+  property: AnimationProperty;
 
   /**
    * Values produced at each corresponding progress point.
@@ -76,7 +83,23 @@ type TrackConfig = {
    * [0.2, 1, 0]
    */
   outputRange: number[];
-};
+}
+
+interface ColorTrackConfig extends CommonTrackConfig {
+  /**
+   * The property of the element to animate.
+   */
+  property: ColorAnimationConfig;
+
+  /**
+   * Values produced at each corresponding progress point.
+   * @example
+   * ['#ff0000', '#0000ff']
+   */
+  outputRange: string[];
+}
+
+type TrackConfig = NumericTrackConfig | ColorTrackConfig;
 
 /** Custom animation with granular control over tracks and repetition. */
 type AnimationConfig = {

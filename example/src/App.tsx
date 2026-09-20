@@ -31,6 +31,11 @@ const App = () => {
                 inputRange: [0, 0.5, 1],
                 outputRange: [1, 1.2, 1],
               },
+              {
+                property: 'color',
+                inputRange: [0, 0.5, 1],
+                outputRange: ['red', 'blue', 'green'],
+              },
             ],
             repeat: 10,
             reverse: true,

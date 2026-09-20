@@ -1,11 +1,12 @@
 import {
   interpolate,
+  interpolateColor,
   useAnimatedStyle,
   type SharedValue,
   type TransformArrayItem,
 } from 'react-native-reanimated';
-import type { DefaultStyle } from 'react-native-reanimated/lib/typescript/hook/commonTypes';
 
+import type { TextStyle } from 'react-native';
 import type { TrackConfig } from '../types';
 
 type useTracksAnimationProps = {
@@ -15,11 +16,21 @@ type useTracksAnimationProps = {
 
 const useTracksAnimation = ({ tracks, progress }: useTracksAnimationProps) => {
   return useAnimatedStyle(() => {
-    const style: DefaultStyle = {};
-    const transform: NonNullable<DefaultStyle['transform']>[number][] = [];
+    const style: TextStyle = {};
+    const transform: TransformArrayItem[] = [];
 
     tracks.forEach((track) => {
       const { property, inputRange, outputRange } = track;
+
+      if (property === 'color') {
+        const trackTransition = interpolateColor(
+          progress.value, //global linear progress
+          inputRange,
+          outputRange
+        );
+        style.color = trackTransition as unknown as string;
+        return;
+      }
 
       const trackTransition = interpolate(
         progress.value, //global linear progress
@@ -56,8 +67,8 @@ const useTracksAnimation = ({ tracks, progress }: useTracksAnimationProps) => {
 
     return {
       ...style,
-      ...(transform?.length ? { transform } : {}),
-    } as DefaultStyle;
+      ...(transform.length ? { transform } : {}),
+    };
   });
 };
 
