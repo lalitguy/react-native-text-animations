@@ -1,4 +1,5 @@
 import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import type { AnimatedStyle } from 'react-native-reanimated';
 
 interface AnimationOffsets {
   offsetX?: number;
@@ -17,7 +18,7 @@ interface BaseAnimationHookProps extends AnimationTiming, AnimationOffsets {
 
 // Generic animation hook signature
 type AnimationHook<P extends BaseAnimationHookProps = BaseAnimationHookProps> =
-  (props: P) => TextStyle;
+  (props: P) => AnimatedStyle<TextStyle>;
 
 // A generic AnimatedText component type that accepts any animation hook
 interface AnimatedTextProps<
