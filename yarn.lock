@@ -6663,7 +6663,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:^57.0.0":
+"expo@npm:^57.0.0, expo@npm:~57.0.24":
   version: 57.0.24
   resolution: "expo@npm:57.0.24"
   dependencies:
@@ -10697,6 +10697,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playground@workspace:playground":
+  version: 0.0.0-use.local
+  resolution: "playground@workspace:playground"
+  dependencies:
+    expo: ~57.0.24
+    expo-status-bar: ~57.0.1
+    prettier: ^3.9.8
+    react: 19.2.3
+    react-native: 0.86.3
+  languageName: unknown
+  linkType: soft
+
 "plist@npm:^3.0.5":
   version: 3.1.1
   resolution: "plist@npm:3.1.1"
@@ -10831,7 +10843,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.6.2":
+"prettier@npm:^3.6.2, prettier@npm:^3.9.8":
   version: 3.9.8
   resolution: "prettier@npm:3.9.8"
   bin:
