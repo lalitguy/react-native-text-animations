@@ -5,7 +5,7 @@ import type {
   NumericTrackConfig,
   Preset,
   PresetMode,
-} from '.';
+} from ".";
 
 interface NumbericTrackPlayground extends NumericTrackConfig {
   id: string;
@@ -15,7 +15,7 @@ interface ColorTrackPlayground extends ColorTrackConfig {
   id: string;
 }
 
-interface CustomModePlayground extends Omit<CustomMode, 'animation'> {
+interface CustomModePlayground extends Omit<CustomMode, "animation"> {
   animation: {
     tracks: (NumbericTrackPlayground | ColorTrackPlayground)[];
   };
@@ -25,31 +25,31 @@ type PlaygroundAnimatedText = CustomModePlayground | PresetMode;
 
 interface AnimationConfigType extends Omit<
   AnimatedTextProps,
-  'preset' | 'animation'
+  "preset" | "animation"
 > {}
 
 type PlaygroundActions =
   | {
-      type: 'preset';
-      payload: AnimatedTextProps['preset'];
+      type: "preset";
+      payload: AnimatedTextProps["preset"];
     }
   | {
-      type: 'updateConfig';
+      type: "updateConfig";
       payload: Partial<AnimationConfigType>;
     }
   | {
-      type: 'add-track';
+      type: "add-track";
       payload: NumbericTrackPlayground | ColorTrackPlayground;
     }
   | {
-      type: 'update-track';
+      type: "update-track";
       payload: {
         id: string;
         track: Partial<NumbericTrackPlayground> | Partial<ColorTrackPlayground>;
       };
     }
   | {
-      type: 'remove-track';
+      type: "remove-track";
       payload: {
         /* id to be removed*/
         id: string;

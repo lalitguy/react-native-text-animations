@@ -3,55 +3,55 @@
  */
 type Preset =
   /** Smoothly fades the text from transparent to fully visible. */
-  | 'fade'
+  | "fade"
 
   /** Fades the text in while moving upward into its final position. */
-  | 'fade-up'
+  | "fade-up"
 
   /** Fades the text in while moving downward into its final position. */
-  | 'fade-down'
+  | "fade-down"
 
   /** Fades the text in while moving from the left into its final position. */
-  | 'fade-left'
+  | "fade-left"
 
   /** Fades the text in while moving from the right into its final position. */
-  | 'fade-right'
+  | "fade-right"
 
   /** Pops the text into view with a quick scale-up and subtle overshoot. */
-  | 'pop'
+  | "pop"
 
   /** Bounces the text into place with a playful vertical motion. */
-  | 'bounce'
+  | "bounce"
 
   /** Moves each character in a flowing wave-like motion. */
-  | 'wave'
+  | "wave"
 
   /** Reveals characters sequentially in a cascading staggered motion. */
-  | 'cascade'
+  | "cascade"
 
   /** Reveals the text progressively with a smooth entrance motion. */
-  | 'reveal'
+  | "reveal"
 
   /** Rotates each character into view with a 3D flip effect. */
-  | 'flip'
+  | "flip"
 
   /** Swings each character into place with a rotational motion. */
-  | 'swing'
+  | "swing"
 
   /** Distorts the text with an elastic, jelly-like scale effect. */
-  | 'jelly'
+  | "jelly"
 
   /** Applies a quick back-and-forth motion to create a shaking effect. */
-  | 'shake'
+  | "shake"
 
   /** Gives the text a gentle, floating vertical motion. */
-  | 'float'
+  | "float"
 
   /** Shifts through bright colors to create a sparkling glitter-like effect. */
-  | 'glitter'
+  | "glitter"
 
   /** Animates the text color with a soft luminous glow effect. */
-  | 'glow';
+  | "glow";
 
 /**
  * Defines the property of the element to be animated.
@@ -60,44 +60,44 @@ type AnimationProperty =
   /**
    * Opacity animation.
    */
-  | 'opacity'
+  | "opacity"
   /**
    * X-axis translation animation.
    */
-  | 'translateX'
+  | "translateX"
   /**
    * Y-axis translation animation.
    */
-  | 'translateY'
+  | "translateY"
   /**
    * Scale animation.
    */
-  | 'scale'
+  | "scale"
   /**
    * X Scale animation.
    */
-  | 'scaleX'
+  | "scaleX"
   /**
    * Y Scale animation.
    */
-  | 'scaleY'
+  | "scaleY"
   /**
    * X-axis rotation animation.
    */
-  | 'rotateX'
+  | "rotateX"
   /**
    * Y-axis rotation animation.
    */
-  | 'rotateY'
+  | "rotateY"
   /**
    * Z-axis rotation animation.
    */
-  | 'rotateZ';
+  | "rotateZ";
 
 /**
  * Color of the text
  */
-type ColorAnimationConfig = 'color';
+type ColorAnimationConfig = "color";
 
 type CommonTrackConfig = {
   /**

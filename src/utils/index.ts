@@ -1,5 +1,5 @@
-import { Easing, withSpring, withTiming } from 'react-native-reanimated';
-import { defaultConfigs, easingMap } from '../constant';
+import { Easing, withSpring, withTiming } from "react-native-reanimated";
+import { defaultConfigs, easingMap } from "../constant";
 import type {
   ColorTrackConfig,
   GroupedTracksConfig,
@@ -7,7 +7,7 @@ import type {
   StaggerType,
   TrackConfig,
   Transition,
-} from '../types';
+} from "../types";
 
 const resolveDelay = (
   index: number,
@@ -16,13 +16,13 @@ const resolveDelay = (
 ) => {
   const gap = stagger.gap ?? defaultConfigs.staggerGap;
   switch (stagger.from) {
-    case 'center':
+    case "center":
       const centralIndex = (textLength - 1) / 2;
       const diff = Math.abs(index - centralIndex);
       return diff <= 0.5 ? 0 : diff * gap;
-    case 'end':
+    case "end":
       return (textLength - 1 - index) * gap;
-    case 'start':
+    case "start":
     default:
       return gap * index;
   }
@@ -38,22 +38,22 @@ const groupTracks = (tracks: TrackConfig[]): GroupedTracksConfig => {
     const { property } = track;
 
     switch (property) {
-      case 'color':
+      case "color":
         colorTracks.push(track);
         break;
-      case 'opacity':
+      case "opacity":
         opacityTracks.push(track);
         break;
-      case 'scale':
-      case 'scaleX':
-      case 'scaleY':
-      case 'translateX':
-      case 'translateY':
+      case "scale":
+      case "scaleX":
+      case "scaleY":
+      case "translateX":
+      case "translateY":
         transformTracks.push(track);
         break;
-      case 'rotateX':
-      case 'rotateY':
-      case 'rotateZ':
+      case "rotateX":
+      case "rotateY":
+      case "rotateZ":
         rotateTracks.push(track);
         break;
     }
@@ -68,8 +68,8 @@ const groupTracks = (tracks: TrackConfig[]): GroupedTracksConfig => {
 };
 
 const resolveTransition = (duration: number, transition: Transition) => {
-  if (transition.type === 'timing') {
-    if (typeof transition.easing === 'string') {
+  if (transition.type === "timing") {
+    if (typeof transition.easing === "string") {
       return withTiming(1, {
         duration,
         easing: easingMap[transition.easing] ?? easingMap.easeInOut,
@@ -79,7 +79,7 @@ const resolveTransition = (duration: number, transition: Transition) => {
     return withTiming(1, { duration, easing: Easing.bezier(x1, y1, x2, y2) });
   }
 
-  if (transition.type === 'spring') {
+  if (transition.type === "spring") {
     return withSpring(1, { duration, dampingRatio: transition.dampingRatio });
   }
   return withTiming(1, { duration, easing: easingMap.easeInOut });

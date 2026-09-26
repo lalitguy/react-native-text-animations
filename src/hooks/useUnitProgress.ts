@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useSharedValue, withDelay, withRepeat } from 'react-native-reanimated';
-import type { StaggerType, Transition } from '../types';
-import { resolveDelay, resolveTransition } from '../utils';
+import { useEffect } from "react";
+import { useSharedValue, withDelay, withRepeat } from "react-native-reanimated";
+import type { StaggerType, Transition } from "../types";
+import { resolveDelay, resolveTransition } from "../utils";
 
 type useUnitProgressProps = {
   transition: Transition;

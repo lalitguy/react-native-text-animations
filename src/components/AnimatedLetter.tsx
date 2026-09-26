@@ -1,11 +1,11 @@
-import { memo } from 'react';
-import Animated from 'react-native-reanimated';
-import { defaultConfigs } from '../constant';
-import { useUnitProgress } from '../hooks/useUnitProgress';
-import type { AnimatedTextProps, GroupedTracksConfig } from '../types';
-import { useTracksAnimation } from '../hooks';
+import { memo } from "react";
+import Animated from "react-native-reanimated";
+import { defaultConfigs } from "../constant";
+import { useUnitProgress } from "../hooks/useUnitProgress";
+import type { AnimatedTextProps, GroupedTracksConfig } from "../types";
+import { useTracksAnimation } from "../hooks";
 
-interface AnimatedLetterProps extends Omit<AnimatedTextProps, 'wrapperStyle'> {
+interface AnimatedLetterProps extends Omit<AnimatedTextProps, "wrapperStyle"> {
   index: number;
   textLength: number;
   groupedTracks: GroupedTracksConfig;
@@ -17,11 +17,11 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
     textLength,
     index,
     textStyle,
-    transition = { type: 'timing', easing: 'easeInOut' },
+    transition = { type: "timing", easing: "easeInOut" },
     stagger = {
-      by: 'character',
+      by: "character",
       gap: defaultConfigs.staggerGap,
-      from: 'start',
+      from: "start",
     },
     duration = defaultConfigs.unitDuration,
     delay = 0,

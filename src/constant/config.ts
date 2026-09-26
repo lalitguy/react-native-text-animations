@@ -1,10 +1,10 @@
-import { Easing, type EasingFunction } from 'react-native-reanimated';
-import type { EasingName, Preset } from '../types';
+import { Easing, type EasingFunction } from "react-native-reanimated";
+import type { EasingName, Preset } from "../types";
 
 const defaultConfigs = {
   unitDuration: 1000,
   staggerGap: 100,
-  defaultPreset: 'float' as Preset,
+  defaultPreset: "float" as Preset,
 } as const;
 
 const easingMap: Record<EasingName, EasingFunction> = {

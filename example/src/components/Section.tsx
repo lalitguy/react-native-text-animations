@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Section({
   title,
@@ -23,16 +23,16 @@ export default function Section({
 const styles = StyleSheet.create({
   sectionContainer: { marginBottom: 50 },
   sectionTitle: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 18,
     marginBottom: 8,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   sectionContent: {
     borderWidth: 1,
-    borderColor: '#333',
+    borderColor: "#333",
     borderRadius: 10,
     padding: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
 });

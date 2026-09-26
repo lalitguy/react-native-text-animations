@@ -1,6 +1,6 @@
-import { useMemo, type PropsWithChildren } from 'react';
-import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useMemo, type PropsWithChildren } from "react";
+import { StyleSheet, View, type StyleProp, type ViewStyle } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const Container = ({ children }: PropsWithChildren) => {
   const insets = useSafeAreaInsets();
@@ -21,8 +21,8 @@ const Container = ({ children }: PropsWithChildren) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 export default Container;

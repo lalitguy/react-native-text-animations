@@ -5,7 +5,7 @@ type SpringTransition = {
   /**
    * Identifies this transition as a physics-based spring animation.
    */
-  type: 'spring';
+  type: "spring";
 
   /**
    * Damping ratio of the spring.
@@ -22,32 +22,32 @@ type SpringTransition = {
  */
 type EasingName =
   /** Constant speed with zero acceleration or deceleration. */
-  | 'linear'
+  | "linear"
 
   /** Slow start, accelerating steadily until completion. */
-  | 'easeIn'
+  | "easeIn"
   /** Fast start, smoothly decelerating to a complete stop. */
-  | 'easeOut'
+  | "easeOut"
   /** Slow start, accelerates in the middle, and decelerates at the end. */
-  | 'easeInOut'
+  | "easeInOut"
 
   /** Starts slowly, then bounces toward the end. */
-  | 'bounceIn'
+  | "bounceIn"
 
   /** Moves quickly toward the end, then bounces before settling. */
-  | 'bounceOut'
+  | "bounceOut"
 
   /** Bounces at both the beginning and the end of the animation. */
-  | 'bounceInOut'
+  | "bounceInOut"
 
   /** Slow start following a sinusoidal curve. */
-  | 'sinIn'
+  | "sinIn"
 
   /** Fast start, smoothly decelerating following a sinusoidal curve. */
-  | 'sinOut'
+  | "sinOut"
 
   /** Smooth sinusoidal acceleration and deceleration. */
-  | 'sinInOut';
+  | "sinInOut";
 
 /** Easing function controls for acceleration, deceleration, or custom cubic bezier curves. */
 type EasingConfig =
@@ -55,7 +55,7 @@ type EasingConfig =
   /** Custom motion curve defined by four cubic-bezier control points `[x1, y1, x2, y2]`. */
   | {
       /** Specifies custom cubic-bezier timing. */
-      type: 'bezier';
+      type: "bezier";
       /** Four control points defining the curve trajectory `[x1, y1, x2, y2]`. */
       curve: [number, number, number, number];
     };
@@ -64,7 +64,7 @@ type TimingTransition = {
   /**
    * timing animation transition
    */
-  type: 'timing';
+  type: "timing";
   /**
    * easing function controls for acceleration, deceleration, or custom cubic bezier curves.
    */

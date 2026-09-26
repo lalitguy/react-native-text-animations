@@ -4,10 +4,10 @@ import {
   useAnimatedStyle,
   type SharedValue,
   type TransformArrayItem,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
-import type { TextStyle } from 'react-native';
-import type { GroupedTracksConfig } from '../types';
+import type { TextStyle } from "react-native";
+import type { GroupedTracksConfig } from "../types";
 
 type useTracksAnimationProps = {
   progress: SharedValue<number>;

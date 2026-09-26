@@ -1,7 +1,7 @@
-import AnimatedText from 'react-native-text-animations';
-import Container from './components/Container';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { StyleSheet } from 'react-native';
+import AnimatedText from "react-native-text-animations";
+import Container from "./components/Container";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StyleSheet } from "react-native";
 
 const App = () => {
   return (
@@ -11,12 +11,12 @@ const App = () => {
           text="1234567890"
           textStyle={style.text}
           transition={{
-            type: 'spring',
+            type: "spring",
             dampingRatio: 0.7,
           }}
-          preset={'cascade'}
+          preset={"cascade"}
           stagger={{
-            by: 'character',
+            by: "character",
             gap: 45,
           }}
           repeat={-1}
@@ -30,7 +30,7 @@ const App = () => {
 const style = StyleSheet.create({
   text: {
     fontSize: 40,
-    fontWeight: '700',
+    fontWeight: "700",
     opacity: 1,
   },
 });

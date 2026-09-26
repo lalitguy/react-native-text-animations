@@ -1,12 +1,12 @@
-import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
-import type { AnimationConfig, Preset } from './animations';
-import type { Transition } from './transition';
+import type { StyleProp, TextStyle, ViewStyle } from "react-native";
+import type { AnimationConfig, Preset } from "./animations";
+import type { Transition } from "./transition";
 
 type StaggerType = {
   /**
    * stagger text split based on character or word or no stagger
    */
-  by?: 'character' | 'word' | 'none';
+  by?: "character" | "word" | "none";
   /**
    * gap between each stagger
    * @default 100
@@ -15,7 +15,7 @@ type StaggerType = {
   /**
    * stagger from start , center or end
    */
-  from?: 'start' | 'center' | 'end';
+  from?: "start" | "center" | "end";
 };
 
 type CommonAnimatedTextProps = {

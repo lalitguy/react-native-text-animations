@@ -1,24 +1,24 @@
-import { memo, useMemo } from 'react';
-import { StyleSheet } from 'react-native';
-import Animated from 'react-native-reanimated';
-import type { AnimatedTextProps } from '../types';
-import { groupTracks } from '../utils';
-import AnimatedLetter from './AnimatedLetter';
-import { defaultConfigs, PRESETS } from '../constant';
+import { memo, useMemo } from "react";
+import { StyleSheet } from "react-native";
+import Animated from "react-native-reanimated";
+import type { AnimatedTextProps } from "../types";
+import { groupTracks } from "../utils";
+import AnimatedLetter from "./AnimatedLetter";
+import { defaultConfigs, PRESETS } from "../constant";
 
 const AnimatedText = (props: AnimatedTextProps) => {
   const {
     text,
     wrapperStyle,
-    stagger = { by: 'character', from: 'start' },
+    stagger = { by: "character", from: "start" },
     preset,
     animation,
     ...rest
   } = props;
 
   const animateArray = useMemo(() => {
-    if (stagger.by === 'none') return [text];
-    return stagger.by === 'character' ? text.split('') : text.split(/(?<=\s)/);
+    if (stagger.by === "none") return [text];
+    return stagger.by === "character" ? text.split("") : text.split(/(?<=\s)/);
   }, [stagger.by, text]);
 
   const resolvedAnimation = useMemo(() => {
@@ -38,7 +38,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
   return (
     <Animated.View style={[styles.textWrap, wrapperStyle]}>
       {animateArray.map((char, idx) => {
-        const key = `animate-${stagger.by}-${text}-${preset ?? 'custom'}-${idx}`;
+        const key = `animate-${stagger.by}-${text}-${preset ?? "custom"}-${idx}`;
         return (
           <AnimatedLetter
             key={key}
@@ -58,8 +58,8 @@ const AnimatedText = (props: AnimatedTextProps) => {
 
 const styles = StyleSheet.create({
   textWrap: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
 });
 
