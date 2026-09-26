@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 import type { AnimatedTextProps } from '../types';
 import { groupTracks } from '../utils';
 import AnimatedLetter from './AnimatedLetter';
-import { PRESETS } from '../constant';
+import { defaultConfigs, PRESETS } from '../constant';
 
 const AnimatedText = (props: AnimatedTextProps) => {
   const {
@@ -23,7 +23,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
 
   const resolvedAnimation = useMemo(() => {
     const animationConfig = !animation
-      ? PRESETS[preset as keyof typeof PRESETS] || PRESETS.float
+      ? PRESETS[preset as keyof typeof PRESETS] || defaultConfigs.defaultPreset
       : animation;
 
     return animationConfig;

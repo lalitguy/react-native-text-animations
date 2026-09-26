@@ -91,4 +91,4 @@ interface CustomMode extends CommonAnimatedTextProps {
  */
 type AnimatedTextProps = PresetMode | CustomMode;
 
-export type { AnimatedTextProps, StaggerType };
+export type { AnimatedTextProps, StaggerType, PresetMode, CustomMode };
