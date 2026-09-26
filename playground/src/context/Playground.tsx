@@ -5,7 +5,6 @@ import {
   useMemo,
   useReducer,
 } from 'react';
-import initalPlayGround from '../constants/playground';
 import type {
   ConfigHandler,
   ProviderContext,
@@ -15,6 +14,7 @@ import type {
   Preset,
 } from '../types';
 import { playgroundReducer } from '../utils';
+import { initalPlayGround } from '../constants';
 
 const PlaygroudContext = createContext<ProviderContext | undefined>(undefined);
 

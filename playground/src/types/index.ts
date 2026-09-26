@@ -1,2 +1,2 @@
-export * from '../../../src/v2/types/index';
+export * from '@/library/types';
 export * from './provider';

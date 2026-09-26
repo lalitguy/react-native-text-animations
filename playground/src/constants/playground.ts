@@ -1,5 +1,5 @@
-import { defaultConfigs } from '../constants';
 import type { PlaygroundAnimatedText } from '../types';
+import { defaultConfigs } from '.';
 
 const initalPlayGround: PlaygroundAnimatedText = {
   text: 'Hello, World!',
@@ -15,4 +15,4 @@ const initalPlayGround: PlaygroundAnimatedText = {
   },
 };
 
-export default initalPlayGround;
+export { initalPlayGround };

@@ -2,8 +2,8 @@ import type {
   NumbericTrackPlayground,
   ColorTrackPlayground,
   PlaygroundAnimatedText,
+  PlaygroundActions,
 } from '../types';
-import type { PlaygroundActions } from '../types/provider';
 
 const playgroundReducer = (
   state: PlaygroundAnimatedText,

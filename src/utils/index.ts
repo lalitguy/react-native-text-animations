@@ -1,30 +1,88 @@
-import type { BounceType } from '../types/animations';
+import { Easing, withSpring, withTiming } from 'react-native-reanimated';
+import { defaultConfigs, easingMap } from '../constant';
+import type {
+  ColorTrackConfig,
+  GroupedTracksConfig,
+  NumericTrackConfig,
+  StaggerType,
+  TrackConfig,
+  Transition,
+} from '../types';
 
-export const getSpringConfig = (bounceFactor: number) => {
-  // Clamp bounceFactor to avoid unrealistic behavior
-  const b = Math.max(0, Math.min(bounceFactor, 1.5));
-
-  // Use easing-like scaling for smoother feel
-  const stiffness = 120 + Math.pow(b, 1.4) * 280; // 120–400
-  const damping = 22 - Math.pow(b, 0.9) * 10; // 22–12
-  const mass = 1;
-  const velocity = 0;
-
-  return { stiffness, damping, mass, velocity };
+const resolveDelay = (
+  index: number,
+  stagger: StaggerType,
+  textLength: number
+) => {
+  const gap = stagger.gap ?? defaultConfigs.staggerGap;
+  switch (stagger.from) {
+    case 'center':
+      const centralIndex = (textLength - 1) / 2;
+      const diff = Math.abs(index - centralIndex);
+      return diff <= 0.5 ? 0 : diff * gap;
+    case 'end':
+      return (textLength - 1 - index) * gap;
+    case 'start':
+    default:
+      return gap * index;
+  }
 };
 
-export const resolveBounce = (bounce?: BounceType) => {
-  // Default neutral bounce
-  const defaultBounce = 1;
+const groupTracks = (tracks: TrackConfig[]): GroupedTracksConfig => {
+  const colorTracks: ColorTrackConfig[] = [];
+  const opacityTracks: NumericTrackConfig[] = [];
+  const transformTracks: NumericTrackConfig[] = [];
+  const rotateTracks: NumericTrackConfig[] = [];
 
-  // Case 1: user passed a single number → use for both axes
-  if (typeof bounce === 'number') {
-    return { x: bounce, y: bounce };
-  }
+  tracks.forEach((track) => {
+    const { property } = track;
 
-  // Case 2: user passed an object → merge defaults
+    switch (property) {
+      case 'color':
+        colorTracks.push(track);
+        break;
+      case 'opacity':
+        opacityTracks.push(track);
+        break;
+      case 'scale':
+      case 'scaleX':
+      case 'scaleY':
+      case 'translateX':
+      case 'translateY':
+        transformTracks.push(track);
+        break;
+      case 'rotateX':
+      case 'rotateY':
+      case 'rotateZ':
+        rotateTracks.push(track);
+        break;
+    }
+  });
+
   return {
-    x: bounce?.x ?? defaultBounce,
-    y: bounce?.y ?? defaultBounce,
+    colorTracks,
+    opacityTracks,
+    transformTracks,
+    rotateTracks,
   };
 };
+
+const resolveTransition = (duration: number, transition: Transition) => {
+  if (transition.type === 'timing') {
+    if (typeof transition.easing === 'string') {
+      return withTiming(1, {
+        duration,
+        easing: easingMap[transition.easing] ?? easingMap.easeInOut,
+      });
+    }
+    const [x1, y1, x2, y2] = transition.easing.curve;
+    return withTiming(1, { duration, easing: Easing.bezier(x1, y1, x2, y2) });
+  }
+
+  if (transition.type === 'spring') {
+    return withSpring(1, { duration, dampingRatio: transition.dampingRatio });
+  }
+  return withTiming(1, { duration, easing: easingMap.easeInOut });
+};
+
+export { resolveDelay, resolveTransition, groupTracks };

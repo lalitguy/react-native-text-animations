@@ -1,118 +1,166 @@
-import type {
-  AnimatedTextProps,
-  AnimationOffsets,
-  AnimationTiming,
-  BaseAnimationHookProps,
-} from '.';
+/**
+ * Ready-to-use entrance and exit animation presets.
+ */
+type Preset =
+  /** Smoothly fades the text from transparent to fully visible. */
+  | 'fade'
 
-// Fade Animation Types
-interface FadeAnimations {
-  fromOpacity?: number;
-  toOpacity?: number;
+  /** Fades the text in while moving upward into its final position. */
+  | 'fade-up'
+
+  /** Fades the text in while moving downward into its final position. */
+  | 'fade-down'
+
+  /** Fades the text in while moving from the left into its final position. */
+  | 'fade-left'
+
+  /** Fades the text in while moving from the right into its final position. */
+  | 'fade-right'
+
+  /** Pops the text into view with a quick scale-up and subtle overshoot. */
+  | 'pop'
+
+  /** Bounces the text into place with a playful vertical motion. */
+  | 'bounce'
+
+  /** Moves each character in a flowing wave-like motion. */
+  | 'wave'
+
+  /** Reveals characters sequentially in a cascading staggered motion. */
+  | 'cascade'
+
+  /** Reveals the text progressively with a smooth entrance motion. */
+  | 'reveal'
+
+  /** Rotates each character into view with a 3D flip effect. */
+  | 'flip'
+
+  /** Swings each character into place with a rotational motion. */
+  | 'swing'
+
+  /** Distorts the text with an elastic, jelly-like scale effect. */
+  | 'jelly'
+
+  /** Applies a quick back-and-forth motion to create a shaking effect. */
+  | 'shake'
+
+  /** Gives the text a gentle, floating vertical motion. */
+  | 'float'
+
+  /** Shifts through bright colors to create a sparkling glitter-like effect. */
+  | 'glitter'
+
+  /** Animates the text color with a soft luminous glow effect. */
+  | 'glow';
+
+/**
+ * Defines the property of the element to be animated.
+ */
+type AnimationProperty =
+  /**
+   * Opacity animation.
+   */
+  | 'opacity'
+  /**
+   * X-axis translation animation.
+   */
+  | 'translateX'
+  /**
+   * Y-axis translation animation.
+   */
+  | 'translateY'
+  /**
+   * Scale animation.
+   */
+  | 'scale'
+  /**
+   * X Scale animation.
+   */
+  | 'scaleX'
+  /**
+   * Y Scale animation.
+   */
+  | 'scaleY'
+  /**
+   * X-axis rotation animation.
+   */
+  | 'rotateX'
+  /**
+   * Y-axis rotation animation.
+   */
+  | 'rotateY'
+  /**
+   * Z-axis rotation animation.
+   */
+  | 'rotateZ';
+
+/**
+ * Color of the text
+ */
+type ColorAnimationConfig = 'color';
+
+type CommonTrackConfig = {
+  /**
+   * Progress points within the animation timeline.
+   * Each value should be between 0 and 1.
+   * These points will be used to interpolate the output values.
+   * @example
+   * [0, 0.5, 1]
+   */
+  inputRange: number[];
+};
+
+interface NumericTrackConfig extends CommonTrackConfig {
+  /**
+   * The property of the element to animate.
+   */
+  property: AnimationProperty;
+
+  /**
+   * Values produced at each corresponding progress point.
+   * @example
+   * [0.2, 1, 0]
+   */
+  outputRange: number[];
 }
 
-interface FadeHookProps extends BaseAnimationHookProps, FadeAnimations {}
+interface ColorTrackConfig extends CommonTrackConfig {
+  /**
+   * The property of the element to animate.
+   */
+  property: ColorAnimationConfig;
 
-interface FadeTextProps
-  extends
-    Omit<AnimatedTextProps<FadeHookProps>, 'useAnimation'>,
-    FadeAnimations {}
-
-// Rotate Animation Types
-interface RotateAnimations {
-  initialOpacity?: number;
-  rotateXStart?: number;
-  rotateXEnd?: number;
-  rotateYStart?: number;
-  rotateYEnd?: number;
-  rotateZStart?: number;
-  rotateZEnd?: number;
+  /**
+   * Values produced at each corresponding progress point.
+   * @example
+   * ['#ff0000', '#0000ff']
+   */
+  outputRange: string[];
 }
 
-interface RotateHookProps extends BaseAnimationHookProps, RotateAnimations {}
+type TrackConfig = NumericTrackConfig | ColorTrackConfig;
 
-interface RotateTextProps
-  extends
-    Omit<AnimatedTextProps<RotateHookProps>, 'useAnimation'>,
-    RotateAnimations {}
+/** Custom animation with granular control over tracks and repetition. */
+type AnimationConfig = {
+  /**
+   * Array of tracks to animate.
+   */
+  tracks: TrackConfig[];
+};
 
-//Bounce Animation Types
-
-type BounceType = number | { x?: number; y?: number };
-
-interface SpringAnimations {
-  scaleFrom?: number;
-  scaleTo?: number;
-  initialOpacity?: number;
-  bounce?: BounceType;
-}
-
-interface SpringHookProps extends BaseAnimationHookProps, SpringAnimations {}
-
-interface SpringTextProps
-  extends
-    Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
-    SpringAnimations {}
-
-// Wave Animation Types
-interface WaveAnimations {
-  amplitude?: number;
-  initialOpacity?: number;
-  infinite?: boolean;
-}
-
-interface WaveHookProps extends WaveAnimations, AnimationTiming {
-  index: number;
-}
-
-interface WaveTextProps
-  extends
-    Omit<AnimatedTextProps<WaveHookProps>, 'useAnimation'>,
-    WaveAnimations {}
-// Common AnimatedText Config Types
-
-interface AnimatedTextConfig extends AnimationTiming, AnimationOffsets {
-  fromOpacity?: number;
-  toOpacity?: number;
-  rotateFrom?: {
-    x?: number;
-    y?: number;
-    z?: number;
-  };
-  rotateTo?: {
-    x?: number;
-    y?: number;
-    z?: number;
-  };
-  scaleFrom?: number;
-  scaleTo?: number;
-  bounce?: BounceType;
-}
-
-interface TextAnimations {
-  config?: AnimatedTextConfig;
-}
-
-interface AnimatedTextHookProps extends TextAnimations {
-  index: number;
-}
-
-interface AnimatedTextConfigProps
-  extends
-    Omit<AnimatedTextProps<SpringHookProps>, 'useAnimation'>,
-    TextAnimations {}
+type GroupedTracksConfig = {
+  colorTracks: ColorTrackConfig[];
+  opacityTracks: NumericTrackConfig[];
+  transformTracks: NumericTrackConfig[];
+  rotateTracks: NumericTrackConfig[];
+};
 
 export type {
-  AnimatedTextConfig,
-  AnimatedTextConfigProps,
-  AnimatedTextHookProps,
-  BounceType,
-  FadeHookProps,
-  FadeTextProps,
-  RotateHookProps,
-  RotateTextProps,
-  SpringHookProps,
-  SpringTextProps,
-  WaveHookProps,
-  WaveTextProps,
+  AnimationConfig,
+  AnimationProperty,
+  GroupedTracksConfig,
+  Preset,
+  TrackConfig,
+  ColorTrackConfig,
+  NumericTrackConfig,
 };

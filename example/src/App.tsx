@@ -1,4 +1,4 @@
-import { AnimateText } from 'react-native-text-animations';
+import AnimatedText from 'react-native-text-animations';
 import Container from './components/Container';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native';
@@ -7,7 +7,7 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <Container>
-        <AnimateText
+        <AnimatedText
           text="1234567890"
           textStyle={style.text}
           transition={{
