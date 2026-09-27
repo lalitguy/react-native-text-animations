@@ -3,25 +3,25 @@ import type {
   ColorTrackPlayground,
   PlaygroundAnimatedText,
   PlaygroundActions,
-} from '../types';
+} from "../types";
 
 const playgroundReducer = (
   state: PlaygroundAnimatedText,
   action: PlaygroundActions
 ): PlaygroundAnimatedText => {
   switch (action.type) {
-    case 'updateConfig':
+    case "updateConfig":
       return {
         ...state,
         ...action.payload,
       };
-    case 'preset':
+    case "preset":
       return {
         ...state,
         preset: action.payload,
         animation: undefined as never,
       };
-    case 'add-track':
+    case "add-track":
       return {
         ...state,
         preset: undefined as never,
@@ -29,7 +29,7 @@ const playgroundReducer = (
           tracks: [...(state.animation?.tracks ?? []), action.payload],
         },
       };
-    case 'update-track':
+    case "update-track":
       const tracks = state.animation?.tracks.length
         ? state.animation.tracks.map((track) => {
             if (track.id === action.payload.id) {
@@ -48,7 +48,7 @@ const playgroundReducer = (
           tracks,
         },
       };
-    case 'remove-track': {
+    case "remove-track": {
       const finalTracks = state.animation?.tracks.length
         ? state.animation?.tracks.filter(
             (track) => track.id !== action.payload.id
