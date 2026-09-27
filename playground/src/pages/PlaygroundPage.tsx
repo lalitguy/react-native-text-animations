@@ -1,19 +1,12 @@
-import { View, Text, StyleSheet } from "react-native";
-import { theme } from "../constants";
+import { View } from "react-native";
+import Header from "../components/Header";
 
 const PlaygroundPage = () => {
   return (
-    <View style={styles.container}>
-      <Text>PlaygroundPage</Text>
+    <View className="flex-1 bg-primary">
+      <Header />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: theme.primary,
-  },
-});
 
 export default PlaygroundPage;

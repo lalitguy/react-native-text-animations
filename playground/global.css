@@ -1,2 +1,12 @@
 @import "tailwindcss";
 @import "uniwind";
+
+@theme {
+  --color-marine: hsl(208.57, 98.13%, 20.98%);
+  --color-primary: #f7fdff;
+
+  /* Font families */
+  --font-hanken: "HankenGrotesk-Regular";
+  --font-hanken-medium: "HankenGrotesk-Medium";
+  --font-hanken-bold: "HankenGrotesk-Bold";
+}

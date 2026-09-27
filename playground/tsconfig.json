@@ -4,7 +4,6 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
       "@/library/*": ["../src/*"]
     }
   }

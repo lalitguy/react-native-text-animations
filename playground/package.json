@@ -4,6 +4,7 @@
   "main": "index.ts",
   "dependencies": {
     "expo": "~57.0.24",
+    "expo-font": "~57.0.4",
     "expo-status-bar": "~57.0.1",
     "prettier": "^3.9.8",
     "react": "19.2.3",
