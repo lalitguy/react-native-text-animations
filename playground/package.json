@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
+    "@expo/ui": "~57.0.20",
     "expo": "~57.0.24",
     "expo-font": "~57.0.4",
     "expo-status-bar": "~57.0.1",

@@ -1,8 +1,8 @@
 import type {
-  NumbericTrackPlayground,
   ColorTrackPlayground,
-  PlaygroundAnimatedText,
+  NumbericTrackPlayground,
   PlaygroundActions,
+  PlaygroundAnimatedText,
 } from "../types";
 
 const playgroundReducer = (
@@ -59,6 +59,15 @@ const playgroundReducer = (
         preset: undefined as never,
         animation: {
           tracks: finalTracks,
+        },
+      };
+    }
+    case "stagger": {
+      return {
+        ...state,
+        stagger: {
+          ...state.stagger,
+          [action.payload.key]: action.payload.value,
         },
       };
     }

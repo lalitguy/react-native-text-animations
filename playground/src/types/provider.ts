@@ -5,6 +5,7 @@ import type {
   NumericTrackConfig,
   Preset,
   PresetMode,
+  StaggerType,
 } from ".";
 
 interface NumbericTrackPlayground extends NumericTrackConfig {
@@ -54,6 +55,13 @@ type PlaygroundActions =
         /* id to be removed*/
         id: string;
       };
+    }
+  | {
+      type: "stagger";
+      payload: {
+        key: keyof StaggerType;
+        value: StaggerType[keyof StaggerType];
+      };
     };
 
 type ConfigHandler = <T extends keyof AnimationConfigType>(
@@ -72,6 +80,11 @@ type UpdateTracks = (
 
 type RemoveTracks = (id: string) => void;
 
+type StaggerHandler = <K extends keyof StaggerType>(
+  key: K,
+  value: StaggerType[K]
+) => void;
+
 type AddPresetHandler = (payload: Preset) => void;
 
 type ProviderContext = {
@@ -80,6 +93,7 @@ type ProviderContext = {
   addTracks: AddTracks;
   removeTracks: RemoveTracks;
   updateTracks: UpdateTracks;
+  updateStagger: StaggerHandler;
   state: AnimatedTextProps;
 };
 
@@ -94,5 +108,6 @@ export type {
   PlaygroundAnimatedText,
   ProviderContext,
   RemoveTracks,
+  StaggerHandler,
   UpdateTracks,
 };

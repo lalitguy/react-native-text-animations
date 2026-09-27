@@ -3,7 +3,8 @@
     "rootDir": ".",
     "paths": {
       "react-native-text-animations": ["./src/index"],
-      "@/library/*": ["./src/*"]
+      "@/library/*": ["./src/*"],
+      "@/playground/*": ["./playground/src/*"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

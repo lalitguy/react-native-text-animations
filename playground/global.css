@@ -4,7 +4,8 @@
 @theme {
   --color-marine: hsl(208.57, 98.13%, 20.98%);
   --color-primary: #f7fdff;
-
+  --color-accent: #a7e6fc;
+  --color-field: #f0f0f0;
   /* Font families */
   --font-hanken: "HankenGrotesk-Regular";
   --font-hanken-medium: "HankenGrotesk-Medium";

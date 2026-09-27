@@ -5,16 +5,17 @@ import {
   useMemo,
   useReducer,
 } from "react";
+import { initalPlayGround } from "../constants";
 import type {
-  ConfigHandler,
-  ProviderContext,
   AddTracks,
-  RemoveTracks,
-  UpdateTracks,
+  ConfigHandler,
   Preset,
+  ProviderContext,
+  RemoveTracks,
+  StaggerHandler,
+  UpdateTracks,
 } from "../types";
 import { playgroundReducer } from "../utils";
-import { initalPlayGround } from "../constants";
 
 const PlaygroudContext = createContext<ProviderContext | undefined>(undefined);
 
@@ -56,6 +57,13 @@ export const Playgroud = ({ children }: { children: React.ReactNode }) => {
     });
   }, []);
 
+  const updateStagger: StaggerHandler = useCallback((key, value) => {
+    dispatch({
+      type: "stagger",
+      payload: { key, value },
+    });
+  }, []);
+
   const value: ProviderContext = useMemo(
     () => ({
       handleConfig,
@@ -63,9 +71,18 @@ export const Playgroud = ({ children }: { children: React.ReactNode }) => {
       removeTracks,
       updateTracks,
       addPreset,
+      updateStagger,
       state,
     }),
-    [handleConfig, addTracks, removeTracks, updateTracks, addPreset, state]
+    [
+      handleConfig,
+      addTracks,
+      removeTracks,
+      updateTracks,
+      addPreset,
+      updateStagger,
+      state,
+    ]
   );
 
   return (
