@@ -24,7 +24,7 @@ const Dropdown = <T extends string>({
       <View className="bg-field px-3 py-2 rounded-lg">
         <select
           value={selectedValue}
-          onChange={(e) => onValueChange(e.target.value as T)}
+          onChange={(e) => onValueChange(e.currentTarget.value as T)}
           className="font-hanken text-base focus-within:outline-none focus-visible:border-none px-0! py-0!"
         >
           {options.map((option) => (

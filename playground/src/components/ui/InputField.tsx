@@ -28,7 +28,7 @@ const InputField = ({
           type="text"
           value={value}
           className={`${className} font-hanken text-base focus-within:outline-none focus-visible:border-none px-0! py-0!`}
-          onChange={(e) => onChangeText?.(e.target.value)}
+          onChange={(e) => onChangeText?.(e.currentTarget.value)}
           {...rest}
         />
         {subtext && (

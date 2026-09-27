@@ -23,7 +23,7 @@
     "example": "yarn workspace react-native-text-animations-example",
     "test": "jest",
     "typecheck": "tsc",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint \"**/*.{js,ts,tsx}\" --no-warn-ignored",
     "clean": "del-cli lib",
     "prepare": "bob build",
     "build": "bob build",
