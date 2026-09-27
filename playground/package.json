@@ -10,6 +10,7 @@
     "prettier": "^3.9.8",
     "react": "19.2.3",
     "react-native": "0.86.3",
+    "react-native-text-animations": "workspace:*",
     "tailwindcss": "^4.3.3",
     "uniwind": "^1.12.0"
   },

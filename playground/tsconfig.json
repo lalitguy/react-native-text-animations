@@ -1,9 +1,9 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "../tsconfig",
   "compilerOptions": {
-    "strict": true,
     "baseUrl": ".",
     "paths": {
+      "react-native-text-animations": ["../src/index.tsx"],
       "@/playground/*": ["./src/*"],
       "@/library/*": ["../src/*"]
     }

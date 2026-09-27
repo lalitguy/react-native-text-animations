@@ -2,10 +2,7 @@ import type { PlaygroundAnimatedText } from "../types";
 import { defaultConfigs } from ".";
 
 const initalPlayGround: PlaygroundAnimatedText = {
-  text: "Hello, World!",
-  textStyle: {
-    fontSize: 20,
-  },
+  text: "Sparkles✨",
   duration: defaultConfigs.unitDuration,
   preset: defaultConfigs.defaultPreset,
   stagger: {

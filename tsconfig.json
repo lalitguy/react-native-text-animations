@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-text-animations": ["./src/index"],
+      "react-native-text-animations": ["./src/index.tsx"],
       "@/library/*": ["./src/*"],
       "@/playground/*": ["./playground/src/*"]
     },

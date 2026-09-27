@@ -34,7 +34,7 @@ const StaggerControls = () => {
   } = state;
 
   return (
-    <View className="p-2 flex-row gap-8">
+    <View className="py-2 flex-row gap-8">
       <Dropdown
         label="Stagger By:"
         options={staggerByOptions}
