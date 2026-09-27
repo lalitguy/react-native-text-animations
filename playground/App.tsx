@@ -8,6 +8,8 @@ export default function App() {
     "HankenGrotesk-Regular": require("./assets/fonts/HankenGrotesk-Regular.ttf"),
     "HankenGrotesk-Medium": require("./assets/fonts/HankenGrotesk-Medium.ttf"),
     "HankenGrotesk-Bold": require("./assets/fonts/HankenGrotesk-Bold.ttf"),
+    "HankenGrotesk-Italic": require("./assets/fonts/HankenGrotesk-Italic.ttf"),
+    "HankenGrotesk-SemiBold": require("./assets/fonts/HankenGrotesk-SemiBold.ttf"),
   });
 
   if (!fontsLoaded) {

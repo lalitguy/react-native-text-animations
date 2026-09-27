@@ -1,5 +1,7 @@
-import { Picker } from "@expo/ui/community/picker";
-import { StyleSheet, Text, View } from "react-native";
+"use dom";
+
+import { View } from "react-native";
+import BaseText from "./BaseText";
 
 type DropdownProps<T extends string> = {
   options: readonly { label: string; value: T }[];
@@ -18,30 +20,22 @@ const Dropdown = <T extends string>({
 }: DropdownProps<T>) => {
   return (
     <View className={className}>
-      {label && <Text className="font-hanken-bold">{label}</Text>}
+      {label && <BaseText className="font-hanken-semibold ">{label}</BaseText>}
       <View className="bg-field px-3 py-2 rounded-lg">
-        <Picker
-          style={styles.picker}
-          selectedValue={selectedValue}
-          onValueChange={onValueChange}
+        <select
+          value={selectedValue}
+          onChange={(e) => onValueChange(e.target.value as T)}
+          className="font-hanken text-base focus-within:outline-none focus-visible:border-none px-0! py-0!"
         >
           {options.map((option) => (
-            <Picker.Item
-              key={option.value}
-              label={option.label}
-              value={option.value}
-            />
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
           ))}
-        </Picker>
+        </select>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  picker: {
-    paddingHorizontal: 12,
-  },
-});
 
 export default Dropdown;

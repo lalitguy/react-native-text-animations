@@ -54,10 +54,9 @@ const StaggerControls = () => {
         value={stagger.gap?.toString()}
         onChangeText={(v) => updateStagger("gap", v ? Number(v) : 0)}
         wrapperClassName="flex-row items-center gap-4"
-        numberOfLines={1}
-        keyboardType="numeric"
-        inputMode="numeric"
-        className="w-24 focus-within:outline-none focus-visible:border-none px-0!"
+        type="number"
+        className="w-14"
+        subtext={"ms"}
       />
     </View>
   );

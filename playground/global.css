@@ -1,13 +1,27 @@
 @import "tailwindcss";
 @import "uniwind";
 
+html,
+body,
+select,
+option,
+input,
+textarea,
+button {
+  font-family: "HankenGrotesk-Regular", sans-serif !important;
+}
+
 @theme {
   --color-marine: hsl(208.57, 98.13%, 20.98%);
   --color-primary: #f7fdff;
   --color-accent: #a7e6fc;
   --color-field: #f0f0f0;
+  --color-hover: #d6d6d6;
+
   /* Font families */
   --font-hanken: "HankenGrotesk-Regular";
   --font-hanken-medium: "HankenGrotesk-Medium";
   --font-hanken-bold: "HankenGrotesk-Bold";
+  --font-hanken-italic: "HankenGrotesk-Italic";
+  --font-hanken-semibold: "HankenGrotesk-SemiBold";
 }
