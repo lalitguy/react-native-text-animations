@@ -19,7 +19,7 @@ const Preview = () => {
   );
 
   return (
-    <View className="w-1/4 justify-center items-center">
+    <View className="flex-1 justify-center items-center">
       <AnimatedText {...rest} textStyle={resolvedStyles} />
     </View>
   );

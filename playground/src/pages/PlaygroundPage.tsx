@@ -4,6 +4,7 @@ import StaggerControls from "../components/StaggerControls";
 import AnimationTextInput from "../components/AnimationTextInput";
 import TrackControls from "../components/TrackControls";
 import Preview from "../components/Preview";
+import CodePreview from "../components/CodePreview";
 
 const PlaygroundPage = () => {
   return (
@@ -15,7 +16,10 @@ const PlaygroundPage = () => {
       </View>
       <View className="flex-1 flex-row justify-between">
         <TrackControls />
-        <Preview />
+        <View className="flex-1 flex-row justify-between">
+          <Preview />
+          <CodePreview />
+        </View>
       </View>
     </View>
   );

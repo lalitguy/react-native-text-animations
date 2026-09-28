@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 
 const TrackControls = () => {
   return (
-    <View>
+    <View className="w-1/3">
       <Text>TrackControls</Text>
     </View>
   );
