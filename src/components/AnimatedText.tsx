@@ -1,10 +1,10 @@
 import { memo, useMemo } from "react";
 import { StyleSheet } from "react-native";
 import Animated from "react-native-reanimated";
+import { defaultConfigs, PRESETS } from "../constant";
 import type { AnimatedTextProps } from "../types";
 import { groupTracks } from "../utils";
 import AnimatedLetter from "./AnimatedLetter";
-import { defaultConfigs, PRESETS } from "../constant";
 
 const AnimatedText = (props: AnimatedTextProps) => {
   const {
@@ -38,7 +38,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
   return (
     <Animated.View style={[styles.textWrap, wrapperStyle]}>
       {animateArray.map((char, idx) => {
-        const key = `animate-${stagger.by}-${text}-${preset ?? "custom"}-${idx}`;
+        const key = `animate-${preset ?? "custom"}-${idx}`;
         return (
           <AnimatedLetter
             key={key}

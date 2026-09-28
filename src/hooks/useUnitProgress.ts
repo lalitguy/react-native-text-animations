@@ -29,6 +29,7 @@ const useUnitProgress = ({
   const unitDelay = resolveDelay(index, stagger, textLength) + delay;
 
   useEffect(() => {
+    progress.value = 0;
     progress.value = withDelay(
       unitDelay,
       withRepeat(resolveTransition(duration, transition), repeat, reverse)
