@@ -5,6 +5,7 @@ import AnimationTextInput from "../components/AnimationTextInput";
 import TrackControls from "../components/TrackControls";
 import Preview from "../components/Preview";
 import CodePreview from "../components/CodePreview";
+import PresetsPanel from "../components/PresetsPanel";
 
 const PlaygroundPage = () => {
   return (
@@ -21,6 +22,7 @@ const PlaygroundPage = () => {
           <CodePreview />
         </View>
       </View>
+      <PresetsPanel />
     </View>
   );
 };

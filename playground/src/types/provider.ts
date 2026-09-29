@@ -1,5 +1,4 @@
 import type {
-  AnimatedTextProps,
   ColorTrackConfig,
   CustomMode,
   NumericTrackConfig,
@@ -25,14 +24,14 @@ interface CustomModePlayground extends Omit<CustomMode, "animation"> {
 type PlaygroundAnimatedText = CustomModePlayground | PresetMode;
 
 interface AnimationConfigType extends Omit<
-  AnimatedTextProps,
+  PlaygroundAnimatedText,
   "preset" | "animation"
 > {}
 
 type PlaygroundActions =
   | {
       type: "preset";
-      payload: AnimatedTextProps["preset"];
+      payload: PlaygroundAnimatedText["preset"];
     }
   | {
       type: "updateConfig";
@@ -94,7 +93,7 @@ type ProviderContext = {
   removeTracks: RemoveTracks;
   updateTracks: UpdateTracks;
   updateStagger: StaggerHandler;
-  state: AnimatedTextProps;
+  state: PlaygroundAnimatedText;
 };
 
 export type {

@@ -1,32 +1,19 @@
-import { View, Text } from "react-native";
-import * as prettier from "prettier/standalone";
-import parserBabel from "prettier/plugins/babel";
-import * as prettierPluginEstree from "prettier/plugins/estree";
 import { useEffect, useState } from "react";
-
-async function formatCode(rawCode: string) {
-  return await prettier.format(rawCode, {
-    parser: "babel",
-    plugins: [parserBabel, prettierPluginEstree],
-    semi: true,
-    singleQuote: true,
-    printWidth: 80,
-  });
-}
-const raw = `
-const anim = new TextAnimator({target:"#hero",   effect:  "fade",
-duration:1200,   delay:  ${100},easing:"ease-out"});anim.play()
-`;
+import { Text, View } from "react-native";
+import { usePlayground } from "../context/Playground";
+import { getCodeBlock } from "../utils";
 
 const CodePreview = () => {
   const [code, setCode] = useState("");
+  const { state } = usePlayground();
+
   useEffect(() => {
     const format = async () => {
-      const pretty = await formatCode(raw);
-      setCode(pretty);
+      const formattedCode = await getCodeBlock(state);
+      setCode(formattedCode);
     };
     format();
-  }, []);
+  }, [state]);
 
   return (
     <View className="flex-1 justify-center items-center">
