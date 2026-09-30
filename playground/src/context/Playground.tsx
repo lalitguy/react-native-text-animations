@@ -7,13 +7,13 @@ import {
 } from "react";
 import { initalPlayGround } from "../constants";
 import type {
-  AddTracks,
+  AddTrack,
   ConfigHandler,
   Preset,
   ProviderContext,
-  RemoveTracks,
+  RemoveTrack,
   StaggerHandler,
-  UpdateTracks,
+  UpdateTrack,
 } from "../types";
 import { playgroundReducer } from "../utils";
 
@@ -36,21 +36,21 @@ export const Playgroud = ({ children }: { children: React.ReactNode }) => {
     });
   }, []);
 
-  const addTracks: AddTracks = useCallback((track) => {
+  const addTrack: AddTrack = useCallback((track) => {
     dispatch({
       type: "add-track",
       payload: track,
     });
   }, []);
 
-  const removeTracks: RemoveTracks = useCallback((id) => {
+  const removeTrack: RemoveTrack = useCallback((id) => {
     dispatch({
       type: "remove-track",
       payload: { id },
     });
   }, []);
 
-  const updateTracks: UpdateTracks = useCallback((id, track) => {
+  const updateTrack: UpdateTrack = useCallback((id, track) => {
     dispatch({
       type: "update-track",
       payload: { id, track },
@@ -67,18 +67,18 @@ export const Playgroud = ({ children }: { children: React.ReactNode }) => {
   const value: ProviderContext = useMemo(
     () => ({
       handleConfig,
-      addTracks,
-      removeTracks,
-      updateTracks,
+      addTrack,
+      removeTrack,
+      updateTrack,
       addPreset,
       updateStagger,
       state,
     }),
     [
       handleConfig,
-      addTracks,
-      removeTracks,
-      updateTracks,
+      addTrack,
+      removeTrack,
+      updateTrack,
       addPreset,
       updateStagger,
       state,

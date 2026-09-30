@@ -97,7 +97,7 @@ type AnimationProperty =
 /**
  * Color of the text
  */
-type ColorAnimationConfig = "color";
+type ColorAnimationProperty = "color";
 
 type CommonTrackConfig = {
   /**
@@ -128,7 +128,7 @@ interface ColorTrackConfig extends CommonTrackConfig {
   /**
    * The property of the element to animate.
    */
-  property: ColorAnimationConfig;
+  property: ColorAnimationProperty;
 
   /**
    * Values produced at each corresponding progress point.
@@ -163,4 +163,5 @@ export type {
   TrackConfig,
   ColorTrackConfig,
   NumericTrackConfig,
+  ColorAnimationProperty,
 };

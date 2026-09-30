@@ -68,16 +68,14 @@ type ConfigHandler = <T extends keyof AnimationConfigType>(
   value: AnimationConfigType[T]
 ) => void;
 
-type AddTracks = (
-  track: NumbericTrackPlayground | ColorTrackPlayground
-) => void;
+type AddTrack = (track: NumbericTrackPlayground | ColorTrackPlayground) => void;
 
-type UpdateTracks = (
+type UpdateTrack = (
   id: string,
   track: Partial<NumbericTrackPlayground> | Partial<ColorTrackPlayground>
 ) => void;
 
-type RemoveTracks = (id: string) => void;
+type RemoveTrack = (id: string) => void;
 
 type StaggerHandler = <K extends keyof StaggerType>(
   key: K,
@@ -89,16 +87,16 @@ type AddPresetHandler = (payload: Preset) => void;
 type ProviderContext = {
   handleConfig: ConfigHandler;
   addPreset: AddPresetHandler;
-  addTracks: AddTracks;
-  removeTracks: RemoveTracks;
-  updateTracks: UpdateTracks;
+  addTrack: AddTrack;
+  removeTrack: RemoveTrack;
+  updateTrack: UpdateTrack;
   updateStagger: StaggerHandler;
   state: PlaygroundAnimatedText;
 };
 
 export type {
   AddPresetHandler,
-  AddTracks,
+  AddTrack,
   AnimationConfigType,
   ColorTrackPlayground,
   ConfigHandler,
@@ -106,7 +104,7 @@ export type {
   PlaygroundActions,
   PlaygroundAnimatedText,
   ProviderContext,
-  RemoveTracks,
+  RemoveTrack,
   StaggerHandler,
-  UpdateTracks,
+  UpdateTrack,
 };

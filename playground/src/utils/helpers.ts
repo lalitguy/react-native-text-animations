@@ -38,7 +38,8 @@ const getCodeString = (state: PlaygroundAnimatedText) => {
   }
 
   if (state.animation?.tracks.length) {
-    props += addProps("animation", JSON.stringify(state.animation.tracks));
+    const tracks = state.animation.tracks.map(({ id: _, ...rest }) => rest);
+    props += addProps("animation", JSON.stringify({ tracks }), true);
   }
 
   if (state.reverse) {
@@ -79,4 +80,13 @@ async function getCodeBlock(state: PlaygroundAnimatedText) {
   return await formatCode(getCodeString(state));
 }
 
-export { getCodeBlock, getCodeString };
+const generateUniqueId = (): string => {
+  const timePart = Date.now().toString().slice(-8);
+  const randomPart = Math.floor(Math.random() * 10_000)
+    .toString()
+    .padStart(4, "0");
+
+  return timePart + randomPart;
+};
+
+export { getCodeBlock, getCodeString, generateUniqueId };
