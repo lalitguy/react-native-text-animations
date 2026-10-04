@@ -2,14 +2,21 @@ import type { AddTrack } from "@/playground/types";
 import { generateUniqueId } from "@/playground/utils";
 import { memo } from "react";
 import BaseButton from "../ui/BaseButton";
+import { useWindowDimensions } from "react-native";
+import { TABLET_MIN_WIDTH } from "@/playground/constants";
 
 type Props = {
   addTrack: AddTrack;
 };
-const TrackFooter = ({ addTrack }: Props) => {
+const TrackAddAction = ({ addTrack }: Props) => {
+  const { width } = useWindowDimensions();
+  const isMobile = width < TABLET_MIN_WIDTH;
+
   return (
     <BaseButton
       text="+ Add Track"
+      className={isMobile ? "bg-primary" : ""}
+      textClassName={isMobile ? "text-button font-hanken-bold" : ""}
       onClick={() =>
         addTrack({
           id: generateUniqueId(),
@@ -22,4 +29,4 @@ const TrackFooter = ({ addTrack }: Props) => {
   );
 };
 
-export default memo(TrackFooter);
+export default memo(TrackAddAction);

@@ -5,5 +5,6 @@ export { default as PresetsPanel } from "./PresetsPanel";
 export { default as Preview } from "./Preview";
 export { default as StaggerControls } from "./StaggerControls";
 export { default as TrackControls } from "./TrackControls";
+export { default as MobileActions } from "./MobileActions";
 export * from "./ui";
 export * from "./tracks";

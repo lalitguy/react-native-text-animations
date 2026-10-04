@@ -9,14 +9,14 @@ import AnimatedText from "react-native-text-animations";
 
 import { usePlayground } from "@/playground/context/Playground";
 import { useMemo } from "react";
-import { TABLET_MAX_WIDTH } from "../constants";
+import { TABLET_MIN_WIDTH } from "../constants";
 
 const Preview = () => {
   const {
     state: { textStyle, ...rest },
   } = usePlayground();
   const { width } = useWindowDimensions();
-  const isMobile = width <= TABLET_MAX_WIDTH;
+  const isMobile = width <= TABLET_MIN_WIDTH;
 
   const resolvedStyles = useMemo(
     () =>

@@ -7,9 +7,10 @@ interface Props {
   className?: string;
   text: string;
   onClick?: () => void;
+  textClassName?: string;
 }
 
-const BaseButton = ({ text, className, onClick, ...rest }: Props) => {
+const BaseButton = ({ text, className, onClick, textClassName }: Props) => {
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
@@ -22,10 +23,11 @@ const BaseButton = ({ text, className, onClick, ...rest }: Props) => {
     <button
       onClick={handleClick}
       type={"button"}
-      className={`cursor-pointer bg-button w-fit px-4 py-2 mb-4 rounded-lg border-border ${className}`}
-      {...rest}
+      className={`cursor-pointer bg-button w-fit px-4 py-2 rounded-lg border-border ${className}`}
     >
-      <BaseText className="text-action hanken-bold">{text}</BaseText>
+      <BaseText className={`text-action hanken-bold ${textClassName}`}>
+        {text}
+      </BaseText>
     </button>
   );
 };

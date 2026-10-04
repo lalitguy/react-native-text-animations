@@ -9,13 +9,15 @@ import {
   StaggerControls,
   CardSurface,
   TrackControls,
+  MobileActions,
 } from "../components";
-import { DESKTOP_MIN_WIDTH, TABLET_MAX_WIDTH } from "../constants";
+import { DESKTOP_MIN_WIDTH, TABLET_MIN_WIDTH } from "../constants";
 
 const PlaygroundPage = () => {
   const { width } = useWindowDimensions();
   const isDesktop = width >= DESKTOP_MIN_WIDTH;
-  const isTablet = width < DESKTOP_MIN_WIDTH && width >= TABLET_MAX_WIDTH;
+  const isTablet = width < DESKTOP_MIN_WIDTH && width >= TABLET_MIN_WIDTH;
+  const isMobile = width < TABLET_MIN_WIDTH;
   return (
     <ScrollView>
       <Header />
@@ -29,14 +31,18 @@ const PlaygroundPage = () => {
             className={`flex flex-1 gap-4 ${isTablet ? "flex-row-reverse" : "flex-col"}`}
           >
             {!isDesktop && <Preview />}
-            <TrackControls />
+            {!isMobile && <TrackControls />}
           </View>
         </View>
         {isDesktop && <Preview />}
-        <ScrollView className="min-w-0 flex-[0.8] flex-col gap-4">
-          <CodePreview />
-          <PresetsPanel />
-        </ScrollView>
+        {!isMobile ? (
+          <ScrollView className="min-w-0 flex-[0.8] flex-col gap-4">
+            <CodePreview />
+            <PresetsPanel />
+          </ScrollView>
+        ) : (
+          <MobileActions />
+        )}
       </View>
     </ScrollView>
   );
