@@ -11,18 +11,20 @@ const PlaygroundPage = () => {
   return (
     <View className="flex-1 px-4 bg-primary">
       <Header />
-      <View className="flex-row justify-between items-center">
-        <StaggerControls />
-        <AnimationTextInput />
-      </View>
-      <View className="flex-1 flex-row justify-between">
-        <TrackControls />
-        <View className="flex-1 flex-row justify-between">
-          <Preview />
+      <View className="flex-row justify-start gap-8">
+        <View className="flex-col gap-6">
+          <View className="bg-surface px-8 py-6 rounded-2xl">
+            <AnimationTextInput />
+            <StaggerControls />
+          </View>
+          <TrackControls />
+        </View>
+        <Preview />
+        <View className="flex-1">
           <CodePreview />
+          <PresetsPanel />
         </View>
       </View>
-      <PresetsPanel />
     </View>
   );
 };

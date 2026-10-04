@@ -11,13 +11,33 @@ button {
   font-family: "HankenGrotesk-Regular", sans-serif !important;
 }
 
-@theme {
-  --color-marine: hsl(208.57, 98.13%, 20.98%);
-  --color-primary: #f7fdff;
-  --color-accent: #a7e6fc;
-  --color-field: #f0f0f0;
-  --color-hover: #d6d6d6;
+@layer theme {
+  :root {
+    @variant light {
+      --color-primary: hsl(60 100% 96%);
+      --color-surface: hsl(40 45% 78%);
+      --color-field: hsl(40 60% 94%);
+      --color-text: #111111;
+      --color-muted: hsl(40 15% 30%);
+      --color-border: hsl(40 20% 75%);
+      --color-button: hsl(210 45% 27%);
+      --color-action: hsl(60 100% 97%);
+    }
 
+    @variant dark {
+      --color-primary: hsl(60 100% 96%);
+      --color-surface: hsl(40 45% 78%);
+      --color-field: hsl(40 60% 94%);
+      --color-text: #111111;
+      --color-muted: hsl(40 15% 30%);
+      --color-border: hsl(40 20% 75%);
+      --color-button: hsl(210 45% 27%);
+      --color-action: hsl(60 100% 97%);
+    }
+  }
+}
+
+@theme {
   /* Font families */
   --font-hanken: "HankenGrotesk-Regular";
   --font-hanken-medium: "HankenGrotesk-Medium";
