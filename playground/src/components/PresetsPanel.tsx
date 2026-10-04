@@ -26,7 +26,7 @@ const PresetsConfiguration: { label: string; value: keyof typeof PRESETS }[] = [
 const PresetsPanel = () => {
   const { state, addPreset } = usePlayground();
   return (
-    <View className="flex-1 bg-primary p-2 overflow-y-auto">
+    <View className="flex-1 bg-primary p-2">
       <Text className="text-lg font-hanken-bold mb-2 mt-2">Presets</Text>
       <View className="flex flex-row flex-wrap gap-4">
         {PresetsConfiguration.map(({ label, value }) => (

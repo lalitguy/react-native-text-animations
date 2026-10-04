@@ -21,7 +21,7 @@ const TrackControls = () => {
             updateTrack={updateTrack}
           />
         )}
-        contentContainerClassName="bg-surface p-2 md:p-3 lg:p-4 rounded-md md:rounded-lg lg:rounded-xl"
+        contentContainerClassName="bg-surface flex-1 p-2 md:p-3 lg:p-4 rounded-md md:rounded-lg lg:rounded-xl"
         keyExtractor={(item) => item.id}
       />
     </View>
