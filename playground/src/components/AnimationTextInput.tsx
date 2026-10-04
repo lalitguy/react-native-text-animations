@@ -9,10 +9,8 @@ const AnimationTextInput = () => {
       onChangeText={(text) => {
         handleConfig("text", text);
       }}
-      label="Text"
+      label="Text:"
       placeholder="Enter your text here"
-      className="bg-field w-96"
-      wrapperClassName="flex-row items-center gap-4"
     />
   );
 };

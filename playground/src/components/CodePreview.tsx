@@ -1,5 +1,6 @@
+"use dom";
+import { Highlight, themes } from "prism-react-renderer";
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
 import { usePlayground } from "../context/Playground";
 import { getCodeBlock } from "../utils";
 
@@ -16,9 +17,21 @@ const CodePreview = () => {
   }, [state]);
 
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text>{code}</Text>
-    </View>
+    <div className="h-[250] p-4 bg-button overflow-auto rounded-2xl">
+      <Highlight code={code} language="javascript" theme={themes.vsDark}>
+        {({ tokens, getLineProps, getTokenProps }) => (
+          <pre>
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
+    </div>
   );
 };
 

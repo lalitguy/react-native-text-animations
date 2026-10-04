@@ -34,26 +34,23 @@ const StaggerControls = () => {
   } = state;
 
   return (
-    <View className="py-2 flex-row gap-8">
+    <View className="mt-3 flex-row gap-8 flex-wrap gap-y-2">
       <Dropdown
         label="Stagger By:"
         options={staggerByOptions}
         selectedValue={stagger.by}
         onValueChange={(v) => updateStagger("by", v)}
-        className="flex-row items-center gap-4"
       />
       <Dropdown
         label="From:"
         options={staggerFromOptions}
         selectedValue={stagger.from}
         onValueChange={(v) => updateStagger("from", v)}
-        className="flex-row items-center gap-4"
       />
       <InputField
         label="Gap:"
         value={stagger.gap?.toString()}
         onChangeText={(v) => updateStagger("gap", v ? Number(v) : 0)}
-        wrapperClassName="flex-row items-center gap-4"
         type="number"
         className="w-14"
         subtext={"ms"}

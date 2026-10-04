@@ -1,26 +1,19 @@
-import { StyleSheet, Text, type TextProps } from "react-native";
+"use dom";
+import type { HTMLAttributes, ReactNode } from "react";
 
-interface BaseTextProps extends TextProps {
-  className?: string;
+interface BaseTextProps extends HTMLAttributes<HTMLParagraphElement> {
+  children?: ReactNode;
 }
 
-const BaseText = ({ className, numberOfLines = 1, ...rest }: BaseTextProps) => {
+const BaseText = ({ className, children, ...rest }: BaseTextProps) => {
   return (
-    <Text
-      numberOfLines={numberOfLines}
-      selectable={false}
-      style={styles.text}
+    <p
       className={`text-base font-hanken-regular tracking-wide select-none ${className}`}
       {...rest}
-    />
+    >
+      {children}
+    </p>
   );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    userSelect: "none",
-    includeFontPadding: false,
-  },
-});
 
 export default BaseText;

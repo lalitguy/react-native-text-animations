@@ -49,7 +49,7 @@ const Track = ({ track, updateTrack }: Props) => {
   );
 
   return (
-    <View className="flex-row gap-4 mb-4">
+    <View className="flex-row gap-4">
       <Dropdown
         options={animationOptions}
         selectedValue={track.property}

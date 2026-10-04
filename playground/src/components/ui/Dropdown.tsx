@@ -16,7 +16,7 @@ const Dropdown = <T extends string>({
   label,
   selectedValue,
   onValueChange,
-  className,
+  className = "flex flex-row items-center gap-4",
 }: DropdownProps<T>) => {
   return (
     <View className={className}>

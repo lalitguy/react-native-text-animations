@@ -7,10 +7,13 @@
     "expo": "~57.0.24",
     "expo-font": "~57.0.4",
     "expo-status-bar": "~57.0.1",
+    "hast-util-to-jsx-runtime": "^2.3.6",
     "prettier": "^3.9.8",
+    "prism-react-renderer": "^2.4.1",
     "react": "19.2.3",
     "react-native": "0.86.3",
     "react-native-text-animations": "workspace:*",
+    "shiki": "^4.5.0",
     "tailwindcss": "^4.3.3",
     "uniwind": "^1.12.0"
   },

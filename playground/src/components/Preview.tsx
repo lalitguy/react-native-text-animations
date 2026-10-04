@@ -19,7 +19,8 @@ const Preview = () => {
   );
 
   return (
-    <View className="w-[300] h-[80vh] justify-center items-center border-2 border-marine rounded-4xl">
+    <View className="w-[280] h-[600] justify-center items-center border-2 border-marine rounded-4xl shrink-0 relative">
+      <View className="w-12 h-5.5 rounded-2xl bg-black absolute top-1 right-[50%] translate-x-[50%]" />
       <AnimatedText {...rest} textStyle={resolvedStyles} />
     </View>
   );

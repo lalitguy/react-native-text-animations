@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "uniwind";
 
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 select,
@@ -9,6 +12,9 @@ input,
 textarea,
 button {
   font-family: "HankenGrotesk-Regular", sans-serif !important;
+}
+html {
+  background-color: var(--color-primary);
 }
 
 @layer theme {

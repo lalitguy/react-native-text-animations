@@ -6,21 +6,22 @@ import TrackControls from "../components/TrackControls";
 import Preview from "../components/Preview";
 import CodePreview from "../components/CodePreview";
 import PresetsPanel from "../components/PresetsPanel";
+import CardSurface from "../components/ui/CardSurface";
 
 const PlaygroundPage = () => {
   return (
-    <View className="flex-1 px-4 bg-primary">
+    <View className="flex-1">
       <Header />
-      <View className="flex-row justify-start gap-8">
-        <View className="flex-col gap-6">
-          <View className="bg-surface px-8 py-6 rounded-2xl">
+      <View className="flex-1 flex-col lg:flex-row justify-start gap-8 mx-2 md:mx-4 pb-4">
+        <View className="flex:1 lg:flex-[1.2] flex-col gap-6 min-w-0">
+          <CardSurface>
             <AnimationTextInput />
             <StaggerControls />
-          </View>
+          </CardSurface>
           <TrackControls />
         </View>
         <Preview />
-        <View className="flex-1">
+        <View className="min-w-0 flex-[0.8] flex-col gap-4">
           <CodePreview />
           <PresetsPanel />
         </View>

@@ -7,13 +7,10 @@ import BaseText from "./ui/BaseText";
 const TrackControls = () => {
   const { state, addTrack, removeTrack, updateTrack } = usePlayground();
   return (
-    <View className="flex-1 h-full ">
+    <View className="flex-1 h-full">
       <View className="flex-row gap-4 items-center mb-2">
         <BaseText className="font-hanken-bold text-lg">Tracks</BaseText>
-        <BaseText className="text-muted text-sm">
-          Each column maps a progress point (0 to 1) to the value this property
-          has at that moment.
-        </BaseText>
+        <TrackFooter addTrack={addTrack} />
       </View>
       <FlatList
         data={state?.animation?.tracks || []}
@@ -24,9 +21,8 @@ const TrackControls = () => {
             updateTrack={updateTrack}
           />
         )}
-        contentContainerClassName="bg-surface px-8 py-6 rounded-2xl"
+        contentContainerClassName="bg-surface p-2 md:p-3 lg:p-4 rounded-md md:rounded-lg lg:rounded-xl"
         keyExtractor={(item) => item.id}
-        ListHeaderComponent={<TrackFooter addTrack={addTrack} />}
       />
     </View>
   );

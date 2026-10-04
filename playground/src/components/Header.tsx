@@ -4,7 +4,7 @@ import { Uniwind } from "uniwind";
 
 const Header = () => {
   return (
-    <View className="w-full h-20 flex-row items-center justify-between">
+    <View className="w-full h-20 flex-row items-center justify-between px-4">
       <H1 className="font-hanken-bold text-2xl! ">
         React Native Text Animations
       </H1>
