@@ -27,7 +27,11 @@ const PresetsPanel = () => {
   const { state, addPreset } = usePlayground();
   return (
     <View className="flex-1 bg-primary">
-      <Text className="text-lg font-hanken-bold mb-2 py-2">Presets</Text>
+      <Text className="text-lg font-hanken-bold mb-1 py-2">Presets</Text>
+      <BaseText className="mb-2 text-muted text-sm">
+        Some predefined presets to get you started, you can customize them
+        further too.
+      </BaseText>
       <View className="flex flex-row flex-wrap gap-4">
         {PresetsConfiguration.map(({ label, value }) => (
           <Pressable

@@ -1,23 +1,23 @@
-import { FlatList, useWindowDimensions, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { usePlayground } from "../context/Playground";
 import { Track, TrackAddAction } from "./tracks/";
 import BaseText from "./ui/BaseText";
-import { TABLET_MIN_WIDTH } from "../constants";
 
 const TrackControls = () => {
   const { state, addTrack, removeTrack, updateTrack } = usePlayground();
-  const { width } = useWindowDimensions();
-
-  const isMobile = width < TABLET_MIN_WIDTH;
 
   return (
-    <View className={`flex-1 ${isMobile ? "min-h-[200]" : "h-full"}`}>
+    <View className={`flex-1 min-h-[200] md:h-full`}>
       <View
-        className={`flex-row gap-4 items-center mb-2 ${isMobile ? "justify-between" : ""}`}
+        className={`flex-row gap-4 items-center mb-1 justify-between md:justify-start`}
       >
         <BaseText className="font-hanken-bold text-lg">Tracks</BaseText>
         <TrackAddAction addTrack={addTrack} />
       </View>
+      <BaseText className="mb-2 text-muted text-sm">
+        Each column maps a progress point (0 to 1) to the value this property
+        has at that moment.
+      </BaseText>
       <FlatList
         data={state?.animation?.tracks || []}
         renderItem={({ item }) => (

@@ -21,7 +21,7 @@ const MobileActions = () => {
         {actions.map(({ label, value }) => (
           <BaseButton
             key={value}
-            className={`flex-1 mb-2 ${activeTab === value ? "bg-button" : "bg-primary"}`}
+            className={`flex-1 mb-1 ${activeTab === value ? "bg-button" : "bg-primary"}`}
             text={label}
             textClassName={activeTab === value ? "text-action" : "text-text"}
             onClick={() => setActiveTab(value)}

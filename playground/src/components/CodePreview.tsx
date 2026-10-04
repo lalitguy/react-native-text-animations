@@ -17,7 +17,7 @@ const CodePreview = () => {
   }, [state]);
 
   return (
-    <div className="h-[250] p-4 bg-button overflow-auto rounded-2xl">
+    <div className="h-[250] p-4 bg-button overflow-auto rounded-lg md:rounded-xl lg:rounded-2xl">
       <Highlight code={code} language="javascript" theme={themes.vsDark}>
         {({ tokens, getLineProps, getTokenProps }) => (
           <pre>
