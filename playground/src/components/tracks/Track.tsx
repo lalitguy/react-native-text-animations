@@ -83,6 +83,7 @@ const Track = ({ track, updateTrack }: Props) => {
         options={animationOptions}
         selectedValue={track.property}
         onValueChange={handlePropertyChange}
+        className="items-start"
       />
       <View className="gap-2 w-fit">
         <View className="flex-row items-center justify-end gap-2">
@@ -112,19 +113,28 @@ const Track = ({ track, updateTrack }: Props) => {
           <View className="flex-row gap-2">
             {outputRanges.map((range, index) => {
               return (
-                <InputField
-                  key={index}
-                  wrapperClassName="justify-end"
-                  className="w-7"
-                  value={String(range)}
-                  type={track.property === "color" ? "color" : "number"}
-                  innerWrapperClassName={
-                    track.property === "color" ? "py-[4]!" : ""
-                  }
-                  onChangeText={(value) =>
-                    handleInputChange("output", index, value)
-                  }
-                />
+                <View>
+                  <InputField
+                    key={index}
+                    wrapperClassName="justify-end"
+                    className="w-7"
+                    value={String(range)}
+                    type={track.property === "color" ? "color" : "number"}
+                    innerWrapperClassName={
+                      track.property === "color" ? "py-[4]!" : ""
+                    }
+                    onChangeText={(value) =>
+                      handleInputChange("output", index, value)
+                    }
+                  />
+                  {["rotateX", "rotateY", "rotateZ"].includes(
+                    track.property
+                  ) ? (
+                    <BaseText className="text-muted text-[10px] text-right font-hanken-italic opacity-80">
+                      deg
+                    </BaseText>
+                  ) : undefined}
+                </View>
               );
             })}
           </View>

@@ -28,7 +28,7 @@ const MobileActions = () => {
           />
         ))}
       </View>
-      <View className="w-full h-[2] bg-button mb-3" />
+      <View className="w-full h-[1] bg-button mb-3" />
       <Activity mode={activeTab === "tracks" ? "visible" : "hidden"}>
         <TrackControls />
       </Activity>
