@@ -78,7 +78,7 @@ const Track = ({ track, updateTrack }: Props) => {
   };
 
   return (
-    <View className="flex:col md:flex-row gap-4">
+    <View className="flex:col md:flex-row gap-4 mb-4">
       <Dropdown
         options={animationOptions}
         selectedValue={track.property}
@@ -93,7 +93,7 @@ const Track = ({ track, updateTrack }: Props) => {
                 <InputField
                   key={index}
                   wrapperClassName="justify-end"
-                  className="w-10"
+                  className="w-7"
                   value={String(range)}
                   type={"number"}
                   step="0.1"
@@ -115,7 +115,7 @@ const Track = ({ track, updateTrack }: Props) => {
                 <InputField
                   key={index}
                   wrapperClassName="justify-end"
-                  className="w-10"
+                  className="w-7"
                   value={String(range)}
                   type={track.property === "color" ? "color" : "number"}
                   innerWrapperClassName={
