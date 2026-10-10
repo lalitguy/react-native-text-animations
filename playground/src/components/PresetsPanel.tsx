@@ -26,7 +26,7 @@ const PresetsConfiguration: { label: string; value: keyof typeof PRESETS }[] = [
 const PresetsPanel = () => {
   const { state, addPreset } = usePlayground();
   return (
-    <View className="flex-1 bg-primary">
+    <View className="md:flex-1 lg:flex-none bg-primary">
       <Text className="text-lg font-hanken-bold mb-1 py-2">Presets</Text>
       <BaseText className="mb-2 text-muted text-sm">
         Some predefined presets to get you started, you can customize them

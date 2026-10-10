@@ -7,6 +7,7 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   value?: string;
   wrapperClassName?: string;
+  innerWrapperClassName?: string;
   subtext?: string;
   onChangeText: (text: string) => void;
 }
@@ -14,24 +15,24 @@ const InputField = ({
   label,
   value,
   onChangeText,
-  wrapperClassName = "flex flex-row items-center gap-4",
-  className,
+  wrapperClassName = "",
+  className = "",
+  innerWrapperClassName = "",
   subtext,
   ...rest
 }: InputFieldProps) => {
   return (
-    <div className={wrapperClassName}>
+    <div className={`flex flex-row items-center gap-4 ${wrapperClassName}`}>
       {label && (
         <BaseText className="font-hanken-semibold w-fit min-w-0">
           {label}
         </BaseText>
       )}
-      <div className="bg-field px-3 py-2 rounded-lg">
+      <div className={`bg-field px-3 py-2 rounded-lg ${innerWrapperClassName}`}>
         <div className="flex-row gap-2 items-end">
           <input
-            type="text"
             value={value}
-            className={`${className} font-hanken text-base focus-within:outline-none focus-visible:border-none px-0! py-0!`}
+            className={`min-w-0 ${className} font-hanken text-base focus-within:outline-none focus-visible:border-none px-0! py-0!`}
             onChange={(e) => onChangeText?.(e.currentTarget.value)}
             {...rest}
           />

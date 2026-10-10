@@ -17,6 +17,22 @@ html {
   background-color: var(--color-primary);
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-mozi {
+  background-color: var(--color-primary);
+}
+
+/* Actual color preview swatch styles */
+input[type="color"]::-webkit-color-swatch,
+input[type="color"]::-moz-color-swatch {
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
 @layer theme {
   :root {
     @variant light {
