@@ -15,7 +15,8 @@
     "react-native-text-animations": "workspace:*",
     "shiki": "^4.5.0",
     "tailwindcss": "^4.3.3",
-    "uniwind": "^1.12.0"
+    "uniwind": "^1.12.0",
+    "zod": "^4.6.5"
   },
   "scripts": {
     "start": "expo start",
