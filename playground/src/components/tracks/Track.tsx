@@ -1,5 +1,5 @@
 import { animationOptions } from "@/playground/constants/animation-config";
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { View } from "react-native";
 import type {
   AnimationProperty,
@@ -18,39 +18,35 @@ type Props = {
   removeTrack: RemoveTrack;
 };
 const Track = ({ track, updateTrack }: Props) => {
+  const [property, setProperty] = useState<
+    AnimationProperty | ColorAnimationProperty
+  >(track.property);
   const [inputRanges, setInputRanges] = useState(track.inputRange);
   const [outputRanges, setOutputRanges] = useState(track.outputRange);
 
-  useEffect(() => {
-    setInputRanges(track.inputRange);
-    setOutputRanges(track.outputRange);
-  }, [track]);
-
   const handlePropertyChange = useCallback(
     (value: AnimationProperty | ColorAnimationProperty) => {
-      if (value === "rotateX" || value === "rotateY" || value === "rotateZ") {
+      const propertyConfig = animationOptions.find(
+        (opt) => opt.value === value
+      );
+
+      if (!propertyConfig) return;
+
+      setProperty(value);
+      setInputRanges([0, 1]);
+      setOutputRanges(propertyConfig.defaultOutput);
+
+      if (value === "color") {
         updateTrack(track.id, {
           property: value,
           inputRange: [0, 1],
-          outputRange: [-90, 0],
-        });
-      } else if (value === "color") {
-        updateTrack(track.id, {
-          property: value,
-          inputRange: [0, 1],
-          outputRange: ["#000000", "#00ff00"],
-        });
-      } else if (["translateX", "translateY"].includes(value)) {
-        updateTrack(track.id, {
-          property: value,
-          inputRange: [0, 1],
-          outputRange: [-20, 0],
+          outputRange: propertyConfig.defaultOutput as string[],
         });
       } else {
         updateTrack(track.id, {
           property: value,
           inputRange: [0, 1],
-          outputRange: [0, 1],
+          outputRange: propertyConfig.defaultOutput as number[],
         });
       }
     },
@@ -81,7 +77,7 @@ const Track = ({ track, updateTrack }: Props) => {
     <View className="flex:col md:flex-row gap-4 mb-4">
       <Dropdown
         options={animationOptions}
-        selectedValue={track.property}
+        selectedValue={property}
         onValueChange={handlePropertyChange}
         className="items-start"
       />
