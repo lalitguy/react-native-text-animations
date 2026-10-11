@@ -2,7 +2,7 @@ import { Easing, type EasingFunction } from "react-native-reanimated";
 import type { EasingName, Preset } from "../types";
 
 const defaultConfigs = {
-  unitDuration: 1000,
+  unitDuration: 900,
   staggerGap: 100,
   defaultPreset: "float" as Preset,
 } as const;

@@ -3,7 +3,7 @@
 import { View } from "react-native";
 import BaseText from "./BaseText";
 
-type DropdownProps<T extends string> = {
+type DropdownProps<T extends string | number> = {
   options: readonly { label: string; value: T }[];
   label?: string;
   selectedValue?: T;
@@ -11,7 +11,7 @@ type DropdownProps<T extends string> = {
   className?: string;
 };
 
-const Dropdown = <T extends string>({
+const Dropdown = <T extends string | number>({
   options,
   label,
   selectedValue,

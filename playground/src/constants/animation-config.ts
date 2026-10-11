@@ -69,4 +69,11 @@ const animationOptions: {
   },
 ];
 
-export { animationOptions };
+const repeatConfig = [
+  { label: "1 x", value: 1 },
+  { label: "2 x", value: 2 },
+  { label: "3 x", value: 3 },
+  { label: "Infinite", value: -1 },
+];
+
+export { animationOptions, repeatConfig };
