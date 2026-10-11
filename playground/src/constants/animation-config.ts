@@ -1,4 +1,4 @@
-import * as z from "zod";
+import z from "zod";
 import type { AnimationProperty, ColorAnimationProperty } from "../types";
 
 const animationOptions: {
@@ -41,13 +41,13 @@ const animationOptions: {
     label: "TranslateY",
     value: "translateY",
     schema: z.number("Enter a valid number"),
-    defaultOutput: [-20, 0],
+    defaultOutput: [-40, 0],
   },
   {
     label: "TranslateX",
     value: "translateX",
     schema: z.number("Enter a valid number"),
-    defaultOutput: [-20, 0],
+    defaultOutput: [-40, 0],
   },
   {
     label: "RotateX",

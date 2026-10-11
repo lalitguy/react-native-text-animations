@@ -55,6 +55,7 @@ input[type="number"] {
       --color-border: hsl(40 20% 75%);
       --color-button: hsl(210 45% 27%);
       --color-action: hsl(60 100% 97%);
+      --color-error: hsl(0 100% 70%);
     }
 
     @variant dark {
@@ -66,6 +67,7 @@ input[type="number"] {
       --color-border: hsl(40 20% 75%);
       --color-button: hsl(210 45% 27%);
       --color-action: hsl(60 100% 97%);
+      --color-error: hsl(0 100% 70%);
     }
   }
 }

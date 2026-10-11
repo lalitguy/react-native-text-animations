@@ -16,7 +16,7 @@ const TrackAddAction = ({ addTrack }: Props) => {
         addTrack({
           id: generateUniqueId(),
           inputRange: [0, 1],
-          outputRange: [0, 1],
+          outputRange: [-40, 0],
           property: "translateY",
         })
       }
