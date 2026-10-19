@@ -22,4 +22,40 @@ const replayIcon = (
   </svg>
 );
 
-export { replayIcon };
+const addIcon = (
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={"text-button"}
+  >
+    <path
+      d="M4 12H20M12 4V20"
+      stroke-width="2"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+const removeIcon = (
+  <svg
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={"text-button"}
+  >
+    <path
+      d="M19 5L4.99998 19M5.00001 5L19 19"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export { replayIcon, addIcon, removeIcon };

@@ -1,5 +1,6 @@
 import z from "zod";
 
+import { addIcon, removeIcon } from "@/playground/constants";
 import { animationOptions } from "@/playground/constants/animation-config";
 import { memo, useCallback, useMemo, useState } from "react";
 import { View } from "react-native";
@@ -11,8 +12,8 @@ import type {
   RemoveTrack,
   UpdateTrack,
 } from "../../types";
+import { BaseButton, BaseText, InputField } from "../ui";
 import Dropdown from "../ui/Dropdown";
-import { BaseText, InputField } from "../ui";
 
 type Props = {
   track: NumbericTrackPlayground | ColorTrackPlayground;
@@ -29,7 +30,7 @@ type TrackSyncPayload = {
   outputRange?: number[] | string[];
 };
 
-const Track = ({ track, updateTrack }: Props) => {
+const Track = ({ track, updateTrack, removeTrack }: Props) => {
   const [property, setProperty] = useState<
     AnimationProperty | ColorAnimationProperty
   >(track.property);
@@ -145,6 +146,43 @@ const Track = ({ track, updateTrack }: Props) => {
     [selectedProperty, syncToPlayground]
   );
 
+  const handleRemoveTrack = useCallback(() => {
+    removeTrack(track.id);
+  }, [removeTrack, track.id]);
+
+  const addRanges = useCallback(() => {
+    const lastInputRange = inputRanges.at(-1);
+    const lastOutputRange = outputRanges.at(-1);
+    const lastSecondInputRange = inputRanges.at(-2);
+    if (
+      lastInputRange === undefined ||
+      lastOutputRange === undefined ||
+      lastSecondInputRange === undefined
+    )
+      return;
+
+    const ranges = {
+      inputRange: [
+        ...inputRanges.slice(0, -1),
+        Number(((lastSecondInputRange + lastInputRange) / 2).toFixed(1)),
+        lastInputRange,
+      ],
+      outputRange: [
+        ...outputRanges.slice(0, -1),
+        selectedProperty?.defaultOutput.at(-1),
+        lastOutputRange,
+      ],
+    };
+
+    setInputRanges(ranges.inputRange);
+    setOutputRanges(ranges.outputRange as number[] | string[]);
+
+    syncToPlayground({
+      inputRange: ranges.inputRange,
+      outputRange: ranges.outputRange as number[] | string[],
+    });
+  }, [inputRanges, outputRanges, selectedProperty, syncToPlayground]);
+
   return (
     <View className="flex:col md:flex-row gap-4 mb-4">
       <Dropdown
@@ -209,6 +247,18 @@ const Track = ({ track, updateTrack }: Props) => {
             })}
           </View>
         </View>
+      </View>
+      <View className="flex-col gap-2">
+        <BaseButton
+          icon={addIcon}
+          className="flex shrink h-10 w-10 justify-center items-center bg-transparent border-2 rounded-full px-2!"
+          onClick={addRanges}
+        />
+        <BaseButton
+          icon={removeIcon}
+          className="flex shrink h-10 w-10 justify-center items-center bg-transparent border-2 rounded-full px-2!"
+          onClick={handleRemoveTrack}
+        />
       </View>
     </View>
   );
