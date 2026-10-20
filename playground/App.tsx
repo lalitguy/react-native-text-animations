@@ -7,8 +7,20 @@ import { Uniwind } from "uniwind";
 
 export default function App() {
   useLayoutEffect(() => {
-    Uniwind.setTheme("light");
+    const savedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    Uniwind.setTheme(
+      savedTheme === "light" || savedTheme === "dark"
+        ? savedTheme
+        : systemPrefersDark
+          ? "dark"
+          : "light"
+    );
   }, []);
+
   const [fontsLoaded] = useFonts({
     "HankenGrotesk-Regular": require("./assets/fonts/HankenGrotesk-Regular.ttf"),
     "HankenGrotesk-Medium": require("./assets/fonts/HankenGrotesk-Medium.ttf"),

@@ -2,8 +2,13 @@ import { H1, A } from "@expo/html-elements";
 import { Image, Pressable, View } from "react-native";
 import { Uniwind } from "uniwind";
 import { BaseText } from "./ui";
+import { useCallback } from "react";
 
 const Header = () => {
+  const handleThemeToggle = useCallback((theme: "light" | "dark") => {
+    localStorage.setItem("theme", theme);
+    Uniwind.setTheme(theme);
+  }, []);
   return (
     <View className="w-full h-20 flex-row items-center justify-between px-4">
       <H1 className="font-hanken-bold text-2xl! text-text">
@@ -12,13 +17,13 @@ const Header = () => {
       <View className="flex-row items-center gap-2">
         <Pressable
           className="px-3 py-1 light:bg-field rounded-lg"
-          onPress={() => Uniwind.setTheme("light")}
+          onPress={() => handleThemeToggle("light")}
         >
           <BaseText className="font-hanken-medium">Light</BaseText>
         </Pressable>
         <Pressable
           className="px-3 py-1 dark:bg-field rounded-lg"
-          onPress={() => Uniwind.setTheme("dark")}
+          onPress={() => handleThemeToggle("dark")}
         >
           <BaseText>Dark</BaseText>
         </Pressable>
