@@ -36,12 +36,12 @@ const InputField = ({
         <div className="flex-row gap-2 items-end">
           <input
             value={value}
-            className={`min-w-0 ${className} font-hanken text-base focus-within:outline-none focus-visible:border-none px-0! py-0!`}
+            className={`min-w-0 ${className} font-hanken text-base text-text focus-within:outline-none focus-visible:border-none px-0! py-0!`}
             onChange={(e) => onChangeText?.(e.currentTarget.value)}
             {...rest}
           />
           {subtext && (
-            <span className="font-hanken-italic text-sm opacity-70 min-w-0">
+            <span className="font-hanken-italic text-text text-sm opacity-70 min-w-0">
               {subtext}
             </span>
           )}

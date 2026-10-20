@@ -91,18 +91,20 @@ input[type="range"]::-moz-range-progress {
       --color-button: hsl(210 45% 27%);
       --color-action: hsl(60 100% 97%);
       --color-error: hsl(0 100% 70%);
+      --color-code: hsl(210 45% 27%);
     }
 
     @variant dark {
-      --color-primary: hsl(60 100% 96%);
-      --color-surface: hsl(40 45% 78%);
-      --color-field: hsl(40 60% 94%);
-      --color-text: #111111;
-      --color-muted: hsl(40 15% 30%);
-      --color-border: hsl(40 20% 75%);
-      --color-button: hsl(210 45% 27%);
-      --color-action: hsl(60 100% 97%);
-      --color-error: hsl(0 100% 70%);
+      --color-primary: hsl(225 40% 9%);
+      --color-surface: hsl(218 38% 19%);
+      --color-field: hsl(220 35% 23%);
+      --color-text: hsl(225 40% 96%);
+      --color-muted: hsl(220 18% 72%);
+      --color-border: hsl(220 25% 30%);
+      --color-button: hsl(215 55% 48%);
+      --color-action: hsl(230 90% 90%);
+      --color-error: hsl(0 75% 65%);
+      --color-code: hsl(220 32% 15%);
     }
   }
 }

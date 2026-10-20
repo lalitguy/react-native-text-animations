@@ -35,7 +35,7 @@ const Preview = () => {
   );
 
   const wrapperClassName = !isMobile
-    ? "w-[275] h-[580] border-2 border-marine rounded-4xl shrink-0 relative"
+    ? "w-[275] h-[580] border-2 border-text dark:border-border rounded-4xl shrink-0 relative"
     : "w-full border-none flex flex-1 pt-16 pb-0";
 
   const incrementor = useCallback(() => setCounter((prev) => prev + 1), []);
@@ -49,7 +49,7 @@ const Preview = () => {
 
   return (
     <View className="md:w-[275]">
-      <View className={`${wrapperClassName}`}>
+      <View className={`${wrapperClassName} dark:bg-surface`}>
         <View className="flex-1 justify-center items-center mb-16 md:mb-0">
           {!isMobile && (
             <View className="w-12 h-5.5 rounded-2xl bg-black absolute top-1 right-[50%] translate-x-[50%]" />
@@ -65,7 +65,7 @@ const Preview = () => {
         className="mt-2"
         onValueUpdate={syncDurationToPlayground}
       />
-      <BaseText className="text-[11px] font-hanken-italic text-center">
+      <BaseText className="text-[11px] mt-1 text-muted text-center">
         Tip: when animation feel jammy, try to lower the duration
       </BaseText>
     </View>
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "bold",
     textAlign: "center",
+    color: "var(--color-text)",
   },
 });
 

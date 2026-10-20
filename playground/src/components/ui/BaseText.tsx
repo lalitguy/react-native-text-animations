@@ -8,7 +8,7 @@ interface BaseTextProps extends HTMLAttributes<HTMLParagraphElement> {
 const BaseText = ({ className, children, ...rest }: BaseTextProps) => {
   return (
     <p
-      className={`text-base font-hanken-regular tracking-wide select-none ${className}`}
+      className={`text-base font-hanken-regular tracking-wide select-none text-text ${className}`}
       {...rest}
     >
       {children}

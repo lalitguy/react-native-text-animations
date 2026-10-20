@@ -1,16 +1,27 @@
 import { H1, A } from "@expo/html-elements";
 import { Image, Pressable, View } from "react-native";
 import { Uniwind } from "uniwind";
+import { BaseText } from "./ui";
 
 const Header = () => {
   return (
     <View className="w-full h-20 flex-row items-center justify-between px-4">
-      <H1 className="font-hanken-bold text-2xl! ">
+      <H1 className="font-hanken-bold text-2xl! text-text">
         React Native Text Animations
       </H1>
       <View className="flex-row items-center gap-2">
-        <Pressable onPress={() => Uniwind.setTheme("light")}>Light</Pressable>
-        <Pressable onPress={() => Uniwind.setTheme("dark")}>Dark</Pressable>
+        <Pressable
+          className="px-3 py-1 light:bg-field rounded-lg"
+          onPress={() => Uniwind.setTheme("light")}
+        >
+          <BaseText className="font-hanken-medium">Light</BaseText>
+        </Pressable>
+        <Pressable
+          className="px-3 py-1 dark:bg-field rounded-lg"
+          onPress={() => Uniwind.setTheme("dark")}
+        >
+          <BaseText>Dark</BaseText>
+        </Pressable>
         <A
           href="https://github.com/lalitguy/react-native-text-animations"
           target="_blank"
@@ -18,7 +29,7 @@ const Header = () => {
         >
           <Image
             source={require("../../assets/github.png")}
-            className="h-7 w-7"
+            className="h-7 w-7 dark:invert"
           />
         </A>
       </View>

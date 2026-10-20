@@ -25,7 +25,7 @@ const Dropdown = <T extends string | number>({
         <select
           value={selectedValue}
           onChange={(e) => onValueChange(e.currentTarget.value as T)}
-          className="font-hanken text-base focus-within:outline-none focus-visible:border-none px-0! py-0!"
+          className="font-hanken text-text text-base focus-within:outline-none focus-visible:border-none px-0! py-0!"
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
