@@ -71,8 +71,12 @@ const PRESETS = {
   },
   "flip": {
     tracks: [
-      { property: "opacity", inputRange: [0, 1], outputRange: [0, 1] },
-      { property: "rotateX", inputRange: [0, 1], outputRange: [-90, 0] },
+      // { property: "opacity", inputRange: [0, 1], outputRange: [0, 1] },
+      {
+        property: "rotateX",
+        inputRange: [0, 0.5, 1],
+        outputRange: [0, 90, 0],
+      },
     ],
   },
   "swing": {
