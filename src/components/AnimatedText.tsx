@@ -23,7 +23,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
 
   const resolvedAnimation = useMemo(() => {
     const animationConfig = !animation
-      ? PRESETS[preset as keyof typeof PRESETS] || defaultConfigs.defaultPreset
+      ? PRESETS[preset || defaultConfigs.defaultPreset]
       : animation;
 
     return animationConfig;
