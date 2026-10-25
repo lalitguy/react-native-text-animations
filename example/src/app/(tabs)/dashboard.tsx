@@ -2,7 +2,7 @@ import Container from "@/example/components/Container";
 import { useCallback, useRef, useState } from "react";
 import { useFocusEffect } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import AnimatedText from "react-native-text-animations";
+import AnimatedText, { type TrackConfig } from "react-native-text-animations";
 
 const bars = [36, 56, 43, 72, 52, 88, 64];
 const recentActivities = [
@@ -10,11 +10,11 @@ const recentActivities = [
   { title: "Focus session", detail: "25 min  ·  Deep work" },
   { title: "Evening stretch", detail: "12 min  ·  Recovery" },
 ];
-const liftIn = (distance = 12) => ({
+const liftIn = (distance = 12): { tracks: TrackConfig[] } => ({
   tracks: [
-    { property: "opacity" as const, inputRange: [0, 1], outputRange: [0, 1] },
+    { property: "opacity", inputRange: [0, 1], outputRange: [0, 1] },
     {
-      property: "translateY" as const,
+      property: "translateY",
       inputRange: [0, 1],
       outputRange: [distance, 0],
     },
