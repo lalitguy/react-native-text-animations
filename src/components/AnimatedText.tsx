@@ -4,7 +4,7 @@ import Animated from "react-native-reanimated";
 import { defaultConfigs, PRESETS } from "../constant";
 import type { AnimatedTextProps } from "../types";
 import { groupTracks } from "../utils";
-import AnimatedLetter from "./AnimatedLetter";
+import AnimatedUnit from "./AnimatedUnit";
 
 const AnimatedText = (props: AnimatedTextProps) => {
   const {
@@ -38,7 +38,7 @@ const AnimatedText = (props: AnimatedTextProps) => {
 
         const groupedTracks = groupTracks(resolvedAnimation, idx);
         return (
-          <AnimatedLetter
+          <AnimatedUnit
             key={key}
             text={char}
             index={idx}

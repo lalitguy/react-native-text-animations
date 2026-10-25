@@ -5,13 +5,13 @@ import { useUnitProgress } from "../hooks/useUnitProgress";
 import type { AnimatedTextProps, GroupedTracksConfig } from "../types";
 import { useTracksAnimation } from "../hooks";
 
-interface AnimatedLetterProps extends Omit<AnimatedTextProps, "wrapperStyle"> {
+interface AnimatedUnitProps extends Omit<AnimatedTextProps, "wrapperStyle"> {
   index: number;
   textLength: number;
   groupedTracks: GroupedTracksConfig;
 }
 
-const AnimatedLetter = (props: AnimatedLetterProps) => {
+const AnimatedUnit = (props: AnimatedUnitProps) => {
   const {
     text: character,
     textLength,
@@ -55,4 +55,4 @@ const AnimatedLetter = (props: AnimatedLetterProps) => {
   );
 };
 
-export default memo(AnimatedLetter);
+export default memo(AnimatedUnit);
