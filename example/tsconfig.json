@@ -1,6 +1,11 @@
 {
   "extends": "../tsconfig",
   "compilerOptions": {
-    "customConditions": ["source"]
-  }
+    "strict": true,
+    "customConditions": ["source"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }
