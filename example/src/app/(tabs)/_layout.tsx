@@ -9,6 +9,22 @@ const _layout = () => {
       }}
     >
       <Tabs.Screen
+        name="dashboard"
+        options={{ title: "Dashboard", tabBarIcon: () => <TabIcon char="D" /> }}
+      />
+      <Tabs.Screen
+        name="swipes"
+        options={{ title: "Swipes", tabBarIcon: () => <TabIcon char="S" /> }}
+      />
+      <Tabs.Screen
+        name="loading"
+        options={{ title: "Loading", tabBarIcon: () => <TabIcon char="L" /> }}
+      />
+      <Tabs.Screen
+        name="focus"
+        options={{ title: "Focus", tabBarIcon: () => <TabIcon char="F" /> }}
+      />
+      <Tabs.Screen
         name="heartbeat"
         options={{
           title: "Heart Beat",
