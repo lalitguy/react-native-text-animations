@@ -4,7 +4,8 @@
     "paths": {
       "react-native-text-animations": ["./src/index.tsx"],
       "@/library/*": ["./src/*"],
-      "@/playground/*": ["./playground/src/*"]
+      "@/playground/*": ["./playground/src/*"],
+      "@/example/*": ["./example/src/*"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
