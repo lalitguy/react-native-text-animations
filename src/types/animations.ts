@@ -140,12 +140,27 @@ interface ColorTrackConfig extends CommonTrackConfig {
 
 type TrackConfig = NumericTrackConfig | ColorTrackConfig;
 
-/** Custom animation with granular control over tracks and repetition. */
+/**
+ * Customize tracks for a given index.
+ */
+type TracksResolverFunc = (index: number) => TrackConfig[];
+
+/** Custom animation with granular control over properties */
 type AnimationConfig = {
   /**
-   * Array of tracks to animate.
+   * Tracks that animate each stagger unit.
+   * - **Array**: Same tracks applied to every unit (default).
+   * - **Function**: `(index) => tracks` called per unit for variations (e.g., alternating/zigzag).
+   *
+   * @example
+   * tracks: [{ property: 'opacity', inputRange: [0,1], outputRange: [0, 1] }]
+   *
+   * @example
+   * tracks: (index) => (index % 2 === 0 ?
+   * [{ property: 'translateY', inputRange: [0,1], outputRange: [-50, 0] }]
+   * : [{ property: 'translateY', inputRange: [0,1], outputRange: [50, 0] }])
    */
-  tracks: TrackConfig[];
+  tracks: TrackConfig[] | TracksResolverFunc;
 };
 
 type GroupedTracksConfig = {

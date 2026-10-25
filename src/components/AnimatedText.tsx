@@ -29,16 +29,14 @@ const AnimatedText = (props: AnimatedTextProps) => {
     return animationConfig;
   }, [preset, animation]);
 
-  const groupedTracks = useMemo(() => {
-    return groupTracks(resolvedAnimation.tracks);
-  }, [resolvedAnimation]);
-
   if (!text) return null;
 
   return (
     <Animated.View style={[styles.textWrap, wrapperStyle]}>
       {animateArray.map((char, idx) => {
         const key = `animate-${preset ?? "custom"}-${idx}`;
+
+        const groupedTracks = groupTracks(resolvedAnimation, idx);
         return (
           <AnimatedLetter
             key={key}
@@ -47,7 +45,6 @@ const AnimatedText = (props: AnimatedTextProps) => {
             textLength={animateArray.length}
             stagger={stagger}
             groupedTracks={groupedTracks}
-            animation={resolvedAnimation}
             {...rest}
           />
         );
