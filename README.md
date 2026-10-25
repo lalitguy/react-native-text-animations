@@ -45,6 +45,23 @@ Pass `animation` with one or more tracks. Each track maps animation progress in 
 />
 ```
 
+For per-unit variations, `tracks` can be a function that receives the unit's zero-based index:
+
+```tsx
+<AnimatedText
+  text="Alternating motion"
+  animation={{
+    tracks: (index) => [
+      {
+        property: "translateY",
+        inputRange: [0, 1],
+        outputRange: [index % 2 === 0 ? -16 : 16, 0],
+      },
+    ],
+  }}
+/>
+```
+
 Supported properties: `opacity`, `color`, `translateX`, `translateY`, `scale`, `scaleX`, `scaleY`, `rotateX`, `rotateY`, and `rotateZ`. `inputRange` and `outputRange` must have matching lengths.
 
 ## Props
